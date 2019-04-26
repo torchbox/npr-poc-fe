@@ -1,23 +1,29 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Home from './pages/home';
-import Episode from './pages/episode';
-import Podcast from './pages/podcast';
-import Story from './pages/story';
+import PlayerContextProvider from "./context/player";
 
-import Header from './components/header';
+import Home from "./pages/home";
+import Episode from "./pages/episode";
+import Podcast from "./pages/podcast";
+import Story from "./pages/story";
 
-function App() {
+import Header from "./components/header";
+import Player from "./components/player";
+
+const App = () => {
   return (
     <div>
-      <Router>
-        <Header />
-        <Route path="/" exact component={Home} />
-        <Route path="/podcast" component={Podcast} />
-        <Route path="/episode" component={Episode} />
-        <Route path="/story" component={Story} />
-      </Router>
+      <PlayerContextProvider>
+        <Router>
+          <Header />
+          <Route path="/" exact component={Home} />
+          <Route path="/podcast" component={Podcast} />
+          <Route path="/episode" component={Episode} />
+          <Route path="/story" component={Story} />
+        </Router>
+        <Player />
+      </PlayerContextProvider>
     </div>
   );
 }
