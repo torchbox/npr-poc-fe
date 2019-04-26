@@ -3,10 +3,20 @@ import { Link } from "react-router-dom";
 
 const Header = () => (
   <nav>
-    <Link to="/">Home</Link>
-    <Link to="/podcast">Podcast</Link>
-    <Link to="/episode">Episode</Link>
-    <Link to="/story">Story</Link>
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/podcast">Podcast</Link>
+      </li>
+      <li>
+        <Link to="/episode">Episode</Link>
+      </li>
+      <li>
+        <Link to="/story">Story</Link>
+      </li>
+    </ul>
   </nav>
 );
 
