@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import {StyledFooter} from './styled';
+import { StyledFooter } from "./styled";
 
-const Footer = () => (
-  <StyledFooter></StyledFooter>
-);
+const Footer = ({ visibility }) => <StyledFooter visiblity={visibility} />;
 
 export default Footer;

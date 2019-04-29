@@ -13,11 +13,15 @@ class Player extends Component {
   }
 
   render() {
+    const{
+      stickToFooter
+    } = this.props;
+
     return (
       <PlayerContext.Consumer>
         {({ audioSrc, isPlaying, playingTrackId }) => {
           return (
-            <StyledPlayer isPlaying={isPlaying} hasTrack={playingTrackId}>
+            <StyledPlayer isPlaying={isPlaying} hasTrack={playingTrackId} stickToFooter={stickToFooter}>
               <Audio audioSrc={audioSrc} isPlaying={isPlaying} />
               <StyledPlayerPlayButton audioSrc={audioSrc} label='' trackId={playingTrackId} />
               <span className='player__track-name'>{playingTrackId}</span>

@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import PlayButton from "../play-button";
 
 const StyledPlayer = styled.div`
-  position: absolute;
+  position: sticky;
   bottom: 0;
   width: 600px;
   padding: 20px;
@@ -17,7 +17,14 @@ const StyledPlayer = styled.div`
     css`
       opacity: 1;
       transform: translateX(0);
-      transition: all 0.5s;
+    `}
+
+  ${props =>
+    (props.stickToFooter) &&
+    css`
+      position: absolute;
+      bottom: 400px;
+      transition: none;
     `}
 `;
 
