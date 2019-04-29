@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const StyledDonationStrip = styled.div`
   overflow: hidden;
-  margin: -53px;
+  margin: -53px 0 -53px 0;
 `;
 
 const StyledDonationStripInner = styled.div`
