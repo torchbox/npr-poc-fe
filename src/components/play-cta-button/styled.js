@@ -20,7 +20,8 @@ const StyledPlayCtaButton = styled.button`
   }
 
   ${props =>
-    (props.type && props.type === "ghost") &&
+    props.type &&
+    props.type === "ghost" &&
     css`
       padding: 10px 10px 10px 40px;
       font-size: 12px;
@@ -31,7 +32,7 @@ const StyledPlayCtaButton = styled.button`
       svg {
         left: 20px;
         width: 18px;
-      height: 18px;
+        height: 18px;
       }
     `}
 `;

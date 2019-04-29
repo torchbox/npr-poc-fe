@@ -11,6 +11,7 @@ import {
 import Hero from "../../components/hero";
 import PlayCtaButton from "../../components/play-cta-button";
 import Trending from "../../components/trending";
+import DonationStrip from "../../components/donation-strip";
 
 const Home = () => (
   <StyledHome>
@@ -31,6 +32,7 @@ const Home = () => (
         <Trending />
       </StyledHomeHero>
     </Hero>
+    <DonationStrip />
   </StyledHome>
 );
 
