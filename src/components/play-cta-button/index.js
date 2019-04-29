@@ -2,18 +2,11 @@ import React, { useContext } from "react";
 
 import { PlayerContext } from "../../context/player";
 
-import { StyledPlayCtaButton } from "./styled";
+import { StyledPlayCtaButton, StyledPlayCtaButtonName } from "./styled";
 
-import IconPlay from "../../svg/icon-play";
-import IconPause from "../../svg/icon-pause";
+import IconVolumeUp from "../../svg/icon-volume-up";
 
-const PlayCtaButton = ({
-  name,
-  audioSrc,
-  trackId,
-  type = "default",
-  ...rest
-}) => {
+const PlayCtaButton = ({ name, audioSrc, trackId, type = "default" }) => {
   const {
     setAudioSrc,
     isPlaying,
@@ -23,8 +16,8 @@ const PlayCtaButton = ({
   } = useContext(PlayerContext);
 
   const iconColors = {
-    default: "#ffffff",
-    ghost: "#ffffff"
+    default: "#1d7566",
+    ghost: "#3beccd"
   };
 
   return (
@@ -48,13 +41,10 @@ const PlayCtaButton = ({
         setAudioSrc(audioSrc);
         setPlayingTrackId(trackId);
       }}
-      {...rest}
     >
-      {isPlaying ? (
-        <IconPause color={iconColors[type]} />
-      ) : (
-        <IconPlay color={iconColors[type]} />
-      )}
+      <IconVolumeUp color={iconColors[type]} />{" "}
+      {name && <StyledPlayCtaButtonName>{name} -</StyledPlayCtaButtonName>} Listen
+      Live
     </StyledPlayCtaButton>
   );
 };

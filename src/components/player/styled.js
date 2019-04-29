@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 
+import PlayButton from "../play-button";
+
 const StyledPlayer = styled.div`
   position: absolute;
   bottom: 0;
@@ -19,4 +21,8 @@ const StyledPlayer = styled.div`
     `}
 `;
 
-export default StyledPlayer;
+const StyledPlayerPlayButton = styled(PlayButton)`
+  margin: 0 10px 0 0;
+`;
+
+export { StyledPlayer, StyledPlayerPlayButton };

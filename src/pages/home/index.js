@@ -9,7 +9,8 @@ import {
 } from "./styled";
 
 import Hero from "../../components/hero";
-import PlayButton from "../../components/play-button";
+import PlayCtaButton from "../../components/play-cta-button";
+import Trending from "../../components/trending";
 
 const Home = () => (
   <StyledHome>
@@ -21,12 +22,13 @@ const Home = () => (
             <h1>New Sounds</h1>
           </StyledHomeHeroIntroTitle>
           <p>Hand-picked music, genre free. 24/7 radio from New York City.</p>
-          <PlayButton
+          <PlayCtaButton
             audioSrc="/audio/track-one.mp3"
-            label="Track One"
+            name="Track One"
             trackId="track-one"
           />
         </StyledHomeHeroIntro>
+        <Trending />
       </StyledHomeHero>
     </Hero>
   </StyledHome>

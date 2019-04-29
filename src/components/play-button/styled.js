@@ -1,14 +1,11 @@
 import styled from "styled-components";
 
-const StyledPlayButton = styled.button`
-  position: relative;
-  padding: 16px 30px 16px 56px;
-  font-size: 17px;
-  line-height: 1;
-  background: ${props => props.theme.colors.green};
+const StyledPlayCtaButton = styled.button`
+  width: 14px;
+  height: 14px;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
+  background: none;
 
   svg {
     position: absolute;
@@ -20,4 +17,4 @@ const StyledPlayButton = styled.button`
   }
 `;
 
-export { StyledPlayButton };
+export { StyledPlayCtaButton };
