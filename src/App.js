@@ -13,6 +13,7 @@ import Podcast from "./pages/podcast";
 import Story from "./pages/story";
 
 import Header from "./components/header";
+import Footer from "./components/footer";
 import Player from "./components/player";
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/podcast" component={Podcast} />
             <Route path="/episode" component={Episode} />
             <Route path="/story" component={Story} />
+            <Footer />
           </Router>
           <Player />
         </PlayerContextProvider>
