@@ -1,23 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { StyledHeader, StyledHeaderLink } from "./styled";
+
 const Header = () => (
-  <nav>
+  <StyledHeader>
     <ul>
       <li>
-        <Link to="/">Home</Link>
+        <StyledHeaderLink to="/">Home</StyledHeaderLink>
       </li>
       <li>
-        <Link to="/podcast">Podcast</Link>
+        <StyledHeaderLink to="/podcast">Podcast</StyledHeaderLink>
       </li>
       <li>
-        <Link to="/episode">Episode</Link>
+        <StyledHeaderLink to="/episode">Episode</StyledHeaderLink>
       </li>
       <li>
-        <Link to="/story">Story</Link>
+        <StyledHeaderLink to="/story">Story</StyledHeaderLink>
       </li>
     </ul>
-  </nav>
+  </StyledHeader>
 );
 
 export default Header;

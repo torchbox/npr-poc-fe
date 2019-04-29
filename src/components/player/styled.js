@@ -5,8 +5,8 @@ const StyledPlayer = styled.div`
   bottom: 0;
   width: 600px;
   padding: 20px;
-  background: #2f138d;
-  color: #ffffff;
+  background: ${props => props.theme.colors.purple};
+  color: ${props => props.theme.colors.white};
   opacity: 0;
   transform: translateX(-100%);
 
