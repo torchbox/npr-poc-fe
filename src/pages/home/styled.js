@@ -27,10 +27,28 @@ const StyledHomeHeroIcon = styled.img`
   margin: 0 24px 0 0;
 `;
 
+const StyledHomeCards = styled.div`
+  background: ${props => props.theme.colors.lightGrey};
+`
+const StyledHomeCardsInner = styled.div`
+  margin: 0 auto;
+  padding: 122px ${props => props.theme.grid.outerGutter} 100px;
+  max-width: ${props => props.theme.grid.maxWidth};
+
+  h3 {
+    font-size: 16px;
+    color: ${props => props.theme.colors.blue};
+    text-transform: uppercase;
+    margin: 0 0 30px 0;
+  }
+`
+
 export {
   StyledHome,
   StyledHomeHero,
   StyledHomeHeroIntro,
   StyledHomeHeroIntroTitle,
-  StyledHomeHeroIcon
+  StyledHomeHeroIcon,
+  StyledHomeCards,
+  StyledHomeCardsInner
 };

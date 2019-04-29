@@ -5,13 +5,17 @@ import {
   StyledHomeHero,
   StyledHomeHeroIntro,
   StyledHomeHeroIntroTitle,
-  StyledHomeHeroIcon
+  StyledHomeHeroIcon,
+  StyledHomeCards,
+  StyledHomeCardsInner,
 } from "./styled";
 
 import Hero from "../../components/hero";
 import PlayCtaButton from "../../components/play-cta-button";
 import Trending from "../../components/trending";
 import DonationStrip from "../../components/donation-strip";
+import CardGrid from "../../components/card-grid";
+import StoryCard from "../../components/story-card";
 
 const Home = () => (
   <StyledHome>
@@ -33,6 +37,17 @@ const Home = () => (
       </StyledHomeHero>
     </Hero>
     <DonationStrip />
+    <StyledHomeCards>
+      <StyledHomeCardsInner>
+        <h3>Latest from Torchbox Radio</h3>
+        <CardGrid>
+          <StoryCard />
+          <StoryCard />
+          <StoryCard />
+          <StoryCard />
+        </CardGrid>
+      </StyledHomeCardsInner>
+    </StyledHomeCards>
   </StyledHome>
 );
 

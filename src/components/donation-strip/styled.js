@@ -29,7 +29,7 @@ const StyledDonationStripInner = styled.div`
 
   p {
     margin: 0;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 1.2;
     font-weight: ${props => props.theme.fonts.light};
   }
@@ -52,14 +52,17 @@ const StyledDonationStripLink = styled(NavLink)`
   }
 
   &:last-of-type {
+    margin-right: 0;
+
     &::after {
       display: none;
     }
   }
+
   &:hover,
   &:focus,
   &.active {
-    color: ${props => props.theme.colors.green};
+    color: ${props => props.theme.colors.blue};
   }
 `;
 
