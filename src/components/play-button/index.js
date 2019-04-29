@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 
 import { PlayerContext } from "../../context/player";
 
+import { StyledPlayButton } from './styled';
+
+import IconVolumeUp from '../../svg/icon-volume-up';
+
 const PlayButton = ({ label, audioSrc, trackId }) => {
   const {
     setAudioSrc,
@@ -12,7 +16,7 @@ const PlayButton = ({ label, audioSrc, trackId }) => {
   } = useContext(PlayerContext);
 
   return (
-    <button
+    <StyledPlayButton
       onClick={() => {
         if (playingTrackId !== trackId) {
           console.log(`Playing ${trackId}`);
@@ -32,8 +36,8 @@ const PlayButton = ({ label, audioSrc, trackId }) => {
         setPlayingTrackId(trackId);
       }}
     >
-      {isPlaying && trackId === playingTrackId ? "Pause" : "Play"} {label}
-    </button>
+      <IconVolumeUp color="#1d7566" /> {label}
+    </StyledPlayButton>
   );
 };
 

@@ -45,6 +45,10 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     font-family: 'Apercu Pro';
   }

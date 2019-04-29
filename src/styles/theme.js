@@ -20,6 +20,7 @@ const theme = {
     // Weights
     bold: 700,
     normal: 400,
+    light: 300,
 
     // Sizes
     baseLineHeight: "25px",
@@ -34,7 +35,8 @@ const theme = {
   },
 
   grid: {
-    maxWidth: "1440px"
+    maxWidth: "1440px",
+    outerGutter: "72px"
   }
 };
 

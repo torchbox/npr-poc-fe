@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 import { rgba } from "polished";
 
 const StyledHeader = styled.nav`
+  position: relative;
   width: 100%;
   background: ${props =>
     props.theme.colors.black && rgba(props.theme.colors.black, 0.5)};
+  z-index: 1;
 `;
 
 const StyledHeaderInner = styled.div`
@@ -13,9 +15,8 @@ const StyledHeaderInner = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 27px 73px 23px;
+  padding: 27px ${props => props.theme.grid.outerGutter} 23px;
   max-width: ${props => props.theme.grid.maxWidth};
-  box-sizing: border-box;
 `;
 
 const StyledHeaderLogo = styled.div`
