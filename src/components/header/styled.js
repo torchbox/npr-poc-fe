@@ -3,12 +3,19 @@ import { NavLink } from "react-router-dom";
 import { rgba } from "polished";
 
 const StyledHeader = styled.nav`
+  width: 100%;
+  background: ${props =>
+    props.theme.colors.black && rgba(props.theme.colors.black, 0.5)};
+`;
+
+const StyledHeaderInner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0 auto;
   padding: 27px 73px 23px;
-  background: ${props =>
-    props.theme.colors.black && rgba(props.theme.colors.black, 0.5)};
+  max-width: ${props => props.theme.grid.maxWidth};
+  box-sizing: border-box;
 `;
 
 const StyledHeaderLogo = styled.div`
@@ -23,7 +30,7 @@ const StyledHeaderLogo = styled.div`
 `;
 
 const StyledHeaderLink = styled(NavLink)`
-  margin: 0 25px 0 0;
+  margin: 0 30px 0 0;
   font-size: 16px;
   color: ${props => props.theme.colors.white};
   font-weight: ${props => props.theme.fonts.bold};
@@ -32,7 +39,7 @@ const StyledHeaderLink = styled(NavLink)`
   &::after {
     content: "/";
     display: inline-block;
-    margin-left: 25px;
+    margin-left: 30px;
     color: ${props => props.theme.colors.white};
   }
 
@@ -48,4 +55,4 @@ const StyledHeaderLink = styled(NavLink)`
   }
 `;
 
-export { StyledHeader, StyledHeaderLogo, StyledHeaderLink };
+export { StyledHeader, StyledHeaderInner, StyledHeaderLogo, StyledHeaderLink };

@@ -1,37 +1,41 @@
 const theme = {
   // ------ Colors -------
   colors: {
-    coral: '#fd5765',
-    coralDark: '#eb0316',
-    green: '#3beccd',
-    lightBlue:  '#2f128d',
-    blue: '#251657',
-    lightGrey: '#f4f3f6',
-    grey: '#444',
-    purple: '#2F138D',
-    white: '#ffffff',
-    black: '#0F0F0F',
+    coral: "#fd5765",
+    coralDark: "#eb0316",
+    green: "#3beccd",
+    lightBlue: "#2f128d",
+    blue: "#251657",
+    lightGrey: "#f4f3f6",
+    grey: "#444",
+    purple: "#2F138D",
+    white: "#ffffff",
+    black: "#0F0F0F"
   },
 
   // ------ Fonts -------
   fonts: {
-      primaryFont: `'Apercu Pro', Sans-serif`,
+    primaryFont: `'Apercu Pro', Sans-serif`,
 
-      // Weights
-      bold: 700,
-      normal: 400,
+    // Weights
+    bold: 700,
+    normal: 400,
 
-      // Sizes
-      baseLineHeight: '25px',
-      default: '16px',
-      xxl: '36px',
-      xl: '28px',
-      l: '21px',
-      m: '18px',
-      s: '15px',
-      xs: '14px',
-      xxs: '12px',
+    // Sizes
+    baseLineHeight: "25px",
+    default: "16px",
+    xxl: "36px",
+    xl: "28px",
+    l: "21px",
+    m: "18px",
+    s: "15px",
+    xs: "14px",
+    xxs: "12px"
   },
-}
+
+  grid: {
+    maxWidth: "1440px"
+  }
+};
 
 export default theme;
