@@ -39,6 +39,7 @@ const Podcast = () => (
             audioSrc="/audio/track-one.mp3"
             name="EPISODE 1: Roberto Lange"
             trackId="track-one"
+            trackName="Track One"
           />
         </StyledPodcastHeroIntro>
       </StyledPodcastHero>
@@ -65,6 +66,7 @@ const Podcast = () => (
               audioSrc="/audio/track-one.mp3"
               name="Episode 32"
               trackId="track-one"
+              trackName="Track One"
               type="white"
             />
           </StyledEpisodeCard>
@@ -78,6 +80,7 @@ const Podcast = () => (
               audioSrc="/audio/track-one.mp3"
               name="Episode 32"
               trackId="track-one"
+              trackName="Track One"
               type="white"
             />
           </StyledEpisodeCard>
@@ -91,6 +94,7 @@ const Podcast = () => (
               audioSrc="/audio/track-one.mp3"
               name="Episode 32"
               trackId="track-one"
+              trackName="Track One"
               type="white"
             />
           </StyledEpisodeCard>
@@ -104,6 +108,7 @@ const Podcast = () => (
               audioSrc="/audio/track-one.mp3"
               name="Episode 32"
               trackId="track-one"
+              trackName="Track One"
               type="white"
             />
           </StyledEpisodeCard>

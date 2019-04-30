@@ -31,6 +31,7 @@ const Home = () => (
             audioSrc="/audio/track-one.mp3"
             name="Track One"
             trackId="track-one"
+            trackName="Track One"
             isLive
           />
         </StyledHomeHeroIntro>

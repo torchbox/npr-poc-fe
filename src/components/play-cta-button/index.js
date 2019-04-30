@@ -11,6 +11,8 @@ const PlayCtaButton = ({
   audioSrc,
   trackId,
   type = "default",
+  trackName,
+  trackImage,
   isLive,
   isEpisode
 }) => {
@@ -19,7 +21,9 @@ const PlayCtaButton = ({
     isPlaying,
     setIsPlaying,
     playingTrackId,
-    setPlayingTrackId
+    setPlayingTrackId,
+    setPlayingTrackName,
+    setPlayingTrackImage
   } = useContext(PlayerContext);
 
   const iconColors = {
@@ -48,6 +52,8 @@ const PlayCtaButton = ({
 
         setAudioSrc(audioSrc);
         setPlayingTrackId(trackId);
+        setPlayingTrackName(trackName);
+        setPlayingTrackImage(trackImage);
       }}
     >
       <IconVolumeUp color={iconColors[type]} />{" "}

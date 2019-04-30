@@ -61,6 +61,7 @@ const Episode = () => (
             audioSrc="/audio/track-one.mp3"
             name="Listen Now"
             trackId="track-one"
+            trackName="Track One"
           />
         </StyledEpisodeIntro>
         <StyledEpisodeImage src="images/article-image_elvis.jpg" />
@@ -79,6 +80,7 @@ const Episode = () => (
           audioSrc="/audio/track-one.mp3"
           name="Episode 32"
           trackId="track-one"
+          trackName="Track One"
           isEpisode
         />
       </StyledEpisodeWrapperInner>
@@ -98,6 +100,7 @@ const Episode = () => (
               audioSrc="/audio/track-one.mp3"
               name="Episode 32"
               trackId="track-one"
+              trackName="Track One"
               type="white"
             />
           </EpisodeCard>
@@ -111,6 +114,7 @@ const Episode = () => (
               audioSrc="/audio/track-one.mp3"
               name="Episode 32"
               trackId="track-one"
+              trackName="Track One"
               type="white"
             />
           </EpisodeCard>

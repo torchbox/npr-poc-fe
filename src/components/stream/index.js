@@ -4,7 +4,7 @@ import { StyledStream, StyledStreamText } from "./styled";
 
 import PlayCtaButton from "../play-cta-button";
 
-const Stream = ({ station, name, iconSrc, audioSrc, trackId, className }) => {
+const Stream = ({ station, name, iconSrc, audioSrc, trackId, trackName, className }) => {
   return (
     <StyledStream className={className}>
       <StyledStreamText>
@@ -16,7 +16,7 @@ const Stream = ({ station, name, iconSrc, audioSrc, trackId, className }) => {
           <span>{name}</span>
         </div>
       </StyledStreamText>
-      <PlayCtaButton type="ghost" trackId={trackId} audioSrc={audioSrc} isLive />
+      <PlayCtaButton type="ghost" trackId={trackId} audioSrc={audioSrc} trackName={trackName} trackImage={iconSrc} isLive />
     </StyledStream>
   );
 };

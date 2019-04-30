@@ -8,6 +8,8 @@ export default ({ children }) => {
   const [audioSrc, setAudioSrc] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingTrackId, setPlayingTrackId] = useState(null);
+  const [playingTrackName, setPlayingTrackName] = useState(null);
+  const [playingTrackImage, setPlayingTrackImage] = useState(null);
 
   return (
     <PlayerContext.Provider
@@ -17,7 +19,11 @@ export default ({ children }) => {
         isPlaying,
         setIsPlaying,
         playingTrackId,
-        setPlayingTrackId
+        setPlayingTrackId,
+        playingTrackName,
+        setPlayingTrackName,
+        playingTrackImage,
+        setPlayingTrackImage
       }}
     >
       {children}
