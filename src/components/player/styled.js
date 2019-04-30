@@ -11,21 +11,25 @@ const StyledPlayer = styled.div`
   color: ${props => props.theme.colors.white};
   opacity: 0;
   transform: translateX(-100%);
+  transition: 0.3s;
 
-  ${props =>
-    (props.isPlaying || props.hasTrack) &&
-    css`
-      opacity: 1;
-      transform: translateX(0);
-    `}
+  // Using props to set values like so:
+  // is causing a repaint flicker on the whole app.
+  // (dollars removed to prevent props being read and causing the flicker)
+  // opacity: {props => (props.isPlaying && props.hasTrack) ? 1 : 0};
+  // transform: {props => (props.isPlaying && props.hasTrack) ? 'translateX(0)' : 'translateX(-100%)' }
 
-  ${props =>
-    (props.stickToFooter) &&
-    css`
-      position: absolute;
-      bottom: 400px;
-      transition: none;
-    `}
+  // So let's go old school
+  &.isPlaying {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &.isSticky {
+    position: absolute;
+    bottom: 400px;
+    transition: none;
+  }
 `;
 
 const StyledPlayerPlayButton = styled(PlayButton)`
