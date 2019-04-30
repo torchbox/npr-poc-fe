@@ -19,6 +19,7 @@ import CardGrid from "../../components/card-grid";
 import StoryCard from "../../components/story-card";
 import Tabs from "../../components/tabs";
 import Tab from "../../components/tab";
+import Filter from "../../components/filter";
 
 const Podcast = () => (
   <StyledPodcast>
@@ -48,6 +49,8 @@ const Podcast = () => (
       <Tab label="Tell Us Your Fears" />
       <Tab label="Team" />
     </Tabs>
+
+    <Filter />
 
     <StyledEpisodeCards>
       <StyledEpisodeCardsInner>
