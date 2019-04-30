@@ -13,6 +13,8 @@ import Hero from "../../components/hero";
 import PlayCtaButton from "../../components/play-cta-button";
 import CardGrid from "../../components/card-grid";
 import StoryCard from "../../components/story-card";
+import Tabs from "../../components/tabs";
+import Tab from '../../components/tab';
 
 const Podcast = () => (
   <StyledPodcast>
@@ -36,6 +38,12 @@ const Podcast = () => (
         </StyledPodcastHeroIntro>
       </StyledPodcastHero>
     </Hero>
+
+    <Tabs>
+      <Tab label="Episodes" count="32" isActive/>
+      <Tab label="Tell Us Your Fears" />
+      <Tab label="Team" />
+    </Tabs>
 
     <StyledPodcastCards>
       <StyledPodcastCardsInner>
