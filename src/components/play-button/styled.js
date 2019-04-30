@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledPlayCtaButton = styled.button`
+const StyledPlayButton = styled.button`
   width: 14px;
   height: 14px;
   border: none;
@@ -17,4 +17,4 @@ const StyledPlayCtaButton = styled.button`
   }
 `;
 
-export { StyledPlayCtaButton };
+export { StyledPlayButton };

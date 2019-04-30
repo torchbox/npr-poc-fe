@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 
 import { PlayerContext } from "../../context/player";
 
-import { StyledPlayCtaButton } from "./styled";
+import { StyledPlayButton } from "./styled";
 
 import IconPlay from "../../svg/icon-play";
 import IconPause from "../../svg/icon-pause";
 
-const PlayCtaButton = ({
+const PlayButton = ({
   name,
   audioSrc,
   trackId,
@@ -28,7 +28,7 @@ const PlayCtaButton = ({
   };
 
   return (
-    <StyledPlayCtaButton
+    <StyledPlayButton
       type={type}
       onClick={() => {
         if (playingTrackId !== trackId) {
@@ -55,8 +55,8 @@ const PlayCtaButton = ({
       ) : (
         <IconPlay color={iconColors[type]} />
       )}
-    </StyledPlayCtaButton>
+    </StyledPlayButton>
   );
 };
 
-export default PlayCtaButton;
+export default PlayButton;

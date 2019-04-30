@@ -6,7 +6,7 @@ import { StyledPlayCtaButton, StyledPlayCtaButtonName } from "./styled";
 
 import IconVolumeUp from "../../svg/icon-volume-up";
 
-const PlayCtaButton = ({ name, audioSrc, trackId, type = "default" }) => {
+const PlayCtaButton = ({ name = null, audioSrc, trackId, type = "default" }) => {
   const {
     setAudioSrc,
     isPlaying,
