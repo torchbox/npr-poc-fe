@@ -1,36 +1,33 @@
 import styled from "styled-components";
 
-const StyledHome = styled.div``;
+const StyledPodcast = styled.div``;
 
-const StyledHomeHero = styled.div`
+const StyledPodcastHero = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const StyledHomeHeroIntro = styled.div`
-  max-width: 460px;
+const StyledPodcastHeroIntro = styled.div`
+  max-width: 560px;
 `;
 
-const StyledHomeHeroIntroTitle = styled.div`
+const StyledPodcastHeroIntroTitle = styled.div`
   display: flex;
   align-items: center;
 
   h1 {
     display: inline-block;
+    font-size: 70px;
+    line-height: 74px;
   }
 `;
 
-const StyledHomeHeroIcon = styled.img`
-  width: 75px;
-  height: 75px;
-  margin: 0 24px 0 0;
-`;
-
-const StyledHomeCards = styled.div`
+const StyledPodcastCards = styled.div`
   background: ${props => props.theme.colors.lightGrey};
 `
-const StyledHomeCardsInner = styled.div`
+const StyledPodcastCardsInner = styled.div`
   margin: 0 auto;
   padding: 122px ${props => props.theme.grid.outerGutter} 100px;
   max-width: ${props => props.theme.grid.maxWidth};
@@ -44,11 +41,10 @@ const StyledHomeCardsInner = styled.div`
 `
 
 export {
-  StyledHome,
-  StyledHomeHero,
-  StyledHomeHeroIntro,
-  StyledHomeHeroIntroTitle,
-  StyledHomeHeroIcon,
-  StyledHomeCards,
-  StyledHomeCardsInner
+  StyledPodcast,
+  StyledPodcastHero,
+  StyledPodcastHeroIntro,
+  StyledPodcastHeroIntroTitle,
+  StyledPodcastCards,
+  StyledPodcastCardsInner
 };

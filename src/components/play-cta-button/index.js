@@ -6,7 +6,13 @@ import { StyledPlayCtaButton, StyledPlayCtaButtonName } from "./styled";
 
 import IconVolumeUp from "../../svg/icon-volume-up";
 
-const PlayCtaButton = ({ name = null, audioSrc, trackId, type = "default" }) => {
+const PlayCtaButton = ({
+  name = null,
+  audioSrc,
+  trackId,
+  type = "default",
+  isLive
+}) => {
   const {
     setAudioSrc,
     isPlaying,
@@ -43,8 +49,9 @@ const PlayCtaButton = ({ name = null, audioSrc, trackId, type = "default" }) => 
       }}
     >
       <IconVolumeUp color={iconColors[type]} />{" "}
-      {name && <StyledPlayCtaButtonName>{name} -</StyledPlayCtaButtonName>} Listen
-      Live
+      {name && <StyledPlayCtaButtonName>{name}</StyledPlayCtaButtonName>}{" "}
+      {name && isLive && <span> - </span>}
+      {isLive && <span>Listen Live</span>}
     </StyledPlayCtaButton>
   );
 };

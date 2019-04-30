@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 const StyledHero = styled.div`
+  position: relative;
   width: 100%;
   margin-top: -85px;
   padding: 85px;
@@ -27,6 +28,33 @@ const StyledHero = styled.div`
       background-size: 1440px;
       background-position: center 40%;
       background-repeat: no-repeat;
+    `}
+
+  ${props =>
+    props.bgImage &&
+    props.hasGradient &&
+    css`
+      background-size: 100%;
+    `}
+
+  ${props =>
+    props.hasGradient &&
+    css`
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.3) 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+        z-index: 0;
+        pointer-events: none;
+      }
     `}
 `;
 

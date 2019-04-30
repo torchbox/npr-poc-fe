@@ -31,6 +31,7 @@ const Home = () => (
             audioSrc="/audio/track-one.mp3"
             name="Track One"
             trackId="track-one"
+            isLive
           />
         </StyledHomeHeroIntro>
         <Trending />
@@ -39,7 +40,7 @@ const Home = () => (
     <DonationStrip />
     <StyledHomeCards>
       <StyledHomeCardsInner>
-        <h3>Latest from Torchbox Radio</h3>
+        <h2>Latest from Torchbox Radio</h2>
         <CardGrid>
           <StoryCard
             imageSrc="images/news_layman.png"

@@ -16,7 +16,7 @@ const Stream = ({ station, name, iconSrc, audioSrc, trackId, className }) => {
           <span>{name}</span>
         </div>
       </StyledStreamText>
-      <PlayCtaButton type="ghost" trackId={trackId} audioSrc={audioSrc} />
+      <PlayCtaButton type="ghost" trackId={trackId} audioSrc={audioSrc} isLive />
     </StyledStream>
   );
 };

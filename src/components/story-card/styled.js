@@ -8,6 +8,7 @@ const StyledStoryCard = styled.div`
 
 const StyledStoryCardLink = styled(NavLink)`
   display: flex;
+  width: 100%;
   height: 100%;
   text-decoration: none;
 `;
@@ -29,14 +30,6 @@ const StyledStoryCardText = styled.div`
   width: 45%;
   padding: 35px;
 
-  h3 {
-    margin: 0 0 15px 0;
-    font-size: 21px;
-    line-height: 1.4;
-    text-transform: none;
-    color: ${props => props.theme.colors.blue};
-  }
-
   span {
     display: block;
     margin: 0 0 15px 0;
@@ -54,9 +47,18 @@ const StyledStoryCardText = styled.div`
   }
 `;
 
+const StyledStoryCardHeader = styled.h3`
+  margin: 0 0 15px 0;
+  font-size: 21px;
+  line-height: 1.4;
+  text-transform: none;
+  color: ${props => props.theme.colors.blue};
+`;
+
 export {
   StyledStoryCard,
   StyledStoryCardImage,
   StyledStoryCardText,
+  StyledStoryCardHeader,
   StyledStoryCardLink
 };
