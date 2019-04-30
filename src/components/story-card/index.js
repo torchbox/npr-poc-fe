@@ -9,7 +9,7 @@ import {
 
 const StoryCard = ({ imageSrc, title, category, excerpt }) => (
   <StyledStoryCard>
-    <StyledStoryCardLink>
+    <StyledStoryCardLink to="/">
       <StyledStoryCardImage bgImage={imageSrc}>
       </StyledStoryCardImage>
       <StyledStoryCardText>

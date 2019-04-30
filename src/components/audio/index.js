@@ -22,6 +22,8 @@ class Audio extends Component {
         return true;
       }
     }
+
+    return false;
   }
 
   render() {
