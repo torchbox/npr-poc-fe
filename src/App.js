@@ -4,7 +4,7 @@ import Observer from "@researchgate/react-intersection-observer";
 
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
-import GlobalStyle from "./styles/global";
+import "./styles/global.css";
 
 import PlayerContextProvider from "./context/player";
 
@@ -28,7 +28,6 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
-        <GlobalStyle />
         <PlayerContextProvider>
           <Main>
             <Router>
