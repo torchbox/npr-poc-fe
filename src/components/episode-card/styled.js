@@ -28,7 +28,7 @@ const StyledEpisodeCardImage = styled.div`
 
 const StyledEpisodeCardText = styled.div`
   width: 45%;
-  padding: 35px;
+  padding: 12px 30px;
 
   & > span {
     display: block;

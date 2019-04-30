@@ -45,6 +45,7 @@ const StyledStoryCardsInner = styled.div`
 const StyledEpisodeCards = styled.div`
   background: ${props => props.theme.colors.white};
 `;
+
 const StyledEpisodeCardsInner = styled.div`
   margin: 0 auto;
   padding: 122px ${props => props.theme.grid.outerGutter} 100px;

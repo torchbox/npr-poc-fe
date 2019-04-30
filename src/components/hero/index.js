@@ -4,7 +4,7 @@ import { StyledHero, StyledHeroInner } from "./styled";
 
 const Hero = ({ children, type, bgImage, bgColor, hasGradient = false }) => (
   <StyledHero type={type} bgImage={bgImage} bgColor={bgColor} hasGradient={hasGradient}>
-    <StyledHeroInner>{children}</StyledHeroInner>
+    <StyledHeroInner type={type}>{children}</StyledHeroInner>
   </StyledHero>
 );
 

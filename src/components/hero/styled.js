@@ -56,12 +56,27 @@ const StyledHero = styled.div`
         pointer-events: none;
       }
     `}
+
+    ${props =>
+      props.type === "episode" &&
+      css`
+        padding-bottom: 0;
+      `
+    }
 `;
 
 const StyledHeroInner = styled.div`
   margin: 0 auto;
   max-width: ${props => props.theme.grid.maxWidth};
   padding: 90px ${props => props.theme.grid.outerGutter};
+
+  ${props =>
+    props.type === "episode" &&
+    css`
+      padding-top: 60px;
+      padding-bottom: 0;
+    `
+  }
 `;
 
 export { StyledHero, StyledHeroInner };

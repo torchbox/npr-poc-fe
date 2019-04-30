@@ -11,7 +11,8 @@ const PlayCtaButton = ({
   audioSrc,
   trackId,
   type = "default",
-  isLive
+  isLive,
+  isEpisode
 }) => {
   const {
     setAudioSrc,
@@ -52,8 +53,9 @@ const PlayCtaButton = ({
       <IconVolumeUp color={iconColors[type]} />{" "}
       {type === "white" && <>Listen to </>}
       {name && <StyledPlayCtaButtonName type={type}>{name}</StyledPlayCtaButtonName>}{" "}
-      {name && isLive && <> - </>}
+      {name && (isLive || isEpisode) && <> - </>}
       {isLive && <>Listen Live</>}
+      {isEpisode && <>Listen Now</>}
     </StyledPlayCtaButton>
   );
 };
