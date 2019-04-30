@@ -5,8 +5,12 @@ import {
   StyledPodcastHero,
   StyledPodcastHeroIntro,
   StyledPodcastHeroIntroTitle,
-  StyledPodcastCards,
-  StyledPodcastCardsInner
+  StyledStoryCards,
+  StyledStoryCardsInner,
+  StyledEpisodeCards,
+  StyledEpisodeCardsInner,
+  StyledEpisodeCard,
+  StyledEpisodeCardGrid
 } from "./styled";
 
 import Hero from "../../components/hero";
@@ -14,7 +18,7 @@ import PlayCtaButton from "../../components/play-cta-button";
 import CardGrid from "../../components/card-grid";
 import StoryCard from "../../components/story-card";
 import Tabs from "../../components/tabs";
-import Tab from '../../components/tab';
+import Tab from "../../components/tab";
 
 const Podcast = () => (
   <StyledPodcast>
@@ -40,13 +44,72 @@ const Podcast = () => (
     </Hero>
 
     <Tabs>
-      <Tab label="Episodes" count="32" isActive/>
+      <Tab label="Episodes" count="32" isActive />
       <Tab label="Tell Us Your Fears" />
       <Tab label="Team" />
     </Tabs>
 
-    <StyledPodcastCards>
-      <StyledPodcastCardsInner>
+    <StyledEpisodeCards>
+      <StyledEpisodeCardsInner>
+        <StyledEpisodeCardGrid>
+          <StyledEpisodeCard
+            imageSrc="images/news_layman.png"
+            title="Libby Callaway"
+            date="Apr 25, 2019"
+            excerpt="Months are my mortal enemy."
+          >
+            <PlayCtaButton
+              audioSrc="/audio/track-one.mp3"
+              name="Episode 32"
+              trackId="track-one"
+              type="white"
+            />
+          </StyledEpisodeCard>
+          <StyledEpisodeCard
+            imageSrc="images/news_layman.png"
+            title="Libby Callaway"
+            date="Apr 25, 2019"
+            excerpt="Months are my mortal enemy."
+          >
+            <PlayCtaButton
+              audioSrc="/audio/track-one.mp3"
+              name="Episode 32"
+              trackId="track-one"
+              type="white"
+            />
+          </StyledEpisodeCard>
+          <StyledEpisodeCard
+            imageSrc="images/news_layman.png"
+            title="Libby Callaway"
+            date="Apr 25, 2019"
+            excerpt="Months are my mortal enemy."
+          >
+            <PlayCtaButton
+              audioSrc="/audio/track-one.mp3"
+              name="Episode 32"
+              trackId="track-one"
+              type="white"
+            />
+          </StyledEpisodeCard>
+          <StyledEpisodeCard
+            imageSrc="images/news_layman.png"
+            title="Libby Callaway"
+            date="Apr 25, 2019"
+            excerpt="Months are my mortal enemy."
+          >
+            <PlayCtaButton
+              audioSrc="/audio/track-one.mp3"
+              name="Episode 32"
+              trackId="track-one"
+              type="white"
+            />
+          </StyledEpisodeCard>
+        </StyledEpisodeCardGrid>
+      </StyledEpisodeCardsInner>
+    </StyledEpisodeCards>
+
+    <StyledStoryCards>
+      <StyledStoryCardsInner>
         <h2>Similar Shows</h2>
         <CardGrid>
           <StoryCard
@@ -72,8 +135,8 @@ const Podcast = () => (
             excerpt="The writers on why the label covers a multitude of sins."
           />
         </CardGrid>
-      </StyledPodcastCardsInner>
-    </StyledPodcastCards>
+      </StyledStoryCardsInner>
+    </StyledStoryCards>
   </StyledPodcast>
 );
 

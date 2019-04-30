@@ -35,10 +35,28 @@ const StyledPlayCtaButton = styled.button`
         height: 18px;
       }
     `}
+
+    ${props =>
+      props.type &&
+      props.type === "white" &&
+      css`
+        padding: 10px 10px 10px 40px;
+        font-size: 12px;
+        color: ${props => props.theme.colors.blue};
+        background: none;
+        border: 1px solid ${props => props.theme.colors.blue};
+
+        svg {
+          left: 20px;
+          width: 18px;
+          height: 18px;
+        }
+      `}
 `;
 
 const StyledPlayCtaButtonName = styled.span`
-  font-weight: ${props => props.theme.fonts.bold};
+  font-weight: ${props => props.type === "white" ? '' : props.theme.fonts.bold};
+  margin: 0;
 `;
 
 export { StyledPlayCtaButton, StyledPlayCtaButtonName };

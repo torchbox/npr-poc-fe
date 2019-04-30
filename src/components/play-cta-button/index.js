@@ -23,7 +23,8 @@ const PlayCtaButton = ({
 
   const iconColors = {
     default: "#1d7566",
-    ghost: "#3beccd"
+    ghost: "#3beccd",
+    white: "#251657",
   };
 
   return (
@@ -49,9 +50,10 @@ const PlayCtaButton = ({
       }}
     >
       <IconVolumeUp color={iconColors[type]} />{" "}
-      {name && <StyledPlayCtaButtonName>{name}</StyledPlayCtaButtonName>}{" "}
-      {name && isLive && <span> - </span>}
-      {isLive && <span>Listen Live</span>}
+      {type === "white" && <>Listen to </>}
+      {name && <StyledPlayCtaButtonName type={type}>{name}</StyledPlayCtaButtonName>}{" "}
+      {name && isLive && <> - </>}
+      {isLive && <>Listen Live</>}
     </StyledPlayCtaButton>
   );
 };
