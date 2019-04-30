@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { PlayerContext } from "../../context/player";
 
-import { StyledPlayer, StyledPlayerPlayButton } from "./styled";
+import { StyledPlayer, StyledPlayerPlayButton } from './styled'
 
 import Audio from "../audio";
 
@@ -13,27 +13,18 @@ class Player extends Component {
   }
 
   render() {
-    const { stickToFooter } = this.props;
+    const{
+      stickToFooter
+    } = this.props;
 
     return (
       <PlayerContext.Consumer>
         {({ audioSrc, isPlaying, playingTrackId }) => {
           return (
-            <StyledPlayer
-              isPlaying={isPlaying}
-              hasTrack={playingTrackId}
-              stickToFooter={stickToFooter}
-              className={`${isPlaying ? "isPlaying" : ""} ${
-                stickToFooter ? "isSticky" : ""
-              }`}
-            >
+            <StyledPlayer isPlaying={isPlaying} hasTrack={playingTrackId} stickToFooter={stickToFooter}>
               <Audio audioSrc={audioSrc} isPlaying={isPlaying} />
-              <StyledPlayerPlayButton
-                audioSrc={audioSrc}
-                label=""
-                trackId={playingTrackId}
-              />
-              <span className="player__track-name">{playingTrackId}</span>
+              <StyledPlayerPlayButton audioSrc={audioSrc} label='' trackId={playingTrackId} />
+              <span className='player__track-name'>{playingTrackId}</span>
             </StyledPlayer>
           );
         }}
