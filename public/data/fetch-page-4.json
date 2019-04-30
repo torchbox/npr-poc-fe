@@ -1,0 +1,32 @@
+{
+  "id": 4,
+  "meta": {
+      "type": "podcasts.Show",
+      "detail_url": "https://npr-poc.herokuapp.com/api/v2/pages/4/",
+      "html_url": "https://npr-poc.herokuapp.com/10-things-scare-me/",
+      "slug": "10-things-scare-me",
+      "show_in_menus": true,
+      "seo_title": "",
+      "search_description": "",
+      "first_published_at": "2019-04-26T07:45:29.450828+01:00",
+      "parent": {
+          "id": 3,
+          "meta": {
+              "type": "home.HomePage",
+              "detail_url": "https://npr-poc.herokuapp.com/api/v2/pages/3/",
+              "html_url": "https://npr-poc.herokuapp.com/"
+          },
+          "title": "Home"
+      }
+  },
+  "title": "10 things that scare me",
+  "subtitle": "A podcast about our greatest fears!",
+  "description": "<p>Commodi enim distinctio molestiae praesentium nisi. Possimus  reiciendis earum laborum aut qui voluptates recusandae recusandae. At  minima sit eaque ex ut eaque. Qui fuga voluptatibus eos provident dolor.</p><p>Vero amet dolor eligendi in sequi placeat molestias. Ut dicta  aut doloribus numquam voluptatem quibusdam omnis voluptatibus. Sunt et  similique deleniti et incidunt dolor id eos. Et alias et adipisci nam.  Corrupti quia eius nesciunt quis hic. Qui ut iste rerum temporibus.</p><p>Quas quidem alias architecto nulla ut pariatur et. Harum quis  unde ratione repellendus quasi dolore cum. Est possimus omnis quas et  doloremque. Quia iusto ut qui quis. Ullam qui vitae temporibus.</p>",
+  "podcast_type": "episodic",
+  "language": "en",
+  "tags": [],
+  "is_explicit": false,
+  "date_created": "2019-04-26T07:45:29.337000+01:00",
+  "date_updated": "2019-04-26T07:45:29.466282+01:00",
+  "license": ""
+}
