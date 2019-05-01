@@ -47,13 +47,21 @@ const StyledVolumeButton = styled.div`
   margin: 0 0 0 10px;
   width: 24px;
   height: 24px;
-  opacity: ${props => props.hide ? '0' : '1'}
+  opacity: ${props => (props.hide ? "0" : "1")}
 
   &:hover {
     opaciy: 0.8;
     cursor: pointer;
   }
-`
+`;
+
+const StyledSliderContainer = styled.div`
+  position: absolute;
+  bottom: -5px;
+  right: 25px;
+  width: 20px;
+  height: 80px;
+`;
 
 const StyledPlayerBrand = styled.div`
   position: relative;
@@ -113,5 +121,6 @@ export {
   StyledPlayerTrackText,
   StyledPlayerTrackCurrent,
   StyledPlayerTrackName,
-  StyledVolumeButton
+  StyledVolumeButton,
+  StyledSliderContainer
 };
