@@ -21,7 +21,7 @@ const Header = () => (
         <StyledHeaderLink exact to="/">
           Home
         </StyledHeaderLink>
-        <StyledHeaderLink to="/podcast">Podcast</StyledHeaderLink>
+        <StyledHeaderLink to="/shows/4">Shows</StyledHeaderLink>
         <StyledHeaderLink to="/episode">Episode</StyledHeaderLink>
         <StyledHeaderLink to="/story">Story</StyledHeaderLink>
         <Button label="Donate" />

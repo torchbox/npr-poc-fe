@@ -44,23 +44,23 @@ const Home = () => (
         <h2>Latest from Torchbox Radio</h2>
         <CardGrid>
           <StoryCard
-            imageSrc="images/news_layman.png"
+            imageSrc="/images/news_layman.png"
             title="Damon Young and Kiese Laymon: The Good Dude Closet"
             category="Death, Sex & Money"
             excerpt="The writers on why the label covers a multitude of sins."
           />
           <StoryCard
-            imageSrc="images/news_asylum-ny.jpg"
+            imageSrc="/images/news_asylum-ny.jpg"
             title="Why It's Harder to Win Asylum, Even in New York"
             excerpt="In immigrant-friendly New York, migrants have historically had a much easier time winning asylum than one would have expected"
           />
           <StoryCard
-            imageSrc="images/news_asylum-ny.jpg"
+            imageSrc="/images/news_asylum-ny.jpg"
             title="Why It's Harder to Win Asylum, Even in New York"
             excerpt="In immigrant-friendly New York, migrants have historically had a much easier time winning asylum than one would have expected"
           />
           <StoryCard
-            imageSrc="images/news_layman.png"
+            imageSrc="/images/news_layman.png"
             title="Damon Young and Kiese Laymon: The Good Dude Closet"
             category="Death, Sex & Money"
             excerpt="The writers on why the label covers a multitude of sins."

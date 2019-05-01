@@ -18,6 +18,8 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import Player from "./components/player";
 
+import PageRequestWrapper from './components/page-request-wrapper';
+
 const App = () => {
   const [footerVisible, setFooterVisible] = useState(false);
 
@@ -33,8 +35,16 @@ const App = () => {
             <Router>
               <Header />
               <Route path="/" exact component={Home} />
-              <Route path="/podcast" component={Podcast} />
-              <Route path="/episode" component={Episode} />
+              <Route path="/shows/:id" render={props => (
+                  <PageRequestWrapper {...props}>
+                    <Podcast />
+                  </PageRequestWrapper>
+              )} />
+              <Route path="/episode/:id" render={props => (
+                  <PageRequestWrapper {...props}>
+                    <Episode />
+                  </PageRequestWrapper>
+              )} />
               <Route path="/story" component={Story} />
               <Observer onChange={footerObserverChange}>
                 <div>
