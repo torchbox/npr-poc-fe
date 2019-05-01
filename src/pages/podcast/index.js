@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import { fetchPage, fetchPages } from "../../services";
 
 import {
   StyledPodcast,
@@ -22,6 +24,32 @@ import Tab from "../../components/tab";
 import Filter from "../../components/filter";
 
 const Podcast = ({ page }) => {
+  const [podcasts, setPodcasts] = useState(null);
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function fetchData() {
+      const { items } = await fetchPages();
+
+      const podcasts = items.filter(item => {
+        return item.meta.type === "podcasts.Episode";
+      });
+
+      const chips = await Promise.all(
+        podcasts.map(child => fetchPage(child.id))
+      );
+
+      if (!ignore) setPodcasts(chips);
+    }
+
+    fetchData();
+
+    return () => {
+      ignore = true;
+    };
+  }, [page.id]);
+
   return (
     <>
       <StyledPodcast>
@@ -47,76 +75,45 @@ const Podcast = ({ page }) => {
           </StyledPodcastHero>
         </Hero>
 
-        <Tabs>
-          <Tab label="Episodes" count="32" isActive />
-          <Tab label="Tell Us Your Fears" />
-          <Tab label="Team" />
-        </Tabs>
-
-        <Filter />
-
-        <StyledEpisodeCards>
-          <StyledEpisodeCardsInner>
-            <StyledEpisodeCardGrid>
-              <StyledEpisodeCard
-                imageSrc="/images/news_layman.png"
-                title="Libby Callaway"
-                date="Apr 25, 2019"
-                excerpt="Months are my mortal enemy."
-              >
-                <PlayCtaButton
-                  audioSrc="/audio/track-one.mp3"
-                  name="Episode 32"
-                  trackId="track-one"
-                  trackName="Track One"
-                  type="white"
-                />
-              </StyledEpisodeCard>
-              <StyledEpisodeCard
-                imageSrc="/images/news_layman.png"
-                title="Libby Callaway"
-                date="Apr 25, 2019"
-                excerpt="Months are my mortal enemy."
-              >
-                <PlayCtaButton
-                  audioSrc="/audio/track-one.mp3"
-                  name="Episode 32"
-                  trackId="track-one"
-                  trackName="Track One"
-                  type="white"
-                />
-              </StyledEpisodeCard>
-              <StyledEpisodeCard
-                imageSrc="/images/news_layman.png"
-                title="Libby Callaway"
-                date="Apr 25, 2019"
-                excerpt="Months are my mortal enemy."
-              >
-                <PlayCtaButton
-                  audioSrc="/audio/track-one.mp3"
-                  name="Episode 32"
-                  trackId="track-one"
-                  trackName="Track One"
-                  type="white"
-                />
-              </StyledEpisodeCard>
-              <StyledEpisodeCard
-                imageSrc="/images/news_layman.png"
-                title="Libby Callaway"
-                date="Apr 25, 2019"
-                excerpt="Months are my mortal enemy."
-              >
-                <PlayCtaButton
-                  audioSrc="/audio/track-one.mp3"
-                  name="Episode 32"
-                  trackId="track-one"
-                  trackName="Track One"
-                  type="white"
-                />
-              </StyledEpisodeCard>
-            </StyledEpisodeCardGrid>
-          </StyledEpisodeCardsInner>
-        </StyledEpisodeCards>
+        {podcasts ? (
+          <>
+            <Tabs>
+              <Tab label="Episodes" count="32" isActive />
+              <Tab label="Tell Us Your Fears" />
+              <Tab label="Team" />
+            </Tabs>
+            <Filter />
+            <StyledEpisodeCards>
+              <StyledEpisodeCardsInner>
+                <StyledEpisodeCardGrid>
+                  {podcasts.map(podcast => (
+                    <StyledEpisodeCard
+                      key={podcast.id}
+                      imageSrc={podcast.images[0].image.meta.download_url}
+                      title={podcast.title}
+                      date="Apr 25, 2019"
+                      excerpt={podcast.subtitle}
+                    >
+                      <PlayCtaButton
+                        audioSrc={podcast.enclosures[0].media.meta.file}
+                        name={`Episode ${podcast.season_number}`}
+                        trackId={podcast.enclosures[0].id}
+                        trackName={podcast.enclosures[0].media.title}
+                        type="white"
+                      />
+                    </StyledEpisodeCard>
+                  ))}
+                </StyledEpisodeCardGrid>
+              </StyledEpisodeCardsInner>
+            </StyledEpisodeCards>
+          </>
+        ) : (
+          <div
+            style={{
+              height: "100vh"
+            }}
+          />
+        )}
 
         <StyledStoryCards>
           <StyledStoryCardsInner>

@@ -1,8 +1,13 @@
-import { PAGES_API_URL } from '../common/consts';
+import { PAGES_API_URL } from "../common/consts";
 
 const fetchPage = id =>
   fetch(`${PAGES_API_URL}/${id}`)
     .then(resp => resp.json())
     .then(resp => resp);
 
-export { fetchPage };
+const fetchPages = () =>
+  fetch(`${PAGES_API_URL}/`)
+    .then(resp => resp.json())
+    .then(resp => resp);
+
+export { fetchPage, fetchPages };

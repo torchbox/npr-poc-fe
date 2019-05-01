@@ -15,6 +15,7 @@ const StyledEpisodeCardInner = styled.div`
 
 const StyledEpisodeCardImage = styled.div`
   width: 55%;
+  min-height: 220px;
 
   ${props =>
     props.bgImage &&
