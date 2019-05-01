@@ -40,7 +40,9 @@ const PageRequestWrapper = ({
           )}
         </>
       ) : (
-        <p>Loading</p>
+        <div style={{
+          height: '100vh',
+        }} />
       )}
     </div>
   );
