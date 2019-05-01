@@ -34,6 +34,12 @@ const StyledEpisodeHeroLinks = styled.div`
       margin: 0;
     }
   }
+
+  // Links
+  > div {
+    padding: 0;
+    border: 0;
+  }
 `;
 
 const StyledStoryCards = styled.div`

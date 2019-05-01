@@ -40,7 +40,11 @@ const App = () => {
                     <Podcast />
                   </PageRequestWrapper>
               )} />
-              <Route path="/episode" component={Episode} />
+              <Route path="/episode/:id" render={props => (
+                  <PageRequestWrapper {...props}>
+                    <Episode />
+                  </PageRequestWrapper>
+              )} />
               <Route path="/story" component={Story} />
               <Observer onChange={footerObserverChange}>
                 <div>

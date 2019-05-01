@@ -32,7 +32,7 @@ class Player extends Component {
           audioSrc,
           isPlaying,
           playingTrackId,
-          playingTrackImage = "images/show_new-sounds.jpg",
+          playingTrackImage = "/images/torchbox_logo.png",
           playingTrackName
         }) => {
           return (

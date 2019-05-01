@@ -24,7 +24,7 @@ import CardGrid from "../../components/card-grid";
 import EpisodeCard from "../../components/episode-card";
 import Tab from "../../components/tab";
 
-const Episode = () => (
+const Episode = ({ page }) => (
   <StyledEpisode>
     <Hero
       type="episode"
@@ -35,7 +35,7 @@ const Episode = () => (
       <StyledEpisodeHero>
         <StyledEpisodeHeroIntro>
           <StyledEpisodeHeroIntroTitle>
-            <h1>10 Things that Scare Me</h1>
+            <h1>{page.meta.parent.title}</h1>
           </StyledEpisodeHeroIntroTitle>
         </StyledEpisodeHeroIntro>
         <StyledEpisodeHeroLinks>
@@ -51,38 +51,80 @@ const Episode = () => (
         <StyledEpisodeIntro>
           <StyledEpisodeIntroText>
             <StyledEpisodeIntroTitle>
-              32. Libby Callaway
+              {page.season_number}. {page.title}
             </StyledEpisodeIntroTitle>
             <StyledEpisodeIntroStandfirst>
-              Moths are my mortal enemy.
+              {page.subtitle}
             </StyledEpisodeIntroStandfirst>
           </StyledEpisodeIntroText>
-          <PlayCtaButton
+          {/* <PlayCtaButton
             audioSrc="/audio/track-one.mp3"
             name="Listen Now"
             trackId="track-one"
             trackName="Track One"
-          />
+          /> */}
+          {page.enclosures.length > 0 &&
+            page.enclosures.map(
+              ({
+                id,
+                meta: { type: mediaType },
+                media: {
+                  id: mediaId,
+                  title: mediaTitle,
+                  meta: { file: mediaFile }
+                }
+              }) => (
+                <PlayCtaButton
+                  key={mediaId}
+                  audioSrc={mediaFile}
+                  name="Listen Now"
+                  trackId={mediaId}
+                  trackName={mediaTitle}
+                />
+              )
+            )}
         </StyledEpisodeIntro>
-        <StyledEpisodeImage src="images/article-image_elvis.jpg" />
-        <StyledEpisodeRte>
-          <p>
-            Libby Callaway is a former fashion writer and vintage clothing
-            collector. She currently runs her own branding company,{" "}
-            <a href="/">The Callaway</a>, in Nashville, TN.
-          </p>
-          <p>
-            Join the 10 Things That Scare Me conversation,{" "}
-            <a href="/">and tell us your fears</a>.
-          </p>
-        </StyledEpisodeRte>
-        <PlayCtaButton
+        {page.images.length > 0 &&
+          page.images.map(
+            ({
+              id,
+              image: {
+                meta: { download_url: imageUrl }
+              }
+            }) => <StyledEpisodeImage key={id} src={imageUrl} />
+          )}
+
+        <StyledEpisodeRte
+          dangerouslySetInnerHTML={{ __html: page.description }}
+        />
+
+        {page.enclosures.length > 0 &&
+          page.enclosures.map(
+            ({
+              meta: { type: mediaType },
+              media: {
+                id: mediaId,
+                title: mediaTitle,
+                meta: { file: mediaFile }
+              }
+            }) => (
+              <PlayCtaButton
+                key={mediaId}
+                audioSrc={mediaFile}
+                name={`Episode ${page.season_number}`}
+                trackId={mediaId}
+                trackName={mediaTitle}
+                isEpisode
+              />
+            )
+          )}
+        {/* <PlayCtaButton
           audioSrc="/audio/track-one.mp3"
           name="Episode 32"
           trackId="track-one"
           trackName="Track One"
           isEpisode
-        />
+        /> */}
       </StyledEpisodeWrapperInner>
     </StyledEpisodeWrapper>
 
@@ -91,7 +133,7 @@ const Episode = () => (
         <h2>Also in this show</h2>
         <CardGrid>
           <EpisodeCard
-            imageSrc="images/news_asylum-ny.jpg"
+            imageSrc="/images/news_asylum-ny.jpg"
             title="Rashad Jennings"
             date="27 Apr, 2019"
             excerpt="If they are right, I am wrong"
@@ -105,7 +147,7 @@ const Episode = () => (
             />
           </EpisodeCard>
           <EpisodeCard
-            imageSrc="images/news_asylum-ny.jpg"
+            imageSrc="/images/news_asylum-ny.jpg"
             title="Growing Old"
             date="Apr 18, 2019"
             excerpt="We got death threats for months..."

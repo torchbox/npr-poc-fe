@@ -1,5 +1,7 @@
+import { PAGES_API_URL } from '../common/consts';
+
 const fetchPage = id =>
-  fetch(`/data/fetch-page-${id}.json`)
+  fetch(`${PAGES_API_URL}/${id}`)
     .then(resp => resp.json())
     .then(resp => resp);
 
