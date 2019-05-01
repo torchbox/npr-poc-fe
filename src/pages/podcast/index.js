@@ -93,6 +93,7 @@ const Podcast = ({ page }) => {
                       title={podcast.title}
                       date="Apr 25, 2019"
                       excerpt={podcast.subtitle}
+                      url={`/episode/${podcast.meta.slug}`}
                     >
                       <PlayCtaButton
                         audioSrc={podcast.enclosures[0].media.meta.file}

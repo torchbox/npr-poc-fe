@@ -1,4 +1,6 @@
-import React, { Children, useState, useEffect } from "react";
+import React, { Children, useState, useEffect, useContext } from "react";
+
+import { PagesContext } from "../../context/pages";
 
 import { fetchPage } from "../../services";
 
@@ -11,25 +13,30 @@ import { fetchPage } from "../../services";
 const PageRequestWrapper = ({
   children,
   match: {
-    params: { id: pageId }
+    params,
+    params: { slug: pageSlug }
   }
 }) => {
   const [data, setData] = useState(null);
+  const { pages } = useContext(PagesContext);
 
   useEffect(() => {
     let ignore = false;
 
     async function fetchData() {
-      const response = await fetchPage(pageId);
-
-      if (!ignore) setData(response);
+      if (pages !== null) {
+        const [page] = pages.filter(page => page.meta.slug === pageSlug);
+        const response = await fetchPage(page.id);
+        if (!ignore) setData(response);
+      }
     }
 
     fetchData();
+
     return () => {
       ignore = true;
     };
-  }, [pageId]);
+  }, [pageSlug, pages]);
 
   return (
     <div>
@@ -40,9 +47,11 @@ const PageRequestWrapper = ({
           )}
         </>
       ) : (
-        <div style={{
-          height: '100vh',
-        }} />
+        <div
+          style={{
+            height: "100vh"
+          }}
+        />
       )}
     </div>
   );

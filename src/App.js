@@ -7,6 +7,7 @@ import theme from "./styles/theme";
 import "./styles/global.css";
 
 import PlayerContextProvider from "./context/player";
+import PagesContextProvider from "./context/pages";
 
 import Home from "./pages/home";
 import Episode from "./pages/episode";
@@ -18,7 +19,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import Player from "./components/player";
 
-import PageRequestWrapper from './components/page-request-wrapper';
+import PageRequestWrapper from "./components/page-request-wrapper";
 
 const App = () => {
   const [footerVisible, setFooterVisible] = useState(false);
@@ -30,31 +31,39 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
-        <PlayerContextProvider>
-          <Main>
-            <Router>
-              <Header />
-              <Route path="/" exact component={Home} />
-              <Route path="/shows/:id" render={props => (
-                  <PageRequestWrapper {...props}>
-                    <Podcast />
-                  </PageRequestWrapper>
-              )} />
-              <Route path="/episode/:id" render={props => (
-                  <PageRequestWrapper {...props}>
-                    <Episode />
-                  </PageRequestWrapper>
-              )} />
-              <Route path="/story" component={Story} />
-              <Observer onChange={footerObserverChange}>
-                <div>
-                  <Footer />
-                </div>
-              </Observer>
-            </Router>
-            <Player stickToFooter={footerVisible} />
-          </Main>
-        </PlayerContextProvider>
+        <PagesContextProvider>
+          <PlayerContextProvider>
+            <Main>
+              <Router>
+                <Header />
+                <Route path="/" exact component={Home} />
+                <Route
+                  path="/shows/:slug"
+                  render={props => (
+                    <PageRequestWrapper {...props}>
+                      <Podcast />
+                    </PageRequestWrapper>
+                  )}
+                />
+                <Route
+                  path="/episode/:slug"
+                  render={props => (
+                    <PageRequestWrapper {...props}>
+                      <Episode />
+                    </PageRequestWrapper>
+                  )}
+                />
+                <Route path="/story" component={Story} />
+                <Observer onChange={footerObserverChange}>
+                  <div>
+                    <Footer />
+                  </div>
+                </Observer>
+              </Router>
+              <Player stickToFooter={footerVisible} />
+            </Main>
+          </PlayerContextProvider>
+        </PagesContextProvider>
       </>
     </ThemeProvider>
   );

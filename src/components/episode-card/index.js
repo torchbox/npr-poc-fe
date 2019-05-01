@@ -8,10 +8,10 @@ import {
   StyledEpisodeCardInner
 } from "./styled";
 
-const EpisodeCard = ({ imageSrc, title, date, excerpt, children, className }) => (
+const EpisodeCard = ({ imageSrc, title, date, excerpt, children, className, url }) => (
   <StyledEpisodeCard className={className}>
     <StyledEpisodeCardInner>
-      <StyledEpisodeCardImage bgImage={imageSrc} />
+      <StyledEpisodeCardImage to={url} bgImage={imageSrc} />
       <StyledEpisodeCardText>
         {title && <StyledEpisodeCardHeader>{title}</StyledEpisodeCardHeader>}{" "}
         {date && <span>{date}</span>}{" "}

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const StyledEpisodeCard = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ const StyledEpisodeCardInner = styled.div`
   padding: 38px;
 `;
 
-const StyledEpisodeCardImage = styled.div`
+const StyledEpisodeCardImage = styled(NavLink)`
   width: 55%;
   min-height: 220px;
 
