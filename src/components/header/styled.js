@@ -19,7 +19,7 @@ const StyledHeaderInner = styled.div`
   max-width: ${props => props.theme.grid.maxWidth};
 `;
 
-const StyledHeaderLogo = styled.div`
+const StyledHeaderLogo = styled(NavLink)`
   width: 120px;
   height: 35px;
 

@@ -14,16 +14,18 @@ import Button from "../button";
 const Header = () => (
   <StyledHeader>
     <StyledHeaderInner>
-      <StyledHeaderLogo>
+      <StyledHeaderLogo to="/">
         <TorchboxLogo />
       </StyledHeaderLogo>
       <div>
-        <StyledHeaderLink exact to="/">
+        {/* <StyledHeaderLink exact to="/">
           Home
-        </StyledHeaderLink>
+        </StyledHeaderLink> */}
+        <StyledHeaderLink to="/all-streams">All Streams</StyledHeaderLink>
+        <StyledHeaderLink to="/shedule">Schedule</StyledHeaderLink>
         <StyledHeaderLink to="/shows/10-things-scare-me">Shows</StyledHeaderLink>
-        <StyledHeaderLink to="/shows/10-things-scare-me/libby-callaway">Episode</StyledHeaderLink>
-        <StyledHeaderLink to="/story">Story</StyledHeaderLink>
+        <StyledHeaderLink to="/topics">Topics</StyledHeaderLink>
+        <StyledHeaderLink to="/discover">Discover</StyledHeaderLink>
         <Button label="Donate" />
       </div>
     </StyledHeaderInner>
