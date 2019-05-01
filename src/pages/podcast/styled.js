@@ -94,11 +94,50 @@ const StyledEpisodeCardGrid = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 -38px;
+  padding: 0 0 38px 0;
 
   & > div {
     width: 50%;
   }
-`
+`;
+
+const StyledLoad = styled.div`
+  position: relative;
+  margin: -40px 0 0 0;
+  z-index: 1;
+  overflow: hidden;
+`;
+
+const StyledLoadInner = styled.div`
+  position: relative;
+  max-width: ${props => props.theme.grid.maxWidth};
+  margin: 0 auto;
+  padding: 30px;
+  color: ${props => props.theme.colors.blue};
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: ${props => props.theme.fonts.bold};
+  background: ${props => props.theme.colors.green};
+  letter-spacing: 2px;
+
+  &::after {
+    content: '+';
+    display: inline-block;
+    margin: 0 0 0 5px;
+    font-size: 20px;
+    line-height: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    right: 100%;
+    top: 0;
+    background: ${props => props.theme.colors.green};
+  }
+`;
 
 export {
   StyledPodcast,
@@ -110,5 +149,7 @@ export {
   StyledEpisodeCards,
   StyledEpisodeCardsInner,
   StyledEpisodeCard,
-  StyledEpisodeCardGrid
+  StyledEpisodeCardGrid,
+  StyledLoad,
+  StyledLoadInner
 };

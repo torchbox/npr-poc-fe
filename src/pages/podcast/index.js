@@ -12,7 +12,9 @@ import {
   StyledEpisodeCards,
   StyledEpisodeCardsInner,
   StyledEpisodeCard,
-  StyledEpisodeCardGrid
+  StyledEpisodeCardGrid,
+  StyledLoad,
+  StyledLoadInner,
 } from "./styled";
 
 import Hero from "../../components/hero";
@@ -107,6 +109,11 @@ const Podcast = ({ page }) => {
                 </StyledEpisodeCardGrid>
               </StyledEpisodeCardsInner>
             </StyledEpisodeCards>
+            <StyledLoad>
+              <StyledLoadInner>
+                Load more
+              </StyledLoadInner>
+            </StyledLoad>
           </>
         ) : (
           <div
