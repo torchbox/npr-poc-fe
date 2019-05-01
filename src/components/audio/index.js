@@ -23,7 +23,17 @@ class Audio extends Component {
       }
     }
 
+    if (nextProps.volume !== this.props.volume) {
+      this.refs.audio.volume = nextProps.volume;
+
+      return true;
+    }
+
     return false;
+  }
+
+  componentDidMount() {
+    this.refs.audio.volume = this.props.volume;
   }
 
   render() {

@@ -35,10 +35,25 @@ const StyledPlayerInner = styled.div`
 `;
 
 const StyledPlayerControls = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
   padding: 0 25px 0 35px;
 `;
 
 const StyledPlayerPlayButton = styled(PlayButton)``;
+
+const StyledVolumeButton = styled.div`
+  margin: 0 0 0 10px;
+  width: 24px;
+  height: 24px;
+  opacity: ${props => props.hide ? '0' : '1'}
+
+  &:hover {
+    opaciy: 0.8;
+    cursor: pointer;
+  }
+`
 
 const StyledPlayerBrand = styled.div`
   position: relative;
@@ -97,5 +112,6 @@ export {
   StyledPlayerTrackImage,
   StyledPlayerTrackText,
   StyledPlayerTrackCurrent,
-  StyledPlayerTrackName
+  StyledPlayerTrackName,
+  StyledVolumeButton
 };

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 import { PlayerContext } from "../../context/player";
 
@@ -12,16 +14,36 @@ import {
   StyledPlayerTrackImage,
   StyledPlayerTrackText,
   StyledPlayerTrackCurrent,
-  StyledPlayerTrackName
+  StyledPlayerTrackName,
+  StyledVolumeButton
 } from "./styled";
 
 import Audio from "../audio";
+import IconVolumeUp from "../../svg/icon-volume-up";
 
 class Player extends Component {
   constructor(props) {
     super(props);
     this.audio = React.createRef();
   }
+
+  state = {
+    showSlider: false
+  };
+
+  toggleSlider = () => {
+    this.setState(state => ({
+      ...state,
+      showSlider: !state.showSlider
+    }));
+  };
+
+  hideSlider = () => {
+    this.setState(state => ({
+      ...state,
+      showSlider: false
+    }));
+  };
 
   render() {
     const { stickToFooter } = this.props;
@@ -33,7 +55,9 @@ class Player extends Component {
           isPlaying,
           playingTrackId,
           playingTrackImage = "/images/torchbox_logo.png",
-          playingTrackName
+          playingTrackName,
+          playingVolume,
+          setPlayingVolume
         }) => {
           return (
             <StyledPlayer
@@ -52,6 +76,36 @@ class Player extends Component {
                     trackId={playingTrackId}
                     trackName="Track One"
                   />
+
+                  <StyledVolumeButton onClick={() => this.toggleSlider()} hide={this.state.showSlider}>
+                    <IconVolumeUp color="#ffffff" />
+                  </StyledVolumeButton>
+
+                  {this.state.showSlider && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        bottom: -5,
+                        right: 25,
+                        width: 20,
+                        height: 80
+                      }}
+                    >
+                      <Slider
+                        vertical
+                        min={0}
+                        max={1}
+                        step={0.1}
+                        onChange={value => {
+                          setPlayingVolume(value);
+                          setTimeout(() => {
+                            this.hideSlider();
+                          }, 3000);
+                        }}
+                        defaultValue={playingVolume}
+                      />
+                    </div>
+                  )}
                 </StyledPlayerControls>
                 <StyledPlayerBrand>Torchbox FM</StyledPlayerBrand>
                 <StyledPlayerTrack>
@@ -66,7 +120,11 @@ class Player extends Component {
                   </StyledPlayerTrackText>
                 </StyledPlayerTrack>
               </StyledPlayerInner>
-              <Audio audioSrc={audioSrc} isPlaying={isPlaying} />
+              <Audio
+                audioSrc={audioSrc}
+                isPlaying={isPlaying}
+                volume={playingVolume}
+              />
             </StyledPlayer>
           );
         }}

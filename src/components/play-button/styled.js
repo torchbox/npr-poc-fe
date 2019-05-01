@@ -7,6 +7,11 @@ const StyledPlayButton = styled.button`
   border: none;
   border-radius: 5px;
   background: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 
   svg {
     position: absolute;
