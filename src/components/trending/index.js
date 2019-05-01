@@ -18,7 +18,7 @@ const Trending = () => {
       <StyledTrendingStream
         station="NJPR"
         name="Morning edition"
-        iconSrc="/images/show_new-sounds.jpg"
+        iconSrc="/images/show_njpr.png"
         audioSrc="/audio/track-one.mp3"
         trackId="njpr-morning-edition"
         type="ghost"
@@ -27,7 +27,7 @@ const Trending = () => {
       <StyledTrendingStream
         station="WXQR"
         name="New York At Night"
-        iconSrc="/images/show_wnyc.png"
+        iconSrc="/images/show_wqxr.png"
         audioSrc="/audio/track-two.mp3"
         trackId="wxqr-new-york"
         type="ghost"
