@@ -38,11 +38,11 @@ const Podcast = ({ page }) => {
         return item.meta.type === "podcasts.Episode";
       });
 
-      const chips = await Promise.all(
+      const allPodcastData = await Promise.all(
         podcasts.map(child => fetchPage(child.id))
       );
 
-      if (!ignore) setPodcasts(chips);
+      if (!ignore) setPodcasts(allPodcastData);
     }
 
     fetchData();
