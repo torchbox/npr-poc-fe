@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
-import { fetchPage, fetchPages } from "../../services";
+import { PagesContext } from "../../context/pages";
+
+import { fetchPage } from "../../services";
 
 import {
   StyledPodcast,
@@ -27,15 +29,14 @@ import Filter from "../../components/filter";
 
 const Podcast = ({ page }) => {
   const [podcasts, setPodcasts] = useState(null);
+  const { pages } = useContext(PagesContext);
 
   useEffect(() => {
     let ignore = false;
 
     async function fetchData() {
-      const { items } = await fetchPages();
-
-      const podcasts = items.filter(item => {
-        return item.meta.type === "podcasts.Episode";
+      const podcasts = pages.filter(page => {
+        return page.meta.type === "podcasts.Episode";
       });
 
       const allPodcastData = await Promise.all(
@@ -50,7 +51,7 @@ const Podcast = ({ page }) => {
     return () => {
       ignore = true;
     };
-  }, [page.id]);
+  }, [pages]);
 
   return (
     <>
