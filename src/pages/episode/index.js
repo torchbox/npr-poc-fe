@@ -98,7 +98,7 @@ const Episode = ({ page }) => (
           dangerouslySetInnerHTML={{ __html: page.description }}
         />
 
-        {page.enclosures.length > 0 &&
+        {page.enclosures && page.enclosures.length > 0 &&
           page.enclosures.map(
             ({
               meta: { type: mediaType },
