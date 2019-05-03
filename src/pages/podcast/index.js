@@ -68,12 +68,14 @@ const Podcast = ({ page }) => {
                 <h1>{page.title}</h1>
               </StyledPodcastHeroIntroTitle>
               <p>{page.subtitle}</p>
-              <PlayCtaButton
-                audioSrc="/audio/track-one.mp3"
-                name="EPISODE 1: Roberto Lange"
-                trackId="track-one"
-                trackName="Track One"
-              />
+              {podcasts &&
+                <PlayCtaButton
+                  audioSrc={podcasts[0].enclosures[0].media.meta.file}
+                  name={`EPISODE ${podcasts[0].season_number}: ${podcasts[0].title}`}
+                  trackId={podcasts[0].enclosures[0].id}
+                  trackName={podcasts[0].enclosures[0].media.title}
+                />
+              }
             </StyledPodcastHeroIntro>
           </StyledPodcastHero>
         </Hero>
