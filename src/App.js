@@ -58,11 +58,27 @@ const App = () => {
 
                 <Route
                   path="/preview"
-                  render={props =>
-                    <PageRequestWrapper {...props} preview>
-                      <Episode />
-                    </PageRequestWrapper>
-                  }
+                  render={props => {
+                    const queryString = props.location.search || false;
+
+                    if (
+                      !queryString ||
+                      !queryString.includes("content_type") ||
+                      !queryString.includes("token")
+                    ) {
+                      return null;
+                    }
+
+                    const previewEpisode = queryString.includes(
+                      "content_type=podcasts.episode"
+                    );
+
+                    return (
+                      <PageRequestWrapper {...props} preview>
+                        {previewEpisode ? <Episode /> : <Podcast />}
+                      </PageRequestWrapper>
+                    );
+                  }}
                 />
 
                 <Observer onChange={footerObserverChange}>
