@@ -2,7 +2,7 @@ import React, { Children, useState, useEffect, useContext } from "react";
 
 import { PagesContext } from "../../context/pages";
 
-import { fetchPage } from "../../services";
+import { fetchPage, fetchPagePreview } from "../../services";
 
 // Based on:
 // https://reactjs.org/docs/hooks-faq.html#how-can-i-do-data-fetching-with-hooks
@@ -12,6 +12,8 @@ import { fetchPage } from "../../services";
 
 const PageRequestWrapper = ({
   children,
+  preview,
+  location: { search: queryParams },
   match: {
     params,
     params: { slug: pageSlug }
@@ -24,7 +26,28 @@ const PageRequestWrapper = ({
     let ignore = false;
 
     async function fetchData() {
-      if (pages !== null) {
+      // App is in preview mode
+      if (preview) {
+        // https://gist.github.com/pirate/9298155edda679510723#file-parseurlparameters-js
+        let hashes = queryParams.slice(queryParams.indexOf("?") + 1).split("&");
+
+        const decodedString = hashes.reduce((curr, acc) => {
+
+          let [key, val] = curr.split("=");
+
+          const string = `&${key}=${decodeURIComponent(val)}`
+
+          return key ? `${acc}${string}` : acc;
+
+        }, '');
+
+        console.log(decodedString);
+
+        const response = await fetchPagePreview(decodedString);
+
+        if (!ignore) setData(response);
+
+      } else if (pages !== null) {
         const [page] = pages.filter(page => page.meta.slug === pageSlug);
         const response = await fetchPage(page.id);
         if (!ignore) setData(response);
@@ -36,7 +59,7 @@ const PageRequestWrapper = ({
     return () => {
       ignore = true;
     };
-  }, [pageSlug, pages]);
+  }, [preview, queryParams, pageSlug, pages]);
 
   return (
     <div>

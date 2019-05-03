@@ -53,13 +53,25 @@ const App = () => {
                     </PageRequestWrapper>
                   )}
                 />
-                <Route path="/story" component={Story} />
+
+                {/* Preview Routes */}
+
+                <Route
+                  path="/preview"
+                  render={props =>
+                    <PageRequestWrapper {...props} preview>
+                      <Episode />
+                    </PageRequestWrapper>
+                  }
+                />
+
                 <Observer onChange={footerObserverChange}>
                   <div>
                     <Footer />
                   </div>
                 </Observer>
               </Router>
+
               <Player stickToFooter={footerVisible} />
             </Main>
           </PlayerContextProvider>
