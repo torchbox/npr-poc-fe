@@ -63,7 +63,7 @@ const Episode = ({ page }) => (
             trackId="track-one"
             trackName="Track One"
           /> */}
-          {page.enclosures.length > 0 &&
+          {page.enclosures && page.enclosures.length > 0 &&
             page.enclosures.map(
               ({
                 id,

@@ -28,7 +28,6 @@ const PageRequestWrapper = ({
     async function fetchData() {
       // App is in preview mode
       if (preview) {
-        // https://gist.github.com/pirate/9298155edda679510723#file-parseurlparameters-js
         let hashes = queryParams.slice(queryParams.indexOf("?") + 1).split("&");
 
         const decodedString = hashes.reduce((curr, acc) => {
@@ -38,10 +37,7 @@ const PageRequestWrapper = ({
           const string = `&${key}=${decodeURIComponent(val)}`
 
           return key ? `${acc}${string}` : acc;
-
         }, '');
-
-        console.log(decodedString);
 
         const response = await fetchPagePreview(decodedString);
 
