@@ -84,7 +84,7 @@ const Episode = ({ page }) => (
               )
             )}
         </StyledEpisodeIntro>
-        {page.images.length > 0 &&
+        {page.images && page.images.length > 0 &&
           page.images.map(
             ({
               id,
