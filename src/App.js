@@ -12,7 +12,6 @@ import PagesContextProvider from "./context/pages";
 import Home from "./pages/home";
 import Episode from "./pages/episode";
 import Podcast from "./pages/podcast";
-import Story from "./pages/story";
 
 import Main from "./components/main";
 import Header from "./components/header";

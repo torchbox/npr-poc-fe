@@ -1,48 +1,30 @@
-import React, { Component } from "react";
+import React, { useEffect, useRef } from "react";
 
-class Audio extends Component {
-  constructor(props) {
-    super(props);
-    this.audio = React.createRef();
-  }
+const Audio = ({ audioSrc, volume, isPlaying }) => {
+  const audioEl = useRef(null);
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.audioSrc !== this.props.audioSrc) {
-      this.refs.audio.src = nextProps.audioSrc;
-      this.refs.audio.play();
-      return true;
+  useEffect(() => {
+    audioEl.current.src = audioSrc;
+    audioEl.current.play();
+  }, [audioSrc]);
+
+  useEffect(() => {
+    if (isPlaying) {
+      audioEl.current.play();
+    } else {
+      audioEl.current.pause();
     }
+  }, [isPlaying]);
 
-    if (nextProps.isPlaying !== this.props.isPlaying) {
-      if (!nextProps.isPlaying) {
-        this.refs.audio.pause();
-        return true;
-      } else {
-        this.refs.audio.play();
-        return true;
-      }
-    }
+  useEffect(() => {
+    audioEl.current.volume = volume;
+  }, [volume]);
 
-    if (nextProps.volume !== this.props.volume) {
-      this.refs.audio.volume = nextProps.volume;
-
-      return true;
-    }
-
-    return false;
-  }
-
-  componentDidMount() {
-    this.refs.audio.volume = this.props.volume;
-  }
-
-  render() {
-    return (
-      <audio ref="audio">
-        <source src={this.props.audioSrc} type="audio/mpeg" />
-      </audio>
-    );
-  }
-}
+  return (
+    <audio ref={audioEl}>
+      <source src={audioSrc} type="audio/mpeg" />
+    </audio>
+  );
+};
 
 export default Audio;
