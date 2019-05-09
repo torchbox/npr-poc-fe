@@ -86,9 +86,14 @@ const Podcast = ({ page }) => {
         {podcasts ? (
           <>
             <Tabs>
-              <Tab label="Episodes" count="32" isActive />
-              <Tab label="Tell Us Your Fears" />
-              <Tab label="Team" />
+              <Tab
+                label="Episodes"
+                count="32"
+                to="/shows/10-things-scare-me"
+                addBorder={true}
+              />
+              <Tab label="Tell Us Your Fears" to="/shows/10-things-scare-me" />
+              <Tab label="Team" to="/shows/10-things-scare-me" />
             </Tabs>
             <Filter>
               <FilterButton isActive label="Most Recent" />

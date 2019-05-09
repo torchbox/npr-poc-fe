@@ -17,15 +17,20 @@ const StyledEpisodeCardInner = styled.div`
 const StyledEpisodeCardImage = styled(NavLink)`
   width: 55%;
   min-height: 220px;
+  background-color: ${props => props.theme.colors.lightGrey};
 
   ${props =>
     props.bgImage &&
     css`
-      background: url(${props => props.bgImage});
+      background-image: url(${props => props.bgImage});
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center center;
     `}
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const StyledEpisodeCardText = styled.div`
@@ -60,12 +65,19 @@ const StyledEpisodeCardDate = styled.span`
   font-weight: ${props => props.theme.fonts.light};
 `;
 
-const StyledEpisodeCardHeader = styled.h3`
+const StyledEpisodeCardHeader = styled(NavLink)`
+  display: block;
   margin: 0 0 15px 0;
   font-size: 21px;
   line-height: 1.4;
   text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
   color: ${props => props.theme.colors.blue};
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export {

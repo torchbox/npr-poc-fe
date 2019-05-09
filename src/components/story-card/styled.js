@@ -11,6 +11,14 @@ const StyledStoryCardLink = styled(NavLink)`
   width: 100%;
   height: 100%;
   text-decoration: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:hover h3 {
+    text-decoration: underline;
+  }
 `;
 
 const StyledStoryCardImage = styled.div`

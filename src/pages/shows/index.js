@@ -43,7 +43,7 @@ const Shows = ({ page }) => {
         </Hero>
 
         <Tabs>
-          <Tab label="All Shows" count="24" isActive />
+          <Tab label="All Shows" count="24" addBorder={true} />
           <Tab label="New Shows" count="6" />
         </Tabs>
         <Filter>

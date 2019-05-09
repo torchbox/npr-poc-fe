@@ -15,7 +15,7 @@ const EpisodeCard = ({ imageSrc, title, studio, date, excerpt, children, classNa
     <StyledEpisodeCardInner>
       <StyledEpisodeCardImage to={url} bgImage={imageSrc} />
       <StyledEpisodeCardText>
-        {title && <StyledEpisodeCardHeader>{title}</StyledEpisodeCardHeader>}{" "}
+        {title && <StyledEpisodeCardHeader to={url}>{title}</StyledEpisodeCardHeader>}{" "}
         {studio && <StyledEpisodeCardStudio>{studio}</StyledEpisodeCardStudio>}{" "}
         {date && <StyledEpisodeCardDate>{date}</StyledEpisodeCardDate>}{" "}
         {excerpt && excerpt.length > 100 ? (

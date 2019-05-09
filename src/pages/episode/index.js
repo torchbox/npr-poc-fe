@@ -39,9 +39,13 @@ const Episode = ({ page }) => (
           </StyledEpisodeHeroIntroTitle>
         </StyledEpisodeHeroIntro>
         <StyledEpisodeHeroLinks>
-          <Tab label="Episodes" count="32" />
-          <Tab label="Tell Us Your Fears" />
-          <Tab label="Team" />
+          <Tab
+            label="Episodes"
+            count="32"
+            to="/shows/10-things-scare-me"
+          />
+          <Tab label="Tell Us Your Fears" to="/shows/10-things-scare-me" />
+          <Tab label="Team" to="/shows/10-things-scare-me" />
         </StyledEpisodeHeroLinks>
       </StyledEpisodeHero>
     </Hero>
@@ -63,7 +67,8 @@ const Episode = ({ page }) => (
             trackId="track-one"
             trackName="Track One"
           /> */}
-          {page.enclosures && page.enclosures.length > 0 &&
+          {page.enclosures &&
+            page.enclosures.length > 0 &&
             page.enclosures.map(
               ({
                 id,
@@ -84,7 +89,8 @@ const Episode = ({ page }) => (
               )
             )}
         </StyledEpisodeIntro>
-        {page.images && page.images.length > 0 &&
+        {page.images &&
+          page.images.length > 0 &&
           page.images.map(
             ({
               id,
@@ -98,7 +104,8 @@ const Episode = ({ page }) => (
           dangerouslySetInnerHTML={{ __html: page.description }}
         />
 
-        {page.enclosures && page.enclosures.length > 0 &&
+        {page.enclosures &&
+          page.enclosures.length > 0 &&
           page.enclosures.map(
             ({
               meta: { type: mediaType },

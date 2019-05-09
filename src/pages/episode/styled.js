@@ -25,8 +25,11 @@ const StyledEpisodeHeroIntroTitle = styled.div`
 
 const StyledEpisodeHeroLinks = styled.div`
   width: 50%;
+  margin-top: 26px;
   display: flex;
-  justify-content: flex-end > div {
+  justify-content: flex-end;
+
+  > div {
     padding: 0;
     border: 0;
 
