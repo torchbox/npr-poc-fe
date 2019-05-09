@@ -18,6 +18,7 @@ import Main from "./components/main";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Player from "./components/player";
+import ScrollToTop from "./components/scroll-to-top";
 
 import PageRequestWrapper from "./components/page-request-wrapper";
 
@@ -35,60 +36,61 @@ const App = () => {
           <PlayerContextProvider>
             <Main>
               <Router>
-                <Header />
-                <Route path="/" exact component={Home} />
-                <Route path="/shows/" exact component={Shows} />
-                <Route
-                  path="/shows/:slug"
-                  render={props => (
-                    <PageRequestWrapper {...props}>
-                      <Podcast />
-                    </PageRequestWrapper>
-                  )}
-                />
-                <Route
-                  path="/episode/:slug"
-                  render={props => (
-                    <PageRequestWrapper {...props}>
-                      <Episode />
-                    </PageRequestWrapper>
-                  )}
-                />
-
-                {/* Preview Routes */}
-
-                <Route
-                  path="/preview"
-                  render={props => {
-                    const queryString = props.location.search || false;
-
-                    if (
-                      !queryString ||
-                      !queryString.includes("content_type") ||
-                      !queryString.includes("token")
-                    ) {
-                      return null;
-                    }
-
-                    const previewEpisode = queryString.includes(
-                      "content_type=podcasts.episode"
-                    );
-
-                    return (
-                      <PageRequestWrapper {...props} preview>
-                        {previewEpisode ? <Episode /> : <Podcast />}
+                <ScrollToTop>
+                  <Header />
+                  <Route path="/" exact component={Home} />
+                  <Route path="/shows/" exact component={Shows} />
+                  <Route
+                    path="/shows/:slug"
+                    render={props => (
+                      <PageRequestWrapper {...props}>
+                        <Podcast />
                       </PageRequestWrapper>
-                    );
-                  }}
-                />
+                    )}
+                  />
+                  <Route
+                    path="/episode/:slug"
+                    render={props => (
+                      <PageRequestWrapper {...props}>
+                        <Episode />
+                      </PageRequestWrapper>
+                    )}
+                  />
 
-                <Observer onChange={footerObserverChange}>
-                  <div>
-                    <Footer />
-                  </div>
-                </Observer>
+                  {/* Preview Routes */}
+
+                  <Route
+                    path="/preview"
+                    render={props => {
+                      const queryString = props.location.search || false;
+
+                      if (
+                        !queryString ||
+                        !queryString.includes("content_type") ||
+                        !queryString.includes("token")
+                      ) {
+                        return null;
+                      }
+
+                      const previewEpisode = queryString.includes(
+                        "content_type=podcasts.episode"
+                      );
+
+                      return (
+                        <PageRequestWrapper {...props} preview>
+                          {previewEpisode ? <Episode /> : <Podcast />}
+                        </PageRequestWrapper>
+                      );
+                    }}
+                  />
+
+                  <Observer onChange={footerObserverChange}>
+                    <div>
+                      <Footer />
+                    </div>
+                  </Observer>
+                </ScrollToTop>
               </Router>
-
               <Player stickToFooter={footerVisible} />
             </Main>
           </PlayerContextProvider>
