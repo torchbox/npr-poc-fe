@@ -16,11 +16,13 @@ import {
   StyledPlayerTrackCurrent,
   StyledPlayerTrackName,
   StyledVolumeButton,
-  StyledSliderContainer
+  StyledSliderContainer,
+  StyledPlayerEq
 } from "./styled";
 
 import Audio from "../audio";
 import IconVolumeUp from "../../svg/icon-volume-up";
+import IconEq from "../../svg/icon-eq";
 
 const Player = ({ stickToFooter }) => {
   const [showSlider, setShowSlider] = useState(false);
@@ -72,6 +74,9 @@ const Player = ({ stickToFooter }) => {
               />
             </StyledSliderContainer>
           )}
+          <StyledPlayerEq>
+              <IconEq />
+            </StyledPlayerEq>
         </StyledPlayerControls>
         <StyledPlayerBrand>Torchbox FM</StyledPlayerBrand>
         <StyledPlayerTrack>

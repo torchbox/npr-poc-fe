@@ -43,6 +43,12 @@ const StyledPlayerControls = styled.div`
 
 const StyledPlayerPlayButton = styled(PlayButton)``;
 
+const StyledPlayerEq = styled.div`
+  margin: 0 0 0 10px;
+  width: 24px;
+  height: 24px;
+`;
+
 const StyledVolumeButton = styled.div`
   margin: 0 0 0 10px;
   width: 24px;
@@ -58,9 +64,14 @@ const StyledVolumeButton = styled.div`
 const StyledSliderContainer = styled.div`
   position: absolute;
   bottom: -5px;
-  right: 25px;
+  right: 60px;
   width: 20px;
   height: 80px;
+
+  .rc-slider-rail {
+    background: ${props => props.theme.colors.white};
+    border: 2px solid ${props => props.theme.colors.coral};
+  }
 `;
 
 const StyledPlayerBrand = styled.div`
@@ -122,5 +133,6 @@ export {
   StyledPlayerTrackCurrent,
   StyledPlayerTrackName,
   StyledVolumeButton,
-  StyledSliderContainer
+  StyledSliderContainer,
+  StyledPlayerEq
 };
