@@ -12,6 +12,7 @@ import PagesContextProvider from "./context/pages";
 import Home from "./pages/home";
 import Episode from "./pages/episode";
 import Podcast from "./pages/podcast";
+import Shows from "./pages/shows";
 
 import Main from "./components/main";
 import Header from "./components/header";
@@ -36,6 +37,7 @@ const App = () => {
               <Router>
                 <Header />
                 <Route path="/" exact component={Home} />
+                <Route path="/shows/" exact component={Shows} />
                 <Route
                   path="/shows/:slug"
                   render={props => (

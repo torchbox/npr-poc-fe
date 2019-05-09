@@ -4,17 +4,20 @@ import {
   StyledEpisodeCard,
   StyledEpisodeCardImage,
   StyledEpisodeCardText,
+  StyledEpisodeCardStudio,
+  StyledEpisodeCardDate,
   StyledEpisodeCardHeader,
   StyledEpisodeCardInner
 } from "./styled";
 
-const EpisodeCard = ({ imageSrc, title, date, excerpt, children, className, url }) => (
+const EpisodeCard = ({ imageSrc, title, studio, date, excerpt, children, className, url }) => (
   <StyledEpisodeCard className={className}>
     <StyledEpisodeCardInner>
       <StyledEpisodeCardImage to={url} bgImage={imageSrc} />
       <StyledEpisodeCardText>
         {title && <StyledEpisodeCardHeader>{title}</StyledEpisodeCardHeader>}{" "}
-        {date && <span>{date}</span>}{" "}
+        {studio && <StyledEpisodeCardStudio>{studio}</StyledEpisodeCardStudio>}{" "}
+        {date && <StyledEpisodeCardDate>{date}</StyledEpisodeCardDate>}{" "}
         {excerpt && excerpt.length > 100 ? (
           <p>{excerpt.substring(0, 100)}…</p>
         ) : (

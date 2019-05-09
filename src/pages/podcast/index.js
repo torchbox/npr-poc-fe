@@ -16,7 +16,7 @@ import {
   StyledEpisodeCard,
   StyledEpisodeCardGrid,
   StyledLoad,
-  StyledLoadInner,
+  StyledLoadInner
 } from "./styled";
 
 import Hero from "../../components/hero";
@@ -26,6 +26,7 @@ import StoryCard from "../../components/story-card";
 import Tabs from "../../components/tabs";
 import Tab from "../../components/tab";
 import Filter from "../../components/filter";
+import FilterButton from "../../components/filter-button";
 
 const Podcast = ({ page }) => {
   const [podcasts, setPodcasts] = useState(null);
@@ -68,14 +69,16 @@ const Podcast = ({ page }) => {
                 <h1>{page.title}</h1>
               </StyledPodcastHeroIntroTitle>
               <p>{page.subtitle}</p>
-              {podcasts &&
+              {podcasts && (
                 <PlayCtaButton
                   audioSrc={podcasts[0].enclosures[0].media.meta.file}
-                  name={`EPISODE ${podcasts[0].season_number}: ${podcasts[0].title}`}
+                  name={`EPISODE ${podcasts[0].season_number}: ${
+                    podcasts[0].title
+                  }`}
                   trackId={podcasts[0].enclosures[0].id}
                   trackName={podcasts[0].enclosures[0].media.title}
                 />
-              }
+              )}
             </StyledPodcastHeroIntro>
           </StyledPodcastHero>
         </Hero>
@@ -87,7 +90,11 @@ const Podcast = ({ page }) => {
               <Tab label="Tell Us Your Fears" />
               <Tab label="Team" />
             </Tabs>
-            <Filter />
+            <Filter>
+              <FilterButton isActive label="Most Recent" />
+              <FilterButton label="Date Added" />
+              <FilterButton label="Most Listens" />
+            </Filter>
             <StyledEpisodeCards>
               <StyledEpisodeCardsInner>
                 <StyledEpisodeCardGrid>
@@ -113,9 +120,7 @@ const Podcast = ({ page }) => {
               </StyledEpisodeCardsInner>
             </StyledEpisodeCards>
             <StyledLoad>
-              <StyledLoadInner>
-                Load more
-              </StyledLoadInner>
+              <StyledLoadInner>Load more</StyledLoadInner>
             </StyledLoad>
           </>
         ) : (

@@ -1,15 +1,18 @@
 import React from "react";
 
-import { StyledFilter, StyledFilterInner, StyledFilterButtons, StyledFilterButton, StyledFilterTitle } from "./styled";
+import {
+  StyledFilter,
+  StyledFilterInner,
+  StyledFilterButtons,
+  StyledFilterTitle
+} from "./styled";
 
-const Filter = () => (
+const Filter = ({ children }) => (
   <StyledFilter>
     <StyledFilterInner>
       <StyledFilterButtons>
         <StyledFilterTitle>Order by:</StyledFilterTitle>
-        <StyledFilterButton isActive>Most Recent</StyledFilterButton>
-        <StyledFilterButton>Date Added</StyledFilterButton>
-        <StyledFilterButton>Most Listens</StyledFilterButton>
+        {children}
       </StyledFilterButtons>
     </StyledFilterInner>
   </StyledFilter>

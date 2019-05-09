@@ -23,7 +23,7 @@ const Header = () => (
         </StyledHeaderLink> */}
         <StyledHeaderLink to="/all-streams">All Streams</StyledHeaderLink>
         <StyledHeaderLink to="/shedule">Schedule</StyledHeaderLink>
-        <StyledHeaderLink to="/shows/10-things-scare-me">Shows</StyledHeaderLink>
+        <StyledHeaderLink to="/shows">Shows</StyledHeaderLink>
         <StyledHeaderLink to="/topics">Topics</StyledHeaderLink>
         <StyledHeaderLink to="/discover">Discover</StyledHeaderLink>
         <Button label="Donate" />

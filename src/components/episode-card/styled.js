@@ -32,14 +32,6 @@ const StyledEpisodeCardText = styled.div`
   width: 45%;
   padding: 12px 30px;
 
-  & > span {
-    display: block;
-    margin: 0 0 15px 0;
-    color: ${props => props.theme.colors.grey};
-    font-size: 16px;
-    font-weight: ${props => props.theme.fonts.light};
-  }
-
   p {
     margin: 0;
     color: ${props => props.theme.colors.grey};
@@ -50,6 +42,22 @@ const StyledEpisodeCardText = styled.div`
   & > button {
     margin-top: 15px;
   }
+`;
+
+const StyledEpisodeCardStudio = styled.span`
+  display: block;
+  margin: 0 0 15px 0;
+  color: ${props => props.theme.colors.grey};
+  font-size: 14px;
+  font-weight: ${props => props.theme.fonts.light};
+`;
+
+const StyledEpisodeCardDate = styled.span`
+  display: block;
+  margin: 0 0 15px 0;
+  color: ${props => props.theme.colors.grey};
+  font-size: 16px;
+  font-weight: ${props => props.theme.fonts.light};
 `;
 
 const StyledEpisodeCardHeader = styled.h3`
@@ -64,6 +72,8 @@ export {
   StyledEpisodeCard,
   StyledEpisodeCardImage,
   StyledEpisodeCardText,
+  StyledEpisodeCardStudio,
+  StyledEpisodeCardDate,
   StyledEpisodeCardHeader,
   StyledEpisodeCardInner
 };
