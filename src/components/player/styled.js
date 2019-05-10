@@ -47,6 +47,7 @@ const StyledPlayerEq = styled.div`
   margin: 0 0 0 10px;
   width: 24px;
   height: 24px;
+  opacity: 0.7;
 `;
 
 const StyledVolumeButton = styled.div`

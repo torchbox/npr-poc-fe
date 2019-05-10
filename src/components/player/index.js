@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
@@ -36,6 +36,16 @@ const Player = ({ stickToFooter }) => {
     playingVolume,
     setPlayingVolume
   } = useContext(PlayerContext);
+
+  useEffect(() => {
+    const equalizer = document.getElementById('lds-equalizer');
+
+    if (isPlaying) {
+      equalizer.unpauseAnimations()
+    } else {
+      equalizer.pauseAnimations()
+    }
+  }, [isPlaying])
 
   return (
     <StyledPlayer

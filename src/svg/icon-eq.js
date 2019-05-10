@@ -2,7 +2,7 @@ import React from "react";
 
 export default ({ color }) => (
   <svg
-    class="lds-equalizer"
+    id="lds-equalizer"
     width="100%"
     height="100%"
     viewBox="0 0 100 100"
