@@ -5,8 +5,6 @@ import {
   StyledEpisodeHero,
   StyledEpisodeHeroIntro,
   StyledEpisodeHeroIntroTitle,
-  StyledStoryCards,
-  StyledStoryCardsInner,
   StyledEpisodeHeroLinks,
   StyledEpisodeWrapper,
   StyledEpisodeWrapperInner,
@@ -20,9 +18,8 @@ import {
 
 import Hero from "../../components/hero";
 import PlayCtaButton from "../../components/play-cta-button";
-import CardGrid from "../../components/card-grid";
-import EpisodeCard from "../../components/episode-card";
 import Tab from "../../components/tab";
+import RelatedEpisodes from "../../components/related-episodes";
 
 const Episode = ({ page }) => (
   <StyledEpisode>
@@ -49,7 +46,6 @@ const Episode = ({ page }) => (
         </StyledEpisodeHeroLinks>
       </StyledEpisodeHero>
     </Hero>
-
     <StyledEpisodeWrapper>
       <StyledEpisodeWrapperInner>
         <StyledEpisodeIntro>
@@ -61,12 +57,6 @@ const Episode = ({ page }) => (
               {page.subtitle}
             </StyledEpisodeIntroStandfirst>
           </StyledEpisodeIntroText>
-          {/* <PlayCtaButton
-            audioSrc="/audio/track-one.mp3"
-            name="Listen Now"
-            trackId="track-one"
-            trackName="Track One"
-          /> */}
           {page.enclosures &&
             page.enclosures.length > 0 &&
             page.enclosures.map(
@@ -125,51 +115,9 @@ const Episode = ({ page }) => (
               />
             )
           )}
-        {/* <PlayCtaButton
-          audioSrc="/audio/track-one.mp3"
-          name="Episode 32"
-          trackId="track-one"
-          trackName="Track One"
-          isEpisode
-        /> */}
       </StyledEpisodeWrapperInner>
     </StyledEpisodeWrapper>
-
-    <StyledStoryCards>
-      <StyledStoryCardsInner>
-        <h2>Also in this show</h2>
-        <CardGrid>
-          <EpisodeCard
-            imageSrc="/images/news_asylum-ny.jpg"
-            title="Rashad Jennings"
-            date="27 Apr, 2019"
-            excerpt="If they are right, I am wrong"
-          >
-            <PlayCtaButton
-              audioSrc="/audio/track-one.mp3"
-              name="Episode 32"
-              trackId="track-one"
-              trackName="Track One"
-              type="white"
-            />
-          </EpisodeCard>
-          <EpisodeCard
-            imageSrc="/images/news_asylum-ny.jpg"
-            title="Growing Old"
-            date="Apr 18, 2019"
-            excerpt="We got death threats for months..."
-          >
-            <PlayCtaButton
-              audioSrc="/audio/track-one.mp3"
-              name="Episode 32"
-              trackId="track-one"
-              trackName="Track One"
-              type="white"
-            />
-          </EpisodeCard>
-        </CardGrid>
-      </StyledStoryCardsInner>
-    </StyledStoryCards>
+    <RelatedEpisodes currentId={page.id} />
   </StyledEpisode>
 );
 
