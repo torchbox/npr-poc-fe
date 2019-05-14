@@ -11,6 +11,8 @@ export default ({ children }) => {
   const [playingTrackName, setPlayingTrackName] = useState(null);
   const [playingTrackImage, setPlayingTrackImage] = useState(null);
   const [playingVolume, setPlayingVolume] = useState(0.2);
+  const [currentTime, setCurrentTime] = useState(null);
+  const [audioDuration, setAudioDuration] = useState(null);
 
   return (
     <PlayerContext.Provider
@@ -27,6 +29,10 @@ export default ({ children }) => {
         setPlayingTrackImage,
         playingVolume,
         setPlayingVolume,
+        currentTime,
+        setCurrentTime,
+        audioDuration,
+        setAudioDuration,
       }}
     >
       {children}

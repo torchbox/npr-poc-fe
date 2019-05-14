@@ -34,7 +34,9 @@ const Player = ({ stickToFooter }) => {
     playingTrackImage = "/images/torchbox_logo.png",
     playingTrackName,
     playingVolume,
-    setPlayingVolume
+    setPlayingVolume,
+    currentTime,
+    audioDuration,
   } = useContext(PlayerContext);
 
   useEffect(() => {
@@ -95,7 +97,7 @@ const Player = ({ stickToFooter }) => {
             <StyledPlayerTrackCurrent>
               Currently Playing
             </StyledPlayerTrackCurrent>
-            <StyledPlayerTrackName>{playingTrackName}</StyledPlayerTrackName>
+            <StyledPlayerTrackName>{playingTrackName} ({currentTime} / {audioDuration})</StyledPlayerTrackName>
           </StyledPlayerTrackText>
         </StyledPlayerTrack>
       </StyledPlayerInner>
