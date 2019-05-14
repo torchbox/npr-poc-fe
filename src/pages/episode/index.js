@@ -43,7 +43,7 @@ const Episode = ({ page }) => {
           <StyledEpisodeHeroLinks>
             <Tab
               label="Episodes"
-              count={episodes.length}
+              count={episodes && episodes.length}
               to="/shows/10-things-scare-me"
             />
             <Tab label="Tell Us Your Fears" to="/shows/10-things-scare-me" />
