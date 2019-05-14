@@ -106,6 +106,7 @@ const StyledLoad = styled.div`
   margin: -40px 0 0 0;
   z-index: 1;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 const StyledLoadInner = styled.div`

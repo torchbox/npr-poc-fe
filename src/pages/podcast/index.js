@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import moment from "moment";
 
 import { PagesContext } from "../../context/pages";
@@ -29,6 +29,18 @@ import FilterButton from "../../components/filter-button";
 
 const Podcast = ({ page }) => {
   const { episodes } = useContext(PagesContext);
+
+  const displayLimit = 6;
+
+  const [loadMore, setLoadMore] = useState(true);
+
+  const [displayCount, setDisplayCount] = useState(displayLimit);
+
+  useEffect(() => {
+    if (episodes && displayCount >= episodes.length) {
+      setLoadMore(false);
+    }
+  }, [displayCount, episodes]);
 
   return (
     <>
@@ -79,30 +91,43 @@ const Podcast = ({ page }) => {
             <StyledEpisodeCards>
               <StyledEpisodeCardsInner>
                 <StyledEpisodeCardGrid>
-                  {episodes.map(episode => (
-                    <StyledEpisodeCard
-                      key={episode.id}
-                      imageSrc={episode.images[0].image.meta.download_url}
-                      title={episode.title}
-                      date={moment(episode.date_created).format('LL')}
-                      excerpt={episode.subtitle}
-                      url={`/episode/${episode.meta.slug}`}
-                    >
-                      <PlayCtaButton
-                        audioSrc={episode.enclosures[0].media.meta.file}
-                        name={`Episode ${episode.season_number}`}
-                        trackId={episode.enclosures[0].id}
-                        trackName={episode.enclosures[0].media.title}
-                        type="white"
-                      />
-                    </StyledEpisodeCard>
-                  ))}
+                  {episodes.map((episode, index) => {
+                    if (index < displayCount) {
+                      return (
+                        <StyledEpisodeCard
+                          key={episode.id}
+                          imageSrc={episode.images[0].image.meta.download_url}
+                          title={episode.title}
+                          date={moment(episode.date_created).format("LL")}
+                          excerpt={episode.subtitle}
+                          url={`/episode/${episode.meta.slug}`}
+                        >
+                          <PlayCtaButton
+                            audioSrc={episode.enclosures[0].media.meta.file}
+                            name={`Episode ${episode.season_number}`}
+                            trackId={episode.enclosures[0].id}
+                            trackName={episode.enclosures[0].media.title}
+                            type="white"
+                          />
+                        </StyledEpisodeCard>
+                      );
+                    }
+                    return null;
+                  })}
                 </StyledEpisodeCardGrid>
               </StyledEpisodeCardsInner>
             </StyledEpisodeCards>
-            <StyledLoad>
-              <StyledLoadInner>Load more</StyledLoadInner>
-            </StyledLoad>
+            {loadMore && (
+              <StyledLoad>
+                <StyledLoadInner
+                  onClick={() => {
+                    setDisplayCount(displayCount + displayLimit);
+                  }}
+                >
+                  Load more
+                </StyledLoadInner>
+              </StyledLoad>
+            )}
           </>
         ) : (
           <div
