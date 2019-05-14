@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import moment from "moment";
+
+import { PagesContext } from "../../context/pages";
 
 import {
   StyledShows,
@@ -23,6 +26,8 @@ import Filter from "../../components/filter";
 import FilterButton from "../../components/filter-button";
 
 const Shows = ({ page }) => {
+  const { shows } = useContext(PagesContext);
+
   return (
     <>
       <StyledShows>
@@ -42,108 +47,69 @@ const Shows = ({ page }) => {
           </StyledShowsHero>
         </Hero>
 
-        <Tabs>
-          <Tab label="All Shows" count="24" addBorder={true} />
-          <Tab label="New Shows" count="6" />
-        </Tabs>
-        <Filter>
-          <FilterButton isActive label="Newest" />
-          <FilterButton label="Most Popular" />
-        </Filter>
-        <StyledEpisodeCards>
-          <StyledEpisodeCardsInner>
-            <StyledEpisodeCardGrid>
-              <StyledEpisodeCard
-                imageSrc="/images/show_10_things.png"
-                studio="WNYC STUDIOS"
-                title="10 Things That Scare Me"
-                excerpt="A tiny podcast about our biggest fears."
-                url={`/shows/10-things-scare-me`}
-              >
-                <PlayCtaButton
-                  audioSrc={"/audio/track-one.mp3"}
-                  name={"Episode 32"}
-                  trackId={"track-one"}
-                  trackName={"10 Things That Scare Me - Episode 32"}
-                  type="white"
-                />
-              </StyledEpisodeCard>
-              <StyledEpisodeCard
-                imageSrc="/images/show_dopequeens.png"
-                studio="WNYC STUDIOS"
-                title="2 Dope Queens"
-                excerpt="Phoebe Robinson and Jessica Williams host a live comedy show in Brooklyn."
-                url={`/shows/10-things-scare-me`}
-              >
-                <PlayCtaButton
-                  audioSrc={"/audio/track-two.mp3"}
-                  name={"Episode 16"}
-                  trackId={"track-two"}
-                  trackName={"2 Dope Queens - Episode 16"}
-                  type="white"
-                />
-              </StyledEpisodeCard>
-              <StyledEpisodeCard
-                imageSrc="/images/show_american-fiasco.png"
-                studio="WNYC STUDIOS"
-                title="American Fiasco"
-                excerpt="The true story of how not to win the World Cup."
-                url={`/shows/10-things-scare-me`}
-              >
-                <PlayCtaButton
-                  audioSrc={"/audio/track-one.mp3"}
-                  name={"Episode 12"}
-                  trackId={"track-three"}
-                  trackName={"American Fiasco - Episode 12"}
-                  type="white"
-                />
-              </StyledEpisodeCard>
-              <StyledEpisodeCard
-                imageSrc="/images/show_dear-hank-john.png"
-                title="Dear Hank & John"
-                excerpt="Hosts John and Hank Green answer listener questions and offer dubious advice."
-                url={`/shows/10-things-scare-me`}
-              >
-                <PlayCtaButton
-                  audioSrc={"/audio/track-two.mp3"}
-                  name={"Episode 19"}
-                  trackId={"track-four"}
-                  trackName={"American Fiasco - Episode 19"}
-                  type="white"
-                />
-              </StyledEpisodeCard>
-            </StyledEpisodeCardGrid>
-          </StyledEpisodeCardsInner>
-        </StyledEpisodeCards>
-        <StyledStoryCards>
-          <StyledStoryCardsInner>
-            <h2>Latest from Torchbox Radio</h2>
-            <CardGrid>
-              <StoryCard
-                imageSrc="/images/news_layman.png"
-                title="Damon Young and Kiese Laymon: The Good Dude Closet"
-                category="Death, Sex & Money"
-                excerpt="The writers on why the label covers a multitude of sins."
-              />
-              <StoryCard
-                imageSrc="/images/news_asylum-ny.jpg"
-                title="Why It's Harder to Win Asylum, Even in New York"
-                excerpt="In immigrant-friendly New York, migrants have historically had a much easier time winning asylum than one would have expected"
-              />
-              <StoryCard
-                imageSrc="/images/news_asylum-ny.jpg"
-                title="Why It's Harder to Win Asylum, Even in New York"
-                excerpt="In immigrant-friendly New York, migrants have historically had a much easier time winning asylum than one would have expected"
-              />
-              <StoryCard
-                imageSrc="/images/news_layman.png"
-                title="Damon Young and Kiese Laymon: The Good Dude Closet"
-                category="Death, Sex & Money"
-                excerpt="The writers on why the label covers a multitude of sins."
-              />
-            </CardGrid>
-          </StyledStoryCardsInner>
-        </StyledStoryCards>
+        {shows ? (
+          <>
+            <Tabs>
+              <Tab label="All Shows" count="24" addBorder={true} />
+              <Tab label="New Shows" count="6" />
+            </Tabs>
+            <Filter>
+              <FilterButton isActive label="Newest" />
+              <FilterButton label="Most Popular" />
+            </Filter>
+            <StyledEpisodeCards>
+              <StyledEpisodeCardsInner>
+                <StyledEpisodeCardGrid>
+                  {shows.map(show => (
+                    <StyledEpisodeCard
+                      key={show.id}
+                      imageSrc={""}
+                      title={show.title}
+                      date={moment(show.date_created).format("LL")}
+                      excerpt={show.subtitle}
+                      url={`/shows/${show.meta.slug}`}
+                    />
+                  ))}
+                </StyledEpisodeCardGrid>
+              </StyledEpisodeCardsInner>
+            </StyledEpisodeCards>
+            <StyledStoryCards>
+              <StyledStoryCardsInner>
+                <h2>Latest from Torchbox Radio</h2>
+                <CardGrid>
+                  <StoryCard
+                    imageSrc="/images/news_layman.png"
+                    title="Damon Young and Kiese Laymon: The Good Dude Closet"
+                    category="Death, Sex & Money"
+                    excerpt="The writers on why the label covers a multitude of sins."
+                  />
+                  <StoryCard
+                    imageSrc="/images/news_asylum-ny.jpg"
+                    title="Why It's Harder to Win Asylum, Even in New York"
+                    excerpt="In immigrant-friendly New York, migrants have historically had a much easier time winning asylum than one would have expected"
+                  />
+                  <StoryCard
+                    imageSrc="/images/news_asylum-ny.jpg"
+                    title="Why It's Harder to Win Asylum, Even in New York"
+                    excerpt="In immigrant-friendly New York, migrants have historically had a much easier time winning asylum than one would have expected"
+                  />
+                  <StoryCard
+                    imageSrc="/images/news_layman.png"
+                    title="Damon Young and Kiese Laymon: The Good Dude Closet"
+                    category="Death, Sex & Money"
+                    excerpt="The writers on why the label covers a multitude of sins."
+                  />
+                </CardGrid>
+              </StyledStoryCardsInner>
+            </StyledStoryCards>
+          </>
+        ) : (
+          <div
+            style={{
+              height: "100vh"
+            }}
+          />
+        )}
       </StyledShows>
     </>
   );

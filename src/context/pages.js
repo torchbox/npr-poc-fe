@@ -10,6 +10,7 @@ export const PagesContext = createContext();
 export default ({ children }) => {
   const [pages, setPages] = useState(null);
   const [episodes, setEpisodes] = useState(null);
+  const [shows, setShows] = useState(null);
 
   // Get and set all pages
   useEffect(() => {
@@ -39,11 +40,25 @@ export default ({ children }) => {
         return page.meta.type === "podcasts.Episode";
       });
 
+      // Filter for pages that are shows
+      const shows = pages.filter(page => {
+        return page.meta.type === "podcasts.Show";
+      });
+
+      // Request full page data for each episode
       const allEpisodeData = await Promise.all(
         episodes.map(child => fetchPage(child.id))
       );
 
-      if (!ignore) setEpisodes(allEpisodeData);
+      // Request full page data for each show
+      const allShowsData = await Promise.all(
+        shows.map(child => fetchPage(child.id))
+      );
+
+      if (!ignore) {
+        setEpisodes(allEpisodeData);
+        setShows(allShowsData);
+      }
     }
 
     if (pages) {
@@ -55,11 +70,18 @@ export default ({ children }) => {
     };
   }, [pages]);
 
+  console.log({
+    pages,
+    episodes,
+    shows
+  });
+
   return (
     <PagesContext.Provider
       value={{
         pages,
         episodes,
+        shows
       }}
     >
       {children}

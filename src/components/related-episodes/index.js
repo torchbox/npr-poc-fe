@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import moment from "moment";
 
 import { PagesContext } from "../../context/pages";
 
@@ -38,7 +39,7 @@ export const RelatedEpisdoes = ({ currentId }) => {
                 key={podcast.id}
                 imageSrc={podcast.images[0].image.meta.download_url}
                 title={podcast.title}
-                date="Apr 25, 2019"
+                date={moment(podcast.date_created).format('LL')}
                 excerpt={podcast.subtitle}
                 url={`/episode/${podcast.meta.slug}`}
               >

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import moment from "moment";
 
 import { PagesContext } from "../../context/pages";
 
@@ -78,20 +79,20 @@ const Podcast = ({ page }) => {
             <StyledEpisodeCards>
               <StyledEpisodeCardsInner>
                 <StyledEpisodeCardGrid>
-                  {episodes.map(podcast => (
+                  {episodes.map(episode => (
                     <StyledEpisodeCard
-                      key={podcast.id}
-                      imageSrc={podcast.images[0].image.meta.download_url}
-                      title={podcast.title}
-                      date="Apr 25, 2019"
-                      excerpt={podcast.subtitle}
-                      url={`/episode/${podcast.meta.slug}`}
+                      key={episode.id}
+                      imageSrc={episode.images[0].image.meta.download_url}
+                      title={episode.title}
+                      date={moment(episode.date_created).format('LL')}
+                      excerpt={episode.subtitle}
+                      url={`/episode/${episode.meta.slug}`}
                     >
                       <PlayCtaButton
-                        audioSrc={podcast.enclosures[0].media.meta.file}
-                        name={`Episode ${podcast.season_number}`}
-                        trackId={podcast.enclosures[0].id}
-                        trackName={podcast.enclosures[0].media.title}
+                        audioSrc={episode.enclosures[0].media.meta.file}
+                        name={`Episode ${episode.season_number}`}
+                        trackId={episode.enclosures[0].id}
+                        trackName={episode.enclosures[0].media.title}
                         type="white"
                       />
                     </StyledEpisodeCard>

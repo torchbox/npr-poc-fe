@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@researchgate/react-intersection-observer": "^1.0.0",
+    "moment": "^2.24.0",
     "polished": "^3.2.0",
     "rc-slider": "^8.6.9",
     "react": "^16.8.6",
