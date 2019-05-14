@@ -4,7 +4,8 @@ import {
   StyledHeader,
   StyledHeaderInner,
   StyledHeaderLogo,
-  StyledHeaderLink
+  StyledHeaderLink,
+  StyledHeaderStaticLink
 } from "./styled";
 
 import TorchboxLogo from "../../svg/torchbox-logo";
@@ -18,14 +19,11 @@ const Header = () => (
         <TorchboxLogo />
       </StyledHeaderLogo>
       <div>
-        {/* <StyledHeaderLink exact to="/">
-          Home
-        </StyledHeaderLink> */}
-        <StyledHeaderLink to="/all-streams">All Streams</StyledHeaderLink>
-        <StyledHeaderLink to="/shedule">Schedule</StyledHeaderLink>
+        <StyledHeaderStaticLink to="/all-streams">All Streams</StyledHeaderStaticLink>
+        <StyledHeaderStaticLink to="/shedule">Schedule</StyledHeaderStaticLink>
         <StyledHeaderLink to="/shows">Shows</StyledHeaderLink>
-        <StyledHeaderLink to="/topics">Topics</StyledHeaderLink>
-        <StyledHeaderLink to="/discover">Discover</StyledHeaderLink>
+        <StyledHeaderStaticLink to="/topics">Topics</StyledHeaderStaticLink>
+        <StyledHeaderStaticLink to="/discover">Discover</StyledHeaderStaticLink>
         <Button label="Donate" />
       </div>
     </StyledHeaderInner>

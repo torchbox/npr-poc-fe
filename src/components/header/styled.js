@@ -44,6 +44,27 @@ const StyledHeaderLink = styled(NavLink)`
     color: ${props => props.theme.colors.white};
   }
 
+  &:hover,
+  &:focus,
+  &.active {
+    color: ${props => props.theme.colors.green};
+  }
+`;
+
+const StyledHeaderStaticLink = styled.span`
+  margin: 0 30px 0 0;
+  font-size: 16px;
+  color: ${props => props.theme.colors.white};
+  font-weight: ${props => props.theme.fonts.bold};
+  text-decoration: none;
+
+  &::after {
+    content: "/";
+    display: inline-block;
+    margin-left: 30px;
+    color: ${props => props.theme.colors.white};
+  }
+
   &:last-of-type {
     &::after {
       display: none;
@@ -56,4 +77,4 @@ const StyledHeaderLink = styled(NavLink)`
   }
 `;
 
-export { StyledHeader, StyledHeaderInner, StyledHeaderLogo, StyledHeaderLink };
+export { StyledHeader, StyledHeaderInner, StyledHeaderLogo, StyledHeaderLink, StyledHeaderStaticLink };
