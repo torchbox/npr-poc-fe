@@ -18,15 +18,10 @@ const StyledEpisodeCardImage = styled(NavLink)`
   width: 55%;
   min-height: 220px;
   background-color: ${props => props.theme.colors.lightGrey};
-
-  ${props =>
-    props.bgImage &&
-    css`
-      background-image: url(${props => props.bgImage});
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center center;
-    `}
+  background-image: url(${props => props.bgImage || `/images/baseline_broken_image_black_18dp.png`} );
+  background-repeat: no-repeat;
+  background-size: ${props => props.bgImage ? 'cover' : '24px'};
+  background-position: center center;
 
   &:hover {
     opacity: 0.8;
