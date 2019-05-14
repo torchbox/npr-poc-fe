@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 
 import { PagesContext } from "../../context/pages";
-
-import { fetchPage } from "../../services";
 
 import {
   StyledPodcast,
@@ -29,30 +27,7 @@ import Filter from "../../components/filter";
 import FilterButton from "../../components/filter-button";
 
 const Podcast = ({ page }) => {
-  const [podcasts, setPodcasts] = useState(null);
-  const { pages } = useContext(PagesContext);
-
-  useEffect(() => {
-    let ignore = false;
-
-    async function fetchData() {
-      const podcasts = pages.filter(page => {
-        return page.meta.type === "podcasts.Episode";
-      });
-
-      const allPodcastData = await Promise.all(
-        podcasts.map(child => fetchPage(child.id))
-      );
-
-      if (!ignore) setPodcasts(allPodcastData);
-    }
-
-    fetchData();
-
-    return () => {
-      ignore = true;
-    };
-  }, [pages]);
+  const { episodes } = useContext(PagesContext);
 
   return (
     <>
@@ -69,21 +44,21 @@ const Podcast = ({ page }) => {
                 <h1>{page.title}</h1>
               </StyledPodcastHeroIntroTitle>
               <p>{page.subtitle}</p>
-              {podcasts && (
+              {episodes && (
                 <PlayCtaButton
-                  audioSrc={podcasts[0].enclosures[0].media.meta.file}
-                  name={`EPISODE ${podcasts[0].season_number}: ${
-                    podcasts[0].title
+                  audioSrc={episodes[0].enclosures[0].media.meta.file}
+                  name={`EPISODE ${episodes[0].season_number}: ${
+                    episodes[0].title
                   }`}
-                  trackId={podcasts[0].enclosures[0].id}
-                  trackName={podcasts[0].enclosures[0].media.title}
+                  trackId={episodes[0].enclosures[0].id}
+                  trackName={episodes[0].enclosures[0].media.title}
                 />
               )}
             </StyledPodcastHeroIntro>
           </StyledPodcastHero>
         </Hero>
 
-        {podcasts ? (
+        {episodes ? (
           <>
             <Tabs>
               <Tab
@@ -103,7 +78,7 @@ const Podcast = ({ page }) => {
             <StyledEpisodeCards>
               <StyledEpisodeCardsInner>
                 <StyledEpisodeCardGrid>
-                  {podcasts.map(podcast => (
+                  {episodes.map(podcast => (
                     <StyledEpisodeCard
                       key={podcast.id}
                       imageSrc={podcast.images[0].image.meta.download_url}

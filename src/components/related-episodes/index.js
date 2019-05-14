@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { PagesContext } from "../../context/pages";
 
-import { fetchPage } from "../../services";
-
 import { StyledRelated, StyledRelatedInner } from "./styled";
 
 import CardGrid from "../../components/card-grid";
@@ -12,31 +10,22 @@ import PlayCtaButton from "../../components/play-cta-button";
 
 export const RelatedEpisdoes = ({ currentId }) => {
   const [relatedEpisodes, setRelatedEpisodes] = useState(null);
-  const { pages } = useContext(PagesContext);
+  const { episodes } = useContext(PagesContext);
 
+  // Set related episodes
+  // When there are episodes to filter
   useEffect(() => {
-    let ignore = false;
-
-    async function fetchData() {
-      const episodes = pages.filter(page => {
+    if (episodes) {
+      const relatedPodcasts = episodes.filter(page => {
         return page.meta.type === "podcasts.Episode" && page.id !== currentId;
       });
 
-      const allPodcastData = await Promise.all(
-        episodes.map(child => fetchPage(child.id))
-      );
-
+      // Rudementary shuffle so the same two aren't always shown
       const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);
 
-      if (!ignore) setRelatedEpisodes(shuffleArray(allPodcastData).slice(0, 2));
+      setRelatedEpisodes(shuffleArray(relatedPodcasts).slice(0, 2));
     }
-
-    fetchData();
-
-    return () => {
-      ignore = true;
-    };
-  }, [currentId, pages]);
+  }, [currentId, episodes]);
 
   return (
     <StyledRelated>

@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 
-import { fetchPages } from "../services";
+import { fetchPages, fetchPage } from "../services";
 
 export const PagesContext = createContext();
 
@@ -9,7 +9,9 @@ export const PagesContext = createContext();
 
 export default ({ children }) => {
   const [pages, setPages] = useState(null);
+  const [episodes, setEpisodes] = useState(null);
 
+  // Get and set all pages
   useEffect(() => {
     let ignore = false;
 
@@ -26,10 +28,38 @@ export default ({ children }) => {
     };
   });
 
+  // Get and set all episodes
+  // When pages have been set
+  useEffect(() => {
+    let ignore = false;
+
+    async function fetchData() {
+      // Filter for pages that are podcast episodes
+      const episodes = pages.filter(page => {
+        return page.meta.type === "podcasts.Episode";
+      });
+
+      const allEpisodeData = await Promise.all(
+        episodes.map(child => fetchPage(child.id))
+      );
+
+      if (!ignore) setEpisodes(allEpisodeData);
+    }
+
+    if (pages) {
+      fetchData();
+    }
+
+    return () => {
+      ignore = true;
+    };
+  }, [pages]);
+
   return (
     <PagesContext.Provider
       value={{
-        pages
+        pages,
+        episodes,
       }}
     >
       {children}
