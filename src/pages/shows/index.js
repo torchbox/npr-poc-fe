@@ -50,8 +50,7 @@ const Shows = ({ page }) => {
         {shows ? (
           <>
             <Tabs>
-              <Tab label="All Shows" count="24" addBorder={true} />
-              <Tab label="New Shows" count="6" />
+              <Tab label="All Shows" count={shows.length} addBorder={true} />
             </Tabs>
             <Filter>
               <FilterButton isActive label="Newest" />

@@ -64,7 +64,7 @@ const Podcast = ({ page }) => {
             <Tabs>
               <Tab
                 label="Episodes"
-                count="32"
+                count={episodes.length}
                 to="/shows/10-things-scare-me"
                 addBorder={true}
               />
