@@ -6,7 +6,7 @@ const StyledRelated = styled.div`
 
 const StyledRelatedInner = styled.div`
   margin: 0 auto;
-  padding: 122px ${props => props.theme.grid.outerGutter} 100px;
+  padding: 40px ${props => props.theme.grid.outerGutter} 100px;
   max-width: ${props => props.theme.grid.maxWidth};
 
   h2 {

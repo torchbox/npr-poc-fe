@@ -10,8 +10,8 @@ const fetchPageWithSlug = (slug, type) =>
     .then(resp => resp.json())
     .then(resp => resp.items[0]);
 
-const fetchEpisodePages = id =>
-  fetch(`${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&child_of=${id}&fields=*`)
+const fetchEpisodePages = (id, limit = false) =>
+  fetch(`${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&child_of=${id}&fields=*${limit ? '&limit=6' : ''}`)
     .then(resp => resp.json())
     .then(resp => resp.items);
 

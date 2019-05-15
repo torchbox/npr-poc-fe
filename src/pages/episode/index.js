@@ -37,7 +37,10 @@ const Episode = ({ page }) => {
             </StyledEpisodeHeroIntroTitle>
           </StyledEpisodeHeroIntro>
           <StyledEpisodeHeroLinks>
-            <Tab label="All Episodes" to="/shows/10-things-scare-me" />
+            <Tab
+              label="All Episodes"
+              to={`shows/${page.meta.parent.meta.slug}`}
+            />
             <Tab
               label="Tell Us Your Fears"
               to={`shows/${page.meta.parent.meta.slug}`}
@@ -112,7 +115,7 @@ const Episode = ({ page }) => {
             )}
         </StyledEpisodeWrapperInner>
       </StyledEpisodeWrapper>
-      <RelatedEpisodes currentId={page.id} />
+      <RelatedEpisodes page={page} />
     </StyledEpisode>
   );
 };

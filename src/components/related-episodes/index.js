@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import moment from "moment";
 
-import { PagesContext } from "../../context/pages";
+import { fetchEpisodePages } from "../../services";
 
 import { StyledRelated, StyledRelatedInner } from "./styled";
 
@@ -9,39 +9,56 @@ import CardGrid from "../../components/card-grid";
 import EpisodeCard from "../../components/episode-card";
 import PlayCtaButton from "../../components/play-cta-button";
 
-export const RelatedEpisdoes = ({ currentId }) => {
+export const RelatedEpisdoes = ({ page }) => {
+
+  const episodeId = page.id;
+
+  const parentShowId = page.meta.parent.id;
+
   const [relatedEpisodes, setRelatedEpisodes] = useState(null);
-  const episodes = [];
 
-  // Set related episodes
-  // When there are episodes to filter
+  // Rudementary shuffle so the same two aren't always shown
+  const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);
+
   useEffect(() => {
-    if (episodes) {
-      const relatedPodcasts = episodes.filter(page => {
-        return page.meta.type === "podcasts.Episode" && page.id !== currentId;
-      });
+    let ignore = false;
 
-      // Rudementary shuffle so the same two aren't always shown
-      const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);
+    async function fetchData() {
+      if (!ignore) {
+        const episodes = await fetchEpisodePages(parentShowId, true);
 
-      setRelatedEpisodes(shuffleArray(relatedPodcasts).slice(0, 2));
+        const related = episodes.filter(page => {
+          return page.id !== episodeId;
+        });
+
+        const shuffledRelated = shuffleArray(related).slice(0, 2);
+
+        setRelatedEpisodes(shuffledRelated);
+      }
     }
-  }, [currentId, episodes]);
+
+    fetchData();
+
+
+    return () => {
+      ignore = true;
+    };
+  }, [parentShowId, episodeId]);
 
   return (
     <StyledRelated>
-      <StyledRelatedInner>
-        <h2>Also in this show</h2>
-        <CardGrid>
-          {relatedEpisodes &&
-            relatedEpisodes.map(podcast => (
+      {relatedEpisodes && (
+        <StyledRelatedInner>
+          <h2>Also in this show</h2>
+          <CardGrid>
+            {relatedEpisodes.map(podcast => (
               <EpisodeCard
                 key={podcast.id}
                 imageSrc={podcast.images[0].image_thumbnail.url}
                 title={podcast.title}
-                date={moment(podcast.date_created).format('LL')}
+                date={moment(podcast.date_created).format("LL")}
                 excerpt={podcast.subtitle}
-                url={`/episode/${podcast.meta.slug}`}
+                url={`/shows/${page.meta.parent.meta.slug}/${podcast.meta.slug}`}
               >
                 <PlayCtaButton
                   audioSrc={podcast.enclosures[0].media.meta.file}
@@ -52,8 +69,9 @@ export const RelatedEpisdoes = ({ currentId }) => {
                 />
               </EpisodeCard>
             ))}
-        </CardGrid>
-      </StyledRelatedInner>
+          </CardGrid>
+        </StyledRelatedInner>
+      )}
     </StyledRelated>
   );
 };

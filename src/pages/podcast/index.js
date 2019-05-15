@@ -53,10 +53,8 @@ const Podcast = ({ page }) => {
 
         setEpisodes(episodes);
 
-        const id = `show_${page.id}`;
-
         updateCache({
-          [id]: {
+          [cacheId]: {
             data: episodes
           }
         });
@@ -74,7 +72,7 @@ const Podcast = ({ page }) => {
     return () => {
       ignore = true;
     };
-  }, [page.id, episodesFromCache, episodes, setEpisodes, updateCache]);
+  }, [cacheId, page.id, episodesFromCache, episodes, setEpisodes, updateCache]);
 
   useEffect(() => {
     if (episodes && displayCount >= episodes.length) {

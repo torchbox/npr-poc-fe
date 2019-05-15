@@ -63,7 +63,7 @@ const StyledEpisodeWrapper = styled.div`
 
 const StyledEpisodeWrapperInner = styled.div`
   margin: 0 auto;
-  padding: 80px 0 0 0;
+  padding: 80px 0 80px 0;
   max-width: 800px;
 `;
 
