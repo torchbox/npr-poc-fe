@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+
+import { PagesContext } from "../../context/pages";
 
 import { fetchShows } from "../../services";
 
@@ -23,26 +25,40 @@ import Tab from "../../components/tab";
 import Filter from "../../components/filter";
 import FilterButton from "../../components/filter-button";
 
-const Shows = ({ page }) => {
+const Shows = () => {
+  const { cache, updateCache } = useContext(PagesContext);
+
+  const showsFromCache = cache["shows"] ? cache["shows"].data : [];
+
   const [shows, setShows] = useState(null);
 
   useEffect(() => {
     let ignore = false;
 
     async function fetchData() {
-      if (!ignore && shows === null) {
+      if (!ignore) {
         const shows = await fetchShows();
 
         setShows(shows);
+
+        updateCache({
+          shows: {
+            data: shows
+          }
+        });
       }
     }
 
-    fetchData();
+    if (showsFromCache.length === 0 && shows === null) {
+      fetchData();
+    } else if (showsFromCache.length) {
+      setShows(showsFromCache);
+    }
 
     return () => {
       ignore = true;
     };
-  });
+  }, [showsFromCache, shows, updateCache]);
 
   return (
     <>

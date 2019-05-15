@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import moment from "moment";
+
+import { PagesContext } from "../../context/pages";
 
 import { fetchEpisodePages } from "../../services";
 
@@ -30,6 +32,12 @@ import FilterButton from "../../components/filter-button";
 const Podcast = ({ page }) => {
   const displayLimit = 6;
 
+  const { cache, updateCache } = useContext(PagesContext);
+
+  const cacheId = `show_${page.id}`;
+
+  const episodesFromCache = cache[cacheId] ? cache[cacheId].data : [];
+
   const [episodes, setEpisodes] = useState(null);
 
   const [loadMore, setLoadMore] = useState(true);
@@ -40,19 +48,33 @@ const Podcast = ({ page }) => {
     let ignore = false;
 
     async function fetchData() {
-      if (!ignore && episodes === null) {
+      if (!ignore) {
         const episodes = await fetchEpisodePages(page.id);
 
         setEpisodes(episodes);
+
+        const id = `show_${page.id}`;
+
+        updateCache({
+          [id]: {
+            data: episodes
+          }
+        });
       }
     }
 
-    fetchData();
+    if (episodesFromCache.length === 0 && episodes === null) {
+      // No cache, and no episodes so make request
+      fetchData();
+    } else if (episodesFromCache.length) {
+      // Get the episodes from the cache
+      setEpisodes(episodesFromCache);
+    }
 
     return () => {
       ignore = true;
     };
-  });
+  }, [page.id, episodesFromCache, episodes, setEpisodes, updateCache]);
 
   useEffect(() => {
     if (episodes && displayCount >= episodes.length) {
@@ -114,26 +136,25 @@ const Podcast = ({ page }) => {
               <StyledEpisodeCardsInner>
                 <StyledEpisodeCardGrid>
                   {episodes.map((episode, index) => {
-                      return (
-                        <StyledEpisodeCard
-                          key={episode.id}
-                          imageSrc={episode.images[0].image_thumbnail.url}
-                          title={episode.title}
-                          date={moment(episode.date_created).format("LL")}
-                          excerpt={episode.subtitle}
-                          url={`${page.meta.slug}/${episode.meta.slug}`}
-                          hidden={!(index < displayCount)}
-                        >
-                          <PlayCtaButton
-                            audioSrc={episode.enclosures[0].media.meta.file}
-                            name={`Episode ${episode.season_number}`}
-                            trackId={episode.enclosures[0].id}
-                            trackName={episode.enclosures[0].media.title}
-                            type="white"
-                          />
-                        </StyledEpisodeCard>
-                      );
-
+                    return (
+                      <StyledEpisodeCard
+                        key={episode.id}
+                        imageSrc={episode.images[0].image_thumbnail.url}
+                        title={episode.title}
+                        date={moment(episode.date_created).format("LL")}
+                        excerpt={episode.subtitle}
+                        url={`${page.meta.slug}/${episode.meta.slug}`}
+                        hidden={!(index < displayCount)}
+                      >
+                        <PlayCtaButton
+                          audioSrc={episode.enclosures[0].media.meta.file}
+                          name={`Episode ${episode.season_number}`}
+                          trackId={episode.enclosures[0].id}
+                          trackName={episode.enclosures[0].media.title}
+                          type="white"
+                        />
+                      </StyledEpisodeCard>
+                    );
                   })}
                 </StyledEpisodeCardGrid>
               </StyledEpisodeCardsInner>

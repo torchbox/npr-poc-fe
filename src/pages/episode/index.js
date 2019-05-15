@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
-
-import { PagesContext } from "../../context/pages";
+import React from "react";
 
 import {
   StyledEpisode,

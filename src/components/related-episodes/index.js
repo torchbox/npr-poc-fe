@@ -11,7 +11,7 @@ import PlayCtaButton from "../../components/play-cta-button";
 
 export const RelatedEpisdoes = ({ currentId }) => {
   const [relatedEpisodes, setRelatedEpisodes] = useState(null);
-  const { episodes } = useContext(PagesContext);
+  const episodes = [];
 
   // Set related episodes
   // When there are episodes to filter
