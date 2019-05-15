@@ -7,17 +7,18 @@ import {
   StyledDonationStripLinks
 } from "./styled";
 
-const DonationStrip = () => {
+const DonationStrip =
+() => {
   return (
     <StyledDonationStrip>
       <StyledDonationStripInner>
-        <p>We’re a charity, and can only continue to run with your help… </p>
+        <p>Your gift will help keep Torchbox Public Radio on air…</p>
         <StyledDonationStripLinks>
-          <StyledDonationStripLink to="about">
-            About Torchbox Radio
-          </StyledDonationStripLink>
           <StyledDonationStripLink to="donation">
             Make a donation
+          </StyledDonationStripLink>
+          <StyledDonationStripLink to="about">
+            About Torchbox Radio
           </StyledDonationStripLink>
         </StyledDonationStripLinks>
       </StyledDonationStripInner>
