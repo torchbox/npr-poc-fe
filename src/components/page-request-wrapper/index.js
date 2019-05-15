@@ -1,8 +1,10 @@
-import React, { Children, useState, useEffect } from "react";
+import React, { Children, useState, useEffect, useContext } from "react";
 
 import { PAGE_TYPE_EPISODE, PAGE_TYPE_SHOW } from "../../common/consts";
 
 import { fetchPagePreview, fetchPageWithSlug } from "../../services";
+
+import { LoaderContext } from "../../context/loader";
 
 // Makes request to API for page by ID, then renders the child page component
 // and passed page data to it
@@ -18,6 +20,8 @@ const PageRequestWrapper = ({
   }
 }) => {
   const [data, setData] = useState(null);
+
+  const { setPageLoading } = useContext(LoaderContext);
 
   // https://reactjs.org/docs/hooks-faq.html#how-can-i-do-data-fetching-with-hooks
   useEffect(() => {
@@ -40,6 +44,8 @@ const PageRequestWrapper = ({
 
         if (!ignore) setData(response);
       } else {
+        setPageLoading(true);
+
         let page = await fetchPageWithSlug(pageSlug, type);
 
         // Get the parent page data if it's an episode
@@ -58,6 +64,10 @@ const PageRequestWrapper = ({
         if (!ignore) {
           setData(page);
         }
+
+        setTimeout(() => {
+          setPageLoading(false);
+        }, 3500);
       }
     }
 
@@ -66,7 +76,7 @@ const PageRequestWrapper = ({
     return () => {
       ignore = true;
     };
-  }, [preview, queryParams, pageSlug, type, showSlug]);
+  }, [preview, queryParams, pageSlug, type, showSlug, setPageLoading]);
 
   return (
     <div>

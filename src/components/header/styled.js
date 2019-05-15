@@ -7,7 +7,7 @@ const StyledHeader = styled.nav`
   width: 100%;
   background: ${props =>
     props.theme.colors.black && rgba(props.theme.colors.black, 0.5)};
-  z-index: 1;
+  z-index: 3;
 `;
 
 const StyledHeaderInner = styled.div`

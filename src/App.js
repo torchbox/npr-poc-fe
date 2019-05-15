@@ -8,6 +8,7 @@ import "./styles/global.css";
 
 import PlayerContextProvider from "./context/player";
 import PagesContextProvider from "./context/pages";
+import LoaderContextProvider from "./context/loader";
 
 import { PAGE_TYPE_SHOW, PAGE_TYPE_EPISODE } from "./common/consts";
 
@@ -21,6 +22,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import Player from "./components/player";
 import ScrollToTop from "./components/scroll-to-top";
+import Loader from "./components/loader";
 
 import PageRequestWrapper from "./components/page-request-wrapper";
 
@@ -34,73 +36,78 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
-        <PagesContextProvider>
-          <PlayerContextProvider>
-            <Main>
-              <Router>
-                <ScrollToTop>
-                  <Header />
-                  <Route path="/" exact component={Home} />
+        <LoaderContextProvider>
+          <PagesContextProvider>
+            <PlayerContextProvider>
+              <Main>
+                <Router>
+                  <ScrollToTop>
+                    <Header />
 
-                  <Route
-                    path="/shows/:show/:slug"
-                    exact
-                    render={props => (
-                      <PageRequestWrapper type={PAGE_TYPE_EPISODE} {...props}>
-                        <Episode />
-                      </PageRequestWrapper>
-                    )}
-                  />
-                  <Route
-                    path="/shows/:slug"
-                    exact
-                    render={props => (
-                      <PageRequestWrapper type={PAGE_TYPE_SHOW} {...props}>
-                        <Podcast />
-                      </PageRequestWrapper>
-                    )}
-                  />
+                    <Loader />
 
-                  <Route path="/shows/" exact component={Shows} />
+                    <Route path="/" exact component={Home} />
 
-                  {/* Preview Routes */}
-
-                  <Route
-                    path="/preview"
-                    render={props => {
-                      const queryString = props.location.search || false;
-
-                      if (
-                        !queryString ||
-                        !queryString.includes("content_type") ||
-                        !queryString.includes("token")
-                      ) {
-                        return null;
-                      }
-
-                      const previewEpisode = queryString.includes(
-                        "content_type=podcasts.episode"
-                      );
-
-                      return (
-                        <PageRequestWrapper {...props} preview>
-                          {previewEpisode ? <Episode /> : <Podcast />}
+                    <Route
+                      path="/shows/:show/:slug"
+                      exact
+                      render={props => (
+                        <PageRequestWrapper type={PAGE_TYPE_EPISODE} {...props}>
+                          <Episode />
                         </PageRequestWrapper>
-                      );
-                    }}
-                  />
+                      )}
+                    />
+                    <Route
+                      path="/shows/:slug"
+                      exact
+                      render={props => (
+                        <PageRequestWrapper type={PAGE_TYPE_SHOW} {...props}>
+                          <Podcast />
+                        </PageRequestWrapper>
+                      )}
+                    />
 
-                  <Observer onChange={footerObserverChange}>
-                    <div>
-                      <Footer />
-                    </div>
-                  </Observer>
-                </ScrollToTop>
-              </Router>
-              <Player stickToFooter={footerVisible} />
-            </Main>
-          </PlayerContextProvider>
-        </PagesContextProvider>
+                    <Route path="/shows/" exact component={Shows} />
+
+                    {/* Preview Routes */}
+
+                    <Route
+                      path="/preview"
+                      render={props => {
+                        const queryString = props.location.search || false;
+
+                        if (
+                          !queryString ||
+                          !queryString.includes("content_type") ||
+                          !queryString.includes("token")
+                        ) {
+                          return null;
+                        }
+
+                        const previewEpisode = queryString.includes(
+                          "content_type=podcasts.episode"
+                        );
+
+                        return (
+                          <PageRequestWrapper {...props} preview>
+                            {previewEpisode ? <Episode /> : <Podcast />}
+                          </PageRequestWrapper>
+                        );
+                      }}
+                    />
+
+                    <Observer onChange={footerObserverChange}>
+                      <div>
+                        <Footer />
+                      </div>
+                    </Observer>
+                  </ScrollToTop>
+                </Router>
+                <Player stickToFooter={footerVisible} />
+              </Main>
+            </PlayerContextProvider>
+          </PagesContextProvider>
+        </LoaderContextProvider>
       </>
     </ThemeProvider>
   );
