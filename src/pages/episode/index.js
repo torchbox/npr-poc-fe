@@ -39,13 +39,9 @@ const Episode = ({ page }) => {
           <StyledEpisodeHeroLinks>
             <Tab
               label="All Episodes"
-              to={`shows/${page.meta.parent.meta.slug}`}
+              to={`/shows/${page.meta.parent.meta.slug}`}
             />
-            <Tab
-              label="Tell Us Your Fears"
-              to={`shows/${page.meta.parent.meta.slug}`}
-            />
-            <Tab label="Team" to={`shows/${page.meta.parent.meta.slug}`} />
+            <Tab label="Team" to={`/shows/${page.meta.parent.meta.slug}`} />
           </StyledEpisodeHeroLinks>
         </StyledEpisodeHero>
       </Hero>

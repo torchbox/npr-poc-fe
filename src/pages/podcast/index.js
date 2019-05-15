@@ -118,11 +118,6 @@ const Podcast = ({ page }) => {
                 to="/shows/10-things-scare-me"
                 addBorder={true}
               />
-              <Tab
-                label="Tell Us Your Fears"
-                to="/shows/10-things-scare-me"
-                to="/"
-              />
               <Tab label="Team" to="/shows/10-things-scare-me" to="/" />
             </Tabs>
             <Filter>
