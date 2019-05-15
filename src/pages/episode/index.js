@@ -89,8 +89,8 @@ const Episode = ({ page }) => {
             page.images.map(
               ({
                 id,
-                image: {
-                  meta: { download_url: imageUrl }
+                image_thumbnail: {
+                  url: imageUrl
                 }
               }) => <StyledEpisodeImage key={id} src={imageUrl} />
             )}

@@ -37,7 +37,7 @@ export const RelatedEpisdoes = ({ currentId }) => {
             relatedEpisodes.map(podcast => (
               <EpisodeCard
                 key={podcast.id}
-                imageSrc={podcast.images[0].image.meta.download_url}
+                imageSrc={podcast.images[0].image_thumbnail.url}
                 title={podcast.title}
                 date={moment(podcast.date_created).format('LL')}
                 excerpt={podcast.subtitle}

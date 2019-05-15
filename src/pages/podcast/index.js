@@ -96,7 +96,7 @@ const Podcast = ({ page }) => {
                       return (
                         <StyledEpisodeCard
                           key={episode.id}
-                          imageSrc={episode.images[0].image.meta.download_url}
+                          imageSrc={episode.images[0].image_thumbnail.url}
                           title={episode.title}
                           date={moment(episode.date_created).format("LL")}
                           excerpt={episode.subtitle}
