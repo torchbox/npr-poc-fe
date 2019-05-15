@@ -46,8 +46,8 @@ const Episode = ({ page }) => {
               count={episodes && episodes.length}
               to="/shows/10-things-scare-me"
             />
-            <Tab label="Tell Us Your Fears" to="/shows/10-things-scare-me" />
-            <Tab label="Team" to="/shows/10-things-scare-me" />
+            <Tab label="Tell Us Your Fears" to="/shows/10-things-scare-me" to="/" />
+            <Tab label="Team" to="/shows/10-things-scare-me" to="/" />
           </StyledEpisodeHeroLinks>
         </StyledEpisodeHero>
       </Hero>

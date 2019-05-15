@@ -19,7 +19,7 @@ const StyledPlayer = styled.div`
 const StyledPlayerInner = styled.div`
   display: flex;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px 120px 20px 0;
   background: ${props => props.theme.colors.purple};
   color: ${props => props.theme.colors.white};
   transform: translateY(100%);
@@ -122,6 +122,14 @@ const StyledPlayerTrackCurrent = styled.div`
 
 const StyledPlayerTrackName = styled.div``;
 
+const StyledPlayerTrackTime = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-6px);
+`;
+
+
 export {
   StyledPlayer,
   StyledPlayerInner,
@@ -135,5 +143,6 @@ export {
   StyledPlayerTrackName,
   StyledVolumeButton,
   StyledSliderContainer,
-  StyledPlayerEq
+  StyledPlayerEq,
+  StyledPlayerTrackTime
 };

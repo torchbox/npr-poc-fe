@@ -17,7 +17,6 @@ import {
 } from "./styled";
 
 import Hero from "../../components/hero";
-import PlayCtaButton from "../../components/play-cta-button";
 import CardGrid from "../../components/card-grid";
 import StoryCard from "../../components/story-card";
 import Tabs from "../../components/tabs";
@@ -50,7 +49,7 @@ const Shows = ({ page }) => {
         {shows ? (
           <>
             <Tabs>
-              <Tab label="All Shows" count={shows.length} addBorder={true} />
+              <Tab label="All Shows" count={shows.length} addBorder={true} to="/" />
             </Tabs>
             <Filter>
               <FilterButton isActive label="Newest" />

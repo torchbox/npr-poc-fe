@@ -17,7 +17,8 @@ import {
   StyledPlayerTrackName,
   StyledVolumeButton,
   StyledSliderContainer,
-  StyledPlayerEq
+  StyledPlayerEq,
+  StyledPlayerTrackTime
 } from "./styled";
 
 import Audio from "../audio";
@@ -97,7 +98,8 @@ const Player = ({ stickToFooter }) => {
             <StyledPlayerTrackCurrent>
               Currently Playing
             </StyledPlayerTrackCurrent>
-            <StyledPlayerTrackName>{playingTrackName} ({currentTime} / {audioDuration})</StyledPlayerTrackName>
+            <StyledPlayerTrackName>{playingTrackName} </StyledPlayerTrackName>
+            <StyledPlayerTrackTime>{currentTime} / {audioDuration}</StyledPlayerTrackTime>
           </StyledPlayerTrackText>
         </StyledPlayerTrack>
       </StyledPlayerInner>

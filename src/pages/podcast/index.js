@@ -80,8 +80,8 @@ const Podcast = ({ page }) => {
                 to="/shows/10-things-scare-me"
                 addBorder={true}
               />
-              <Tab label="Tell Us Your Fears" to="/shows/10-things-scare-me" />
-              <Tab label="Team" to="/shows/10-things-scare-me" />
+              <Tab label="Tell Us Your Fears" to="/shows/10-things-scare-me" to="/" />
+              <Tab label="Team" to="/shows/10-things-scare-me" to="/" />
             </Tabs>
             <Filter>
               <FilterButton isActive label="Most Recent" />
@@ -96,7 +96,7 @@ const Podcast = ({ page }) => {
                       return (
                         <StyledEpisodeCard
                           key={episode.id}
-                          imageSrc={episode.images[0].image_thumbnail.url}
+                            imageSrc={episode.images[0].image_thumbnail.url}
                           title={episode.title}
                           date={moment(episode.date_created).format("LL")}
                           excerpt={episode.subtitle}
