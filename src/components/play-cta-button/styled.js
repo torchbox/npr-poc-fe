@@ -9,6 +9,7 @@ const StyledPlayCtaButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  flex-shrink: 0;
 
   svg {
     position: absolute;
