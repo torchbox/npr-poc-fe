@@ -9,6 +9,8 @@ import "./styles/global.css";
 import PlayerContextProvider from "./context/player";
 import PagesContextProvider from "./context/pages";
 
+import { PAGE_TYPE_SHOW, PAGE_TYPE_EPISODE } from "./common/consts";
+
 import Home from "./pages/home";
 import Episode from "./pages/episode";
 import Podcast from "./pages/podcast";
@@ -39,23 +41,27 @@ const App = () => {
                 <ScrollToTop>
                   <Header />
                   <Route path="/" exact component={Home} />
-                  <Route path="/shows/" exact component={Shows} />
+
                   <Route
-                    path="/shows/:slug"
+                    path="/shows/:show/:slug"
+                    exact
                     render={props => (
-                      <PageRequestWrapper {...props}>
-                        <Podcast />
-                      </PageRequestWrapper>
-                    )}
-                  />
-                  <Route
-                    path="/episode/:slug"
-                    render={props => (
-                      <PageRequestWrapper {...props}>
+                      <PageRequestWrapper type={PAGE_TYPE_EPISODE} {...props}>
                         <Episode />
                       </PageRequestWrapper>
                     )}
                   />
+                  <Route
+                    path="/shows/:slug"
+                    exact
+                    render={props => (
+                      <PageRequestWrapper type={PAGE_TYPE_SHOW} {...props}>
+                        <Podcast />
+                      </PageRequestWrapper>
+                    )}
+                  />
+
+                  <Route path="/shows/" exact component={Shows} />
 
                   {/* Preview Routes */}
 

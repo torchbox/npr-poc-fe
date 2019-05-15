@@ -24,8 +24,6 @@ import Tab from "../../components/tab";
 import RelatedEpisodes from "../../components/related-episodes";
 
 const Episode = ({ page }) => {
-  const { episodes } = useContext(PagesContext);
-
   return (
     <StyledEpisode>
       <Hero
@@ -41,13 +39,12 @@ const Episode = ({ page }) => {
             </StyledEpisodeHeroIntroTitle>
           </StyledEpisodeHeroIntro>
           <StyledEpisodeHeroLinks>
+            <Tab label="All Episodes" to="/shows/10-things-scare-me" />
             <Tab
-              label="Episodes"
-              count={episodes && episodes.length}
-              to="/shows/10-things-scare-me"
+              label="Tell Us Your Fears"
+              to={`shows/${page.meta.parent.meta.slug}`}
             />
-            <Tab label="Tell Us Your Fears" to="/shows/10-things-scare-me" to="/" />
-            <Tab label="Team" to="/shows/10-things-scare-me" to="/" />
+            <Tab label="Team" to={`shows/${page.meta.parent.meta.slug}`} />
           </StyledEpisodeHeroLinks>
         </StyledEpisodeHero>
       </Hero>
@@ -86,14 +83,9 @@ const Episode = ({ page }) => {
           </StyledEpisodeIntro>
           {page.images &&
             page.images.length > 0 &&
-            page.images.map(
-              ({
-                id,
-                image_thumbnail: {
-                  url: imageUrl
-                }
-              }) => <StyledEpisodeImage key={id} src={imageUrl} />
-            )}
+            page.images.map(({ id, image_thumbnail: { url: imageUrl } }) => (
+              <StyledEpisodeImage key={id} src={imageUrl} />
+            ))}
 
           <StyledEpisodeRte
             dangerouslySetInnerHTML={{ __html: page.description }}

@@ -1,27 +1,25 @@
-import React, { Children, useState, useEffect, useContext } from "react";
+import React, { Children, useState, useEffect } from "react";
 
-import { PagesContext } from "../../context/pages";
+import { PAGE_TYPE_EPISODE, PAGE_TYPE_SHOW } from "../../common/consts";
 
-import { fetchPage, fetchPagePreview } from "../../services";
-
-// Based on:
-// https://reactjs.org/docs/hooks-faq.html#how-can-i-do-data-fetching-with-hooks
+import { fetchPagePreview, fetchPageWithSlug } from "../../services";
 
 // Makes request to API for page by ID, then renders the child page component
 // and passed page data to it
 
 const PageRequestWrapper = ({
+  type,
   children,
   preview,
   location: { search: queryParams },
   match: {
     params,
-    params: { slug: pageSlug }
+    params: { slug: pageSlug, show: showSlug }
   }
 }) => {
   const [data, setData] = useState(null);
-  const { pages } = useContext(PagesContext);
 
+  // https://reactjs.org/docs/hooks-faq.html#how-can-i-do-data-fetching-with-hooks
   useEffect(() => {
     let ignore = false;
 
@@ -31,22 +29,35 @@ const PageRequestWrapper = ({
         let hashes = queryParams.slice(queryParams.indexOf("?") + 1).split("&");
 
         const decodedString = hashes.reduce((curr, acc) => {
-
           let [key, val] = curr.split("=");
 
-          const string = `&${key}=${decodeURIComponent(val)}`
+          const string = `&${key}=${decodeURIComponent(val)}`;
 
           return key ? `${acc}${string}` : acc;
-        }, '');
+        }, "");
 
         const response = await fetchPagePreview(decodedString);
 
         if (!ignore) setData(response);
+      } else {
+        let page = await fetchPageWithSlug(pageSlug, type);
 
-      } else if (pages !== null) {
-        const [page] = pages.filter(page => page.meta.slug === pageSlug);
-        const response = await fetchPage(page.id);
-        if (!ignore) setData(response);
+        // Get the parent page data if it's an episode
+        if (type === PAGE_TYPE_EPISODE) {
+          const parent = await fetchPageWithSlug(showSlug, PAGE_TYPE_SHOW);
+
+          page = {
+            ...page,
+            meta: {
+              ...page.meta,
+              parent
+            }
+          };
+        }
+
+        if (!ignore) {
+          setData(page);
+        }
       }
     }
 
@@ -55,7 +66,7 @@ const PageRequestWrapper = ({
     return () => {
       ignore = true;
     };
-  }, [preview, queryParams, pageSlug, pages]);
+  }, [preview, queryParams, pageSlug, type, showSlug]);
 
   return (
     <div>

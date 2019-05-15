@@ -1,18 +1,33 @@
-import { PAGES_API_URL, PAGES_PREVIEW_API_URL } from "../common/consts";
+import {
+  PAGES_API_URL,
+  PAGES_PREVIEW_API_URL,
+  PAGE_TYPE_EPISODE,
+  PAGE_TYPE_SHOW
+} from "../common/consts";
 
-const fetchPage = id =>
-  fetch(`${PAGES_API_URL}/${id}`)
+const fetchPageWithSlug = (slug, type) =>
+  fetch(`${PAGES_API_URL}/?type=${type}&slug=${slug}&fields=*`)
     .then(resp => resp.json())
-    .then(resp => resp);
+    .then(resp => resp.items[0]);
+
+const fetchEpisodePages = id =>
+  fetch(`${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&child_of=${id}&fields=*`)
+    .then(resp => resp.json())
+    .then(resp => resp.items);
 
 const fetchPagePreview = decodedString =>
-    fetch(`${PAGES_PREVIEW_API_URL}/?${decodedString}&format=json`)
-      .then(resp => resp.json())
-      .then(resp => resp);
-
-const fetchPages = () =>
-  fetch(`${PAGES_API_URL}/`)
+  fetch(`${PAGES_PREVIEW_API_URL}/?${decodedString}&format=json`)
     .then(resp => resp.json())
     .then(resp => resp);
 
-export { fetchPage, fetchPagePreview, fetchPages };
+const fetchShows = () =>
+  fetch(`${PAGES_API_URL}?type=${PAGE_TYPE_SHOW}&fields=*`)
+    .then(resp => resp.json())
+    .then(resp => resp.items);
+
+export {
+  fetchPagePreview,
+  fetchShows,
+  fetchPageWithSlug,
+  fetchEpisodePages,
+};

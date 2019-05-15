@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const StyledEpisodeCard = styled.div`
-  display: flex;
+  display: ${props => props.hidden ? 'none' : 'flex'};
   background: ${props => props.theme.colors.white};
 `;
 

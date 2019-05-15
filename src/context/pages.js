@@ -1,7 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
 
-import { fetchPages, fetchPage } from "../services";
-
 export const PagesContext = createContext();
 
 // Based on:
@@ -12,69 +10,20 @@ export default ({ children }) => {
   const [episodes, setEpisodes] = useState(null);
   const [shows, setShows] = useState(null);
 
-  // Get and set all pages
-  useEffect(() => {
-    let ignore = false;
+  // useEffect(() => {
+  //   let ignore = false;
 
-    async function fetchData() {
-      const { items } = await fetchPages();
+  //   async function fetchData() {
+  //
+  //     if (!ignore) {
+  //
+  //     }
+  //   }
 
-      if (!ignore && pages === null) setPages(items);
-    }
-
-    fetchData();
-
-    return () => {
-      ignore = true;
-    };
-  });
-
-  // Get and set all episodes
-  // When pages have been set
-  useEffect(() => {
-    let ignore = false;
-
-    async function fetchData() {
-      // Filter for pages that are podcast episodes
-      const episodes = pages.filter(page => {
-        return page.meta.type === "podcasts.Episode";
-      });
-
-      // Filter for pages that are shows
-      const shows = pages.filter(page => {
-        return page.meta.type === "podcasts.Show";
-      });
-
-      // Request full page data for each episode
-      const allEpisodeData = await Promise.all(
-        episodes.map(child => fetchPage(child.id))
-      );
-
-      // Request full page data for each show
-      const allShowsData = await Promise.all(
-        shows.map(child => fetchPage(child.id))
-      );
-
-      if (!ignore) {
-        setEpisodes(allEpisodeData);
-        setShows(allShowsData);
-      }
-    }
-
-    if (pages) {
-      fetchData();
-    }
-
-    return () => {
-      ignore = true;
-    };
-  }, [pages]);
-
-  console.log({
-    pages,
-    episodes,
-    shows
-  });
+  //   return () => {
+  //     ignore = true;
+  //   };
+  // });
 
   return (
     <PagesContext.Provider

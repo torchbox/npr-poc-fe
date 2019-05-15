@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 
-import { PagesContext } from "../../context/pages";
+import { fetchEpisodePages } from "../../services";
 
 import {
   StyledPodcast,
@@ -28,13 +28,31 @@ import Filter from "../../components/filter";
 import FilterButton from "../../components/filter-button";
 
 const Podcast = ({ page }) => {
-  const { episodes } = useContext(PagesContext);
-
   const displayLimit = 6;
+
+  const [episodes, setEpisodes] = useState(null);
 
   const [loadMore, setLoadMore] = useState(true);
 
   const [displayCount, setDisplayCount] = useState(displayLimit);
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function fetchData() {
+      if (!ignore && episodes === null) {
+        const episodes = await fetchEpisodePages(page.id);
+
+        setEpisodes(episodes);
+      }
+    }
+
+    fetchData();
+
+    return () => {
+      ignore = true;
+    };
+  });
 
   useEffect(() => {
     if (episodes && displayCount >= episodes.length) {
@@ -80,7 +98,11 @@ const Podcast = ({ page }) => {
                 to="/shows/10-things-scare-me"
                 addBorder={true}
               />
-              <Tab label="Tell Us Your Fears" to="/shows/10-things-scare-me" to="/" />
+              <Tab
+                label="Tell Us Your Fears"
+                to="/shows/10-things-scare-me"
+                to="/"
+              />
               <Tab label="Team" to="/shows/10-things-scare-me" to="/" />
             </Tabs>
             <Filter>
@@ -92,15 +114,15 @@ const Podcast = ({ page }) => {
               <StyledEpisodeCardsInner>
                 <StyledEpisodeCardGrid>
                   {episodes.map((episode, index) => {
-                    if (index < displayCount) {
                       return (
                         <StyledEpisodeCard
                           key={episode.id}
-                            imageSrc={episode.images[0].image_thumbnail.url}
+                          imageSrc={episode.images[0].image_thumbnail.url}
                           title={episode.title}
                           date={moment(episode.date_created).format("LL")}
                           excerpt={episode.subtitle}
-                          url={`/episode/${episode.meta.slug}`}
+                          url={`${page.meta.slug}/${episode.meta.slug}`}
+                          hidden={!(index < displayCount)}
                         >
                           <PlayCtaButton
                             audioSrc={episode.enclosures[0].media.meta.file}
@@ -111,8 +133,7 @@ const Podcast = ({ page }) => {
                           />
                         </StyledEpisodeCard>
                       );
-                    }
-                    return null;
+
                   })}
                 </StyledEpisodeCardGrid>
               </StyledEpisodeCardsInner>

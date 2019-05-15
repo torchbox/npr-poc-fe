@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
-import moment from "moment";
+import React, { useEffect, useState } from "react";
 
-import { PagesContext } from "../../context/pages";
+import { fetchShows } from "../../services";
 
 import {
   StyledShows,
@@ -25,7 +24,25 @@ import Filter from "../../components/filter";
 import FilterButton from "../../components/filter-button";
 
 const Shows = ({ page }) => {
-  const { shows } = useContext(PagesContext);
+  const [shows, setShows] = useState(null);
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function fetchData() {
+      if (!ignore && shows === null) {
+        const shows = await fetchShows();
+
+        setShows(shows);
+      }
+    }
+
+    fetchData();
+
+    return () => {
+      ignore = true;
+    };
+  });
 
   return (
     <>
@@ -49,7 +66,12 @@ const Shows = ({ page }) => {
         {shows ? (
           <>
             <Tabs>
-              <Tab label="All Shows" count={shows.length} addBorder={true} to="/" />
+              <Tab
+                label="All Shows"
+                count={shows.length}
+                addBorder={true}
+                to="/"
+              />
             </Tabs>
             <Filter>
               <FilterButton isActive label="Newest" />
@@ -61,9 +83,8 @@ const Shows = ({ page }) => {
                   {shows.map(show => (
                     <StyledEpisodeCard
                       key={show.id}
-                      imageSrc={""}
+                      imageSrc={show.images[0].image_thumbnail.url}
                       title={show.title}
-                      date={moment(show.date_created).format("LL")}
                       excerpt={show.subtitle}
                       url={`/shows/${show.meta.slug}`}
                     />
