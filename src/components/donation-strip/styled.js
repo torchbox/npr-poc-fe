@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const StyledDonationStrip = styled.div`
@@ -18,13 +18,18 @@ const StyledDonationStripInner = styled.div`
   background: ${props => props.theme.colors.coral};
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     right: 100%;
     height: 100%;
     width: 100vw;
     background: ${props => props.theme.colors.coral};
+
+    ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
+    css`
+      background: #25408f;
+    `}
   }
 
   p {
@@ -33,6 +38,11 @@ const StyledDonationStripInner = styled.div`
     line-height: 1.2;
     font-weight: ${props => props.theme.fonts.light};
   }
+
+  ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
+    css`
+      background: #25408f;
+    `}
 `;
 
 const StyledDonationStripLinks = styled.div``;

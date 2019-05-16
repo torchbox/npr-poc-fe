@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const StyledButton = styled.button`
   padding: 7px 25px;
@@ -12,6 +12,11 @@ const StyledButton = styled.button`
   &:hover {
     cursor: pointer;
   }
-`
+
+  ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
+    css`
+      background: #9d3393;
+    `}
+`;
 
 export default StyledButton;

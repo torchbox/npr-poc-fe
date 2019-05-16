@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
 import { rgba } from "polished";
 
@@ -8,6 +8,12 @@ const StyledHeader = styled.nav`
   background: ${props =>
     props.theme.colors.black && rgba(props.theme.colors.black, 0.5)};
   z-index: 3;
+
+  ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
+    css`
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    `}
 `;
 
 const StyledHeaderInner = styled.div`
@@ -42,6 +48,11 @@ const StyledHeaderLink = styled(NavLink)`
     display: inline-block;
     margin-left: 30px;
     color: ${props => props.theme.colors.white};
+
+    ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
+      css`
+        display: none;
+      `}
   }
 
   &:hover,
@@ -49,6 +60,17 @@ const StyledHeaderLink = styled(NavLink)`
   &.active {
     color: ${props => props.theme.colors.green};
   }
+
+  ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
+    css`
+      color: #25408f;
+
+      &:hover,
+      &:focus,
+      &.active {
+        color: #f15822;
+      }
+    `}
 `;
 
 const StyledHeaderStaticLink = styled.span`
@@ -63,6 +85,11 @@ const StyledHeaderStaticLink = styled.span`
     display: inline-block;
     margin-left: 30px;
     color: ${props => props.theme.colors.white};
+
+    ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
+      css`
+        display: none;
+      `}
   }
 
   &:last-of-type {
@@ -75,6 +102,23 @@ const StyledHeaderStaticLink = styled.span`
   &.active {
     color: ${props => props.theme.colors.green};
   }
+
+  ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
+    css`
+      color: #25408f;
+
+      &:hover,
+      &:focus,
+      &.active {
+        color: #f15822;
+      }
+    `}
 `;
 
-export { StyledHeader, StyledHeaderInner, StyledHeaderLogo, StyledHeaderLink, StyledHeaderStaticLink };
+export {
+  StyledHeader,
+  StyledHeaderInner,
+  StyledHeaderLogo,
+  StyledHeaderLink,
+  StyledHeaderStaticLink
+};

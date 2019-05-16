@@ -33,6 +33,11 @@ const StyledPlayerInner = styled.div`
       transform: translateY(0);
       opacity: 1;
     `}
+
+  ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
+    css`
+      background: #d2232a;
+    `}
 `;
 
 const StyledPlayerControls = styled.div`
@@ -94,6 +99,11 @@ const StyledPlayerBrand = styled.div`
     top: 50%;
     left: 0;
     transform: translateY(-13px);
+
+    ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
+      css`
+        background: #ec8589;
+      `}
   }
 
   &:after {
@@ -117,7 +127,6 @@ const StyledPlayerTrackImage = styled.div`
   width: 26px;
   height: 26px;
   flex-shrink: 0;
-
 
   background-image: url(${props => props.imageUrl});
   background-repeat: no-repeat;
