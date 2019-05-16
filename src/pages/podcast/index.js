@@ -119,10 +119,9 @@ const Podcast = ({ page }) => {
               <Tab
                 label="Episodes"
                 count={episodes.length}
-                to="/shows/10-things-scare-me"
                 addBorder={true}
               />
-              <Tab label="Team" to="/shows/10-things-scare-me" to="/" />
+              <Tab label="Team" />
             </Tabs>
             <Filter>
               <FilterButton isActive label="Most Recent" />
