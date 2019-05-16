@@ -41,7 +41,9 @@ const Shows = () => {
 
         setShows(shows);
 
-        setPageLoading(false);
+        setTimeout(() => {
+          setPageLoading(false);
+        }, 300);
       }
     }
 
