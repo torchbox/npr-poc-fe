@@ -2,7 +2,12 @@ import React, { Children, useState, useEffect, useContext } from "react";
 
 import { PAGE_TYPE_EPISODE, PAGE_TYPE_SHOW } from "../../common/consts";
 
-import { fetchPagePreview, fetchPageWithSlug } from "../../services";
+import {
+  fetchPagePreview,
+  fetchPageWithSlug,
+  fetchEpisodeWithSlug,
+  fetchShowWithSlug
+} from "../../services";
 
 import { LoaderContext } from "../../context/loader";
 
@@ -46,7 +51,42 @@ const PageRequestWrapper = ({
       } else {
         setPageLoading(true);
 
-        let page = await fetchPageWithSlug(pageSlug, type);
+        let page;
+
+        switch (type) {
+          case PAGE_TYPE_EPISODE:
+
+            console.log('fetchEpisodeWithSlug')
+
+            // Make request for episode
+            page = await fetchEpisodeWithSlug(pageSlug);
+
+            // Make request for parent
+            const parent = await fetchShowWithSlug(showSlug);
+
+            page = {
+              ...page,
+              meta: {
+                ...page.meta,
+                parent
+              }
+            };
+
+            break;
+
+          case PAGE_TYPE_SHOW:
+
+            console.log('fetchShowWithSlug')
+
+            // Make request for show
+            page = await fetchShowWithSlug(pageSlug);
+            break;
+
+          default:
+            page = await fetchPageWithSlug(pageSlug, type);
+
+            break;
+        }
 
         // Get the parent page data if it's an episode
         if (type === PAGE_TYPE_EPISODE) {
@@ -67,7 +107,7 @@ const PageRequestWrapper = ({
 
         setTimeout(() => {
           setPageLoading(false);
-        }, 1500);
+        }, 400);
       }
     }
 

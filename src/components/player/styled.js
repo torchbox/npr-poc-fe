@@ -6,7 +6,7 @@ const StyledPlayer = styled.div`
   position: sticky;
   bottom: 0;
   width: 600px;
-  z-index: 1;
+  z-index: 3;
 
   ${props =>
     props.stickToFooter &&

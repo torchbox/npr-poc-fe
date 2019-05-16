@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import moment from "moment";
 
-import { fetchEpisodePages } from "../../services";
+import { fetchEpisodesByParentId } from "../../services";
 
 import { StyledRelated, StyledRelatedInner } from "./styled";
 
@@ -25,7 +25,7 @@ export const RelatedEpisdoes = ({ page }) => {
 
     async function fetchData() {
       if (!ignore) {
-        const episodes = await fetchEpisodePages(parentShowId, true);
+        const episodes = await fetchEpisodesByParentId(parentShowId, true);
 
         const related = episodes.filter(page => {
           return page.id !== episodeId;

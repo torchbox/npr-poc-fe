@@ -3,13 +3,14 @@ import moment from "moment";
 
 import { PagesContext } from "../../context/pages";
 
-import { fetchEpisodePages } from "../../services";
+import { fetchEpisodesByParentId } from "../../services";
 
 import {
   StyledPodcast,
   StyledPodcastHero,
   StyledPodcastHeroIntro,
   StyledPodcastHeroIntroTitle,
+  StyledPodcastHeroIntroSubtitle,
   StyledStoryCards,
   StyledStoryCardsInner,
   StyledEpisodeCards,
@@ -49,7 +50,7 @@ const Podcast = ({ page }) => {
 
     async function fetchData() {
       if (!ignore) {
-        const episodes = await fetchEpisodePages(page.id);
+        const episodes = await fetchEpisodesByParentId(page.id, true);
 
         setEpisodes(episodes);
 
@@ -61,12 +62,9 @@ const Podcast = ({ page }) => {
       }
     }
 
-    if (episodesFromCache.length === 0 && episodes === null) {
+    if (episodes === null) {
       // No cache, and no episodes so make request
       fetchData();
-    } else if (episodesFromCache.length) {
-      // Get the episodes from the cache
-      setEpisodes(episodesFromCache);
     }
 
     return () => {
@@ -94,8 +92,10 @@ const Podcast = ({ page }) => {
               <StyledPodcastHeroIntroTitle>
                 <h1>{page.title}</h1>
               </StyledPodcastHeroIntroTitle>
-              <p>{page.subtitle}</p>
-              {episodes && (
+              <StyledPodcastHeroIntroSubtitle>
+                <p>{page.subtitle}</p>
+              </StyledPodcastHeroIntroSubtitle>
+              {episodes ? (
                 <PlayCtaButton
                   audioSrc={episodes[0].enclosures[0].media.meta.file}
                   name={`EPISODE ${episodes[0].season_number}: ${
@@ -103,6 +103,10 @@ const Podcast = ({ page }) => {
                   }`}
                   trackId={episodes[0].enclosures[0].id}
                   trackName={episodes[0].enclosures[0].media.title}
+                />
+              ) : (
+                <PlayCtaButton
+                  name={`EPISODE 32: Libby Callaway`}
                 />
               )}
             </StyledPodcastHeroIntro>

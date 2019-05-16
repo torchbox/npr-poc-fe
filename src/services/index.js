@@ -5,29 +5,62 @@ import {
   PAGE_TYPE_SHOW
 } from "../common/consts";
 
+/**
+ * Page
+ */
+
 const fetchPageWithSlug = (slug, type) =>
   fetch(`${PAGES_API_URL}/?type=${type}&slug=${slug}&fields=*`)
     .then(resp => resp.json())
     .then(resp => resp.items[0]);
 
-const fetchEpisodePages = (id, limit = false) =>
-  fetch(`${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&child_of=${id}&fields=*${limit ? '&limit=6' : ''}`)
+/**
+ * Episdodes
+ */
+
+const fetchEpisodeWithSlug = slug =>
+  fetch(`${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&slug=${slug}&fields=season_number,title,subtitle,enclosures,images`)
+    .then(resp => resp.json())
+    .then(resp => resp.items[0]);
+
+const fetchEpisodesByParentId = (id, limit = false) =>
+  fetch(
+    `${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&child_of=${id}&fields=id,images,season_number,title,date_created,subtitle,enclosures${
+      limit ? "&limit=6" : ""
+    }`
+  )
     .then(resp => resp.json())
     .then(resp => resp.items);
+
+/**
+ * Shows
+ */
+
+const fetchShowWithSlug = slug =>
+  fetch(`${PAGES_API_URL}/?type=${PAGE_TYPE_SHOW}&slug=${slug}&fields=title,subtitle&limit=1`)
+    .then(resp => resp.json())
+    .then(resp => resp.items[0]);
+
+const fetchShows = () =>
+  fetch(`${PAGES_API_URL}?type=${PAGE_TYPE_SHOW}&fields=id,images,title,subtitle`)
+    .then(resp => resp.json())
+    .then(resp => resp.items);
+
+/**
+ * Preview
+ */
 
 const fetchPagePreview = decodedString =>
   fetch(`${PAGES_PREVIEW_API_URL}/?${decodedString}&format=json`)
     .then(resp => resp.json())
     .then(resp => resp);
 
-const fetchShows = () =>
-  fetch(`${PAGES_API_URL}?type=${PAGE_TYPE_SHOW}&fields=*`)
-    .then(resp => resp.json())
-    .then(resp => resp.items);
 
 export {
   fetchPagePreview,
   fetchShows,
   fetchPageWithSlug,
-  fetchEpisodePages,
+  fetchShowWithSlug,
+  fetchEpisodeWithSlug,
+  fetchEpisodesByParentId
 };

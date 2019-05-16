@@ -26,6 +26,8 @@ const StyledPodcastHeroIntroTitle = styled.div`
   }
 `;
 
+const StyledPodcastHeroIntroSubtitle = styled.div``;
+
 const StyledStoryCards = styled.div`
   background: ${props => props.theme.colors.lightGrey};
 `;
@@ -145,6 +147,7 @@ export {
   StyledPodcastHero,
   StyledPodcastHeroIntro,
   StyledPodcastHeroIntroTitle,
+  StyledPodcastHeroIntroSubtitle,
   StyledStoryCards,
   StyledStoryCardsInner,
   StyledEpisodeCards,

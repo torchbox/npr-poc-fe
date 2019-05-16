@@ -63,6 +63,13 @@ const StyledHero = styled.div`
         padding-bottom: 0;
       `
     }
+
+    ${props =>
+      props.type === "podcast" &&
+      css`
+        min-height: 655px;
+      `
+    }
 `;
 
 const StyledHeroInner = styled.div`

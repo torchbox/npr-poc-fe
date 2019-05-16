@@ -64,7 +64,6 @@ const Shows = () => {
     <>
       <StyledShows>
         <Hero
-          type="podcast"
           bgImage="/images/jonathan-velasquez-160775-unsplash.jpg"
           bgColor="#1e2827"
           hasGradient={true}
