@@ -28,6 +28,7 @@ import PageRequestWrapper from "./components/page-request-wrapper";
 const App = () => {
   const [footerVisible, setFooterVisible] = useState(false);
 
+  // Sorry :-(
   const siteTitle = () => {
     let str = window.location.host
       .split(".")[0]
@@ -38,14 +39,17 @@ const App = () => {
       str[i] = str[i][0].toUpperCase() + str[i].substr(1);
     }
 
+    let joinedString = str.join(" ")
+
     if (str.includes('torchbox')) {
-      document.title = str.join(" ");
+      document.title = joinedString;
       return;
     }
 
-    str = str.split.split(" ");
+    let newSplitString = joinedString.split(" ");
 
-    document.title = `${str[0].toUpperCase} ${str[1]}`;
+    // Not sorry ;-p
+    document.title = `${newSplitString[0].toUpperCase} ${newSplitString[1]}`;
   };
 
   siteTitle();
