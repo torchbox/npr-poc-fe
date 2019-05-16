@@ -14,7 +14,7 @@ const Footer = ({ visibility }) => (
       <StyledFooterAbout>
         <StyledFooterHeading>{process.env.REACT_APP_SITE_NAME}</StyledFooterHeading>
         <StyledFooterText>
-          Listener-supported WNYC is the home for independent journalism and
+          Listener-supported {process.env.REACT_APP_SITE_NAME} is the home for independent journalism and
           courageous conversation on air and online. Broadcasting live from New
           York City on 93.9 FM and AM 820 and available online and on the go.
         </StyledFooterText>
