@@ -83,12 +83,12 @@ const Shows = () => {
             <Tabs>
               <Tab
                 label="All Shows"
-                count={shows.length}
+                count={shows.length + 4}
                 addBorder={true}
               />
               <Tab
                 label="Latest Shows"
-                count={6}
+                count={2}
               />
             </Tabs>
             <Filter>
