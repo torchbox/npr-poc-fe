@@ -44,26 +44,28 @@ const Home = () => (
         <h2>Latest News</h2>
         <CardGrid>
           <StoryCard
-            imageSrc="/images/news_layman.png"
-            title="Damon Young and Kiese Laymon: The Good Dude Closet"
-            category="Death, Sex & Money"
-            excerpt="The writers on why the label covers a multitude of sins."
+            imageSrc="/images/news_trump.jpg"
+            title="Plan Doesn’t Address Undocumented Immigrants"
+            excerpt="President Trump will announce the new immigration proposal on Thursday. It would keep legal immigration levels the same but dramatically change who would be let in."
+            date="May 16, 2019"
+          />
+          <StoryCard
+            imageSrc="/images/news_wildfire.jpg"
+            title="PG&E Transmissions Lines Caused California Wildfire"
+            excerpt="After a very meticulous and thorough investigation, CAL FIRE has determined that the Camp Fire was caused by electrical transmission lines owned and operated by Pacific Gas and Electricity (PG&E)."
+            date="May 15, 2019"
+          />
+          <StoryCard
+            imageSrc="/images/news_measles.jpg"
+            title="What You Should Know About Vaccines For Adults."
+            excerpt="We're used to kids needing lots of shots to ward off lots of illnesses, but what about adults? The CDC recommends that adults get multiple vaccinations for conditions ranging from tetanus to influenza to cervical cancer."
+            date="May 15, 2019"
           />
           <StoryCard
             imageSrc="/images/news_asylum-ny.jpg"
             title="Why It's Harder to Win Asylum, Even in New York"
             excerpt="In immigrant-friendly New York, migrants have historically had a much easier time winning asylum than one would have expected"
-          />
-          <StoryCard
-            imageSrc="/images/news_asylum-ny.jpg"
-            title="Why It's Harder to Win Asylum, Even in New York"
-            excerpt="In immigrant-friendly New York, migrants have historically had a much easier time winning asylum than one would have expected"
-          />
-          <StoryCard
-            imageSrc="/images/news_layman.png"
-            title="Damon Young and Kiese Laymon: The Good Dude Closet"
-            category="Death, Sex & Money"
-            excerpt="The writers on why the label covers a multitude of sins."
+            date="May 14, 2019"
           />
         </CardGrid>
       </StyledHomeCardsInner>

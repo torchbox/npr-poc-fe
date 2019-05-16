@@ -15,8 +15,8 @@ const StoryCard = ({ imageSrc, title, category, excerpt }) => (
       </StyledStoryCardImage>
       <StyledStoryCardText>
         {title && < StyledStoryCardHeader>{title}</ StyledStoryCardHeader>} {category && <span>{category}</span>}{" "}
-        {excerpt && excerpt.length > 100 ? (
-          <p>{excerpt.substring(0, 100)}…</p>
+        {excerpt && excerpt.length > 90 ? (
+          <p>{excerpt.substring(0, 90)}…</p>
         ) : (
           <p>{excerpt}</p>
         )}
