@@ -5,7 +5,7 @@ import PlayButton from "../play-button";
 const StyledPlayer = styled.div`
   position: sticky;
   bottom: 0;
-  min-width: 650px;
+  width: 650px;
   z-index: 3;
 
   ${props =>
@@ -119,7 +119,7 @@ const StyledPlayerTrackImage = styled.div`
   flex-shrink: 0;
 
 
-  background-image: url(p);
+  background-image: url(${props => props.imageUrl});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

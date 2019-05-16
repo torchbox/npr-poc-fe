@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 
-import { PagesContext } from "../../context/pages";
+import { LoaderContext } from "../../context/loader";
 
 import { fetchShows } from "../../services";
 
@@ -26,9 +26,7 @@ import Filter from "../../components/filter";
 import FilterButton from "../../components/filter-button";
 
 const Shows = () => {
-  const { cache, updateCache } = useContext(PagesContext);
-
-  const showsFromCache = cache["shows"] ? cache["shows"].data : [];
+  const { setPageLoading } = useContext(LoaderContext);
 
   const [shows, setShows] = useState(null);
 
@@ -37,28 +35,24 @@ const Shows = () => {
 
     async function fetchData() {
       if (!ignore) {
+        setPageLoading(true);
+
         const shows = await fetchShows();
 
         setShows(shows);
 
-        updateCache({
-          shows: {
-            data: shows
-          }
-        });
+        setPageLoading(false);
       }
     }
 
-    if (showsFromCache.length === 0 && shows === null) {
+    if (shows === null) {
       fetchData();
-    } else if (showsFromCache.length) {
-      setShows(showsFromCache);
     }
 
     return () => {
       ignore = true;
     };
-  }, [showsFromCache, shows, updateCache]);
+  }, [shows, setPageLoading]);
 
   return (
     <>

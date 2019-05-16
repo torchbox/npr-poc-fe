@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import moment from "moment";
 
-import { PagesContext } from "../../context/pages";
-
 import { fetchEpisodesByParentId } from "../../services";
 
 import {
@@ -33,12 +31,6 @@ import FilterButton from "../../components/filter-button";
 const Podcast = ({ page }) => {
   const displayLimit = 6;
 
-  const { cache, updateCache } = useContext(PagesContext);
-
-  const cacheId = `show_${page.id}`;
-
-  const episodesFromCache = cache[cacheId] ? cache[cacheId].data : [];
-
   const [episodes, setEpisodes] = useState(null);
 
   const [loadMore, setLoadMore] = useState(true);
@@ -53,12 +45,6 @@ const Podcast = ({ page }) => {
         const episodes = await fetchEpisodesByParentId(page.id, true);
 
         setEpisodes(episodes);
-
-        updateCache({
-          [cacheId]: {
-            data: episodes
-          }
-        });
       }
     }
 
@@ -70,7 +56,7 @@ const Podcast = ({ page }) => {
     return () => {
       ignore = true;
     };
-  }, [cacheId, page.id, episodesFromCache, episodes, setEpisodes, updateCache]);
+  }, [page.id, episodes, setEpisodes]);
 
   useEffect(() => {
     if (episodes && displayCount >= episodes.length) {
