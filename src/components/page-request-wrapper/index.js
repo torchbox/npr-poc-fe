@@ -4,7 +4,6 @@ import { PAGE_TYPE_EPISODE, PAGE_TYPE_SHOW } from "../../common/consts";
 
 import {
   fetchPagePreview,
-  fetchPageWithSlug,
   fetchEpisodeWithSlug,
   fetchShowWithSlug
 } from "../../services";
@@ -78,24 +77,7 @@ const PageRequestWrapper = ({
 
           default:
 
-            console.log('FETCH PAGES')
-
-            page = await fetchPageWithSlug(pageSlug, type);
-
             break;
-        }
-
-        // Get the parent page data if it's an episode
-        if (type === PAGE_TYPE_EPISODE) {
-          const parent = await fetchPageWithSlug(showSlug, PAGE_TYPE_SHOW);
-
-          page = {
-            ...page,
-            meta: {
-              ...page.meta,
-              parent
-            }
-          };
         }
 
         if (!ignore) {

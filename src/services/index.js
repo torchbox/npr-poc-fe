@@ -6,20 +6,11 @@ import {
 } from "../common/consts";
 
 /**
- * Page
- */
-
-const fetchPageWithSlug = (slug, type) =>
-  fetch(`${PAGES_API_URL}/?type=${type}&slug=${slug}&fields=*`)
-    .then(resp => resp.json())
-    .then(resp => resp.items[0]);
-
-/**
  * Episdodes
  */
 
 const fetchEpisodeWithSlug = slug =>
-  fetch(`${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&slug=${slug}&fields=season_number,title,subtitle,enclosures,images`)
+  fetch(`${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&slug=${slug}&fields=season_number,title,subtitle,enclosures,images&limit=1`)
     .then(resp => resp.json())
     .then(resp => resp.items[0]);
 
@@ -59,7 +50,6 @@ const fetchPagePreview = decodedString =>
 export {
   fetchPagePreview,
   fetchShows,
-  fetchPageWithSlug,
   fetchShowWithSlug,
   fetchEpisodeWithSlug,
   fetchEpisodesByParentId
