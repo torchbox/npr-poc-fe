@@ -1,10 +1,7 @@
-import styled, {keyframes} from "styled-components";
-
-const fadeIn = keyframes`
-  from { opacity: 0.2; }
-`
+import styled, { keyframes } from "styled-components";
 
 const StyledLoader = styled.div`
+  display: flex;
   position: absolute;
   top: 0;
   left: 0;
@@ -12,7 +9,6 @@ const StyledLoader = styled.div`
   height: 100%;
   background: white;
   z-index: 2;
-  display: flex;
 `;
 
 const StyledLoaderInner = styled.div`
@@ -23,8 +19,7 @@ const StyledLoaderInner = styled.div`
   height: 80px;
   opacity: 0.4;
   transform: translate(-40px, -40px);
-  animation: ${fadeIn} 0.7s infinite alternate;
-  opacity: 0.7;
+  opacity: 1;
 
   svg {
     width: 80px;
@@ -32,7 +27,4 @@ const StyledLoaderInner = styled.div`
   }
 `;
 
-export {
-  StyledLoader,
-  StyledLoaderInner,
-}
+export { StyledLoader, StyledLoaderInner };

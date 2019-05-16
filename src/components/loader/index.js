@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { LoaderContext } from "../../context/loader";
 
-import IconMusic from "../../svg/icon-music";
+import IconLoading from "../../svg/icon-loading";
 
 import { StyledLoader, StyledLoaderInner } from "./styled";
 
@@ -13,7 +13,7 @@ const Loader = () => {
     return (
       <StyledLoader>
         <StyledLoaderInner>
-          <IconMusic />
+          <IconLoading />
         </StyledLoaderInner>
       </StyledLoader>
     );
