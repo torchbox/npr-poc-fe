@@ -59,23 +59,23 @@ const Shows = () => {
   return (
     <>
       <StyledShows>
-        <Hero
-          bgImage="/images/jonathan-velasquez-160775-unsplash.jpg"
-          bgColor="#1e2827"
-          hasGradient={true}
-        >
-          <StyledShowsHero>
-            <StyledShowsHeroIntro>
-              <StyledShowsHeroIntroTitle>
-                <h1>Shows</h1>
-              </StyledShowsHeroIntroTitle>
-              <p>Your destination for all things public radio.</p>
-            </StyledShowsHeroIntro>
-          </StyledShowsHero>
-        </Hero>
-
         {shows ? (
           <>
+            <Hero
+              bgImage="/images/jonathan-velasquez-160775-unsplash.jpg"
+              bgColor="#1e2827"
+              hasGradient={true}
+            >
+              <StyledShowsHero>
+                <StyledShowsHeroIntro>
+                  <StyledShowsHeroIntroTitle>
+                    <h1>Shows</h1>
+                  </StyledShowsHeroIntroTitle>
+                  <p>Your destination for all things public radio.</p>
+                </StyledShowsHeroIntro>
+              </StyledShowsHero>
+            </Hero>
+
             <Tabs>
               <Tab
                 label="All Shows"

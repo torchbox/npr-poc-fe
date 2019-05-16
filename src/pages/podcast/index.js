@@ -67,47 +67,36 @@ const Podcast = ({ page }) => {
   return (
     <>
       <StyledPodcast>
-        <Hero
-          type="podcast"
-          bgImage={`/images/hero_${page.meta.slug}.png`}
-          bgColor="#1e2827"
-          hasGradient={true}
-        >
-          <StyledPodcastHero>
-            <StyledPodcastHeroIntro>
-              <StyledPodcastHeroIntroTitle>
-                <h1>{page.title}</h1>
-              </StyledPodcastHeroIntroTitle>
-              <StyledPodcastHeroIntroSubtitle>
-                <p>{page.subtitle}</p>
-              </StyledPodcastHeroIntroSubtitle>
-              {episodes ? (
-                <PlayCtaButton
-                  audioSrc={episodes[0].enclosures[0].media.meta.file}
-                  name={`EPISODE ${episodes[0].season_number}: ${
-                    episodes[0].title
-                  }`}
-                  trackId={episodes[0].enclosures[0].id}
-                  trackName={episodes[0].enclosures[0].media.title}
-                  trackImage={episodes[0].images[0].image_thumbnail.url}
-                />
-              ) : (
-                <PlayCtaButton
-                  name={`EPISODE 32: Libby Callaway`}
-                />
-              )}
-            </StyledPodcastHeroIntro>
-          </StyledPodcastHero>
-        </Hero>
-
         {episodes ? (
           <>
+            <Hero
+              type="podcast"
+              bgImage={`/images/hero_${page.meta.slug}.png`}
+              bgColor="#1e2827"
+              hasGradient={true}
+            >
+              <StyledPodcastHero>
+                <StyledPodcastHeroIntro>
+                  <StyledPodcastHeroIntroTitle>
+                    <h1>{page.title}</h1>
+                  </StyledPodcastHeroIntroTitle>
+                  <StyledPodcastHeroIntroSubtitle>
+                    <p>{page.subtitle}</p>
+                  </StyledPodcastHeroIntroSubtitle>
+                  <PlayCtaButton
+                    audioSrc={episodes[0].enclosures[0].media.meta.file}
+                    name={`EPISODE ${episodes[0].season_number}: ${
+                      episodes[0].title
+                    }`}
+                    trackId={episodes[0].enclosures[0].id}
+                    trackName={episodes[0].enclosures[0].media.title}
+                    trackImage={episodes[0].images[0].image_thumbnail.url}
+                  />
+                </StyledPodcastHeroIntro>
+              </StyledPodcastHero>
+            </Hero>
             <Tabs>
-              <Tab
-                label="Episodes"
-                count={episodes.length}
-                addBorder={true}
-              />
+              <Tab label="Episodes" count={episodes.length} addBorder={true} />
               <Tab label="Team" />
             </Tabs>
             <Filter>

@@ -104,7 +104,7 @@ const PageRequestWrapper = ({
 
         setTimeout(() => {
           setPageLoading(false);
-        }, 300);
+        }, 200);
       }
     }
 
