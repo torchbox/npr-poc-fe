@@ -77,6 +77,9 @@ const PageRequestWrapper = ({
             break;
 
           default:
+
+            console.log('FETCH PAGES')
+
             page = await fetchPageWithSlug(pageSlug, type);
 
             break;

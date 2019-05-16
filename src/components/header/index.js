@@ -8,7 +8,7 @@ import {
   StyledHeaderStaticLink
 } from "./styled";
 
-import TorchboxLogo from "../../svg/torchbox-logo";
+import Logo from "../../svg/logo";
 
 import Button from "../button";
 
@@ -16,7 +16,7 @@ const Header = () => (
   <StyledHeader>
     <StyledHeaderInner>
       <StyledHeaderLogo to="/">
-        <TorchboxLogo />
+        <Logo />
       </StyledHeaderLogo>
       <div>
         <StyledHeaderStaticLink to="/all-streams">All Streams</StyledHeaderStaticLink>

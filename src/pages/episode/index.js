@@ -50,7 +50,7 @@ const Episode = ({ page }) => {
           <StyledEpisodeIntro>
             <StyledEpisodeIntroText>
               <StyledEpisodeIntroTitle>
-                {page.season_number}. {page.title}
+                {page.season_number} {page.season_number && '.'} {page.title}
               </StyledEpisodeIntroTitle>
               <StyledEpisodeIntroStandfirst>
                 {page.subtitle}

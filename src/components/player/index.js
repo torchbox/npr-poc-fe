@@ -93,7 +93,7 @@ const Player = ({ stickToFooter }) => {
           </StyledPlayerEq>
         </StyledPlayerControls>
         <StyledPlayerBrand>
-          <StyledPlayerTrackImage imageUrl="/images/torchbox_logo.png" />
+          <StyledPlayerTrackImage imageUrl={`/images/logo_${process.env.REACT_APP_SITE_SLUG}.png`} />
           <StyledPlayerBrandName>{process.env.REACT_APP_SITE_NAME}</StyledPlayerBrandName>
         </StyledPlayerBrand>
         <StyledPlayerTrack>
