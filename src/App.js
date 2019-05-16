@@ -29,14 +29,17 @@ const App = () => {
   const [footerVisible, setFooterVisible] = useState(false);
 
   const siteTitle = () => {
-    let str = window.location.host.split('.')[0].replace('-', 0).split(" ");
+    let str = window.location.host
+      .split(".")[0]
+      .replace("-", " ")
+      .split(" ");
 
     for (var i = 0, x = str.length; i < x; i++) {
-        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+      str[i] = str[i][0].toUpperCase() + str[i].substr(1);
     }
 
     document.title = str.join(" ");
-  }
+  };
 
   siteTitle();
 
