@@ -10,7 +10,7 @@ import {
  */
 
 const fetchEpisodeWithSlug = slug =>
-  fetch(`${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&slug=${slug}&fields=season_number,title,subtitle,enclosures,images&limit=1`)
+  fetch(`${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&slug=${slug}&fields=description,season_number,title,subtitle,enclosures,images&limit=1`)
     .then(resp => resp.json())
     .then(resp => resp.items[0]);
 
