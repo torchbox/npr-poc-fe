@@ -94,7 +94,7 @@ const Player = ({ stickToFooter }) => {
         </StyledPlayerControls>
         <StyledPlayerBrand>
           <StyledPlayerTrackImage imageUrl="/images/torchbox_logo.png" />
-          <StyledPlayerBrandName>Torchbox Radio</StyledPlayerBrandName>
+          <StyledPlayerBrandName>{process.env.REACT_APP_SITE_NAME}</StyledPlayerBrandName>
         </StyledPlayerBrand>
         <StyledPlayerTrack>
           <StyledPlayerTrackImage imageUrl={playingTrackImage} />

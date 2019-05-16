@@ -28,31 +28,9 @@ import PageRequestWrapper from "./components/page-request-wrapper";
 const App = () => {
   const [footerVisible, setFooterVisible] = useState(false);
 
-  // Sorry :-(
-  const siteTitle = () => {
-    let str = window.location.host
-      .split(".")[0]
-      .replace("-", " ")
-      .split(" ");
+  console.log(process.env.REACT_APP_SITE_NAME, process.env.REACT_APP_SITE_SLUG);
 
-    for (var i = 0, x = str.length; i < x; i++) {
-      str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-    }
-
-    let joinedString = str.join(" ")
-
-    if (str.includes('torchbox')) {
-      document.title = joinedString;
-      return;
-    }
-
-    let newSplitString = joinedString.split(" ");
-
-    // Not sorry ;-p
-    document.title = `${newSplitString[0].toUpperCase()} ${newSplitString[1]}`;
-  };
-
-  siteTitle();
+  document.title = process.env.REACT_APP_SITE_NAME;
 
   const footerObserverChange = e => {
     setFooterVisible(e.isIntersecting);

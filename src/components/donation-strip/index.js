@@ -12,13 +12,13 @@ const DonationStrip =
   return (
     <StyledDonationStrip>
       <StyledDonationStripInner>
-        <p>Your gift will help keep Torchbox Public Radio on air…</p>
+        <p>Your gift will help keep {process.env.REACT_APP_SITE_NAME} on air…</p>
         <StyledDonationStripLinks>
           <StyledDonationStripLink to="donation">
             Make a donation
           </StyledDonationStripLink>
           <StyledDonationStripLink to="about">
-            About Torchbox Radio
+            About {process.env.REACT_APP_SITE_NAME}
           </StyledDonationStripLink>
         </StyledDonationStripLinks>
       </StyledDonationStripInner>
