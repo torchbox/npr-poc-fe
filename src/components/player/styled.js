@@ -5,7 +5,7 @@ import PlayButton from "../play-button";
 const StyledPlayer = styled.div`
   position: sticky;
   bottom: 0;
-  width: 600px;
+  min-width: 650px;
   z-index: 3;
 
   ${props =>
@@ -77,6 +77,8 @@ const StyledSliderContainer = styled.div`
 `;
 
 const StyledPlayerBrand = styled.div`
+  display: flex;
+  align-items: center;
   position: relative;
   padding: 0 25px;
   font-size: 14px;
@@ -100,16 +102,31 @@ const StyledPlayerBrand = styled.div`
   }
 `;
 
+const StyledPlayerBrandName = styled.div`
+  flex-shrink: 0;
+`;
+
 const StyledPlayerTrack = styled.div`
   display: flex;
   align-items: center;
   padding: 0 25px;
 `;
 
-const StyledPlayerTrackImage = styled.img`
+const StyledPlayerTrackImage = styled.div`
   margin: 0 10px 0 0;
   width: 26px;
   height: 26px;
+  flex-shrink: 0;
+
+
+  background-image: url(p);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const StyledPlayerTrackText = styled.div`
@@ -130,11 +147,11 @@ const StyledPlayerTrackTime = styled.div`
   transform: translateY(-6px);
 `;
 
-
 export {
   StyledPlayer,
   StyledPlayerInner,
   StyledPlayerBrand,
+  StyledPlayerBrandName,
   StyledPlayerControls,
   StyledPlayerPlayButton,
   StyledPlayerTrack,

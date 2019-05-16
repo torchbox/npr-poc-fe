@@ -74,6 +74,7 @@ const Episode = ({ page }) => {
                     name="Listen Now"
                     trackId={mediaId}
                     trackName={mediaTitle}
+                    trackImage={page.images[0].image_thumbnail.url}
                   />
                 )
               )}
@@ -105,6 +106,7 @@ const Episode = ({ page }) => {
                   name={`Episode ${page.season_number}`}
                   trackId={mediaId}
                   trackName={mediaTitle}
+                  trackImage={page.images[0].image_thumbnail.url}
                   isEpisode
                 />
               )

@@ -32,6 +32,7 @@ const Home = () => (
             name="New Sounds"
             trackId="track-one"
             trackName="New Sounds"
+            trackImage="/images/show_new-sounds.jpg"
             isLive
           />
         </StyledHomeHeroIntro>

@@ -103,6 +103,7 @@ const Podcast = ({ page }) => {
                   }`}
                   trackId={episodes[0].enclosures[0].id}
                   trackName={episodes[0].enclosures[0].media.title}
+                  trackImage={episodes[0].images[0].image_thumbnail.url}
                 />
               ) : (
                 <PlayCtaButton
@@ -146,6 +147,7 @@ const Podcast = ({ page }) => {
                           name={`Episode ${episode.season_number}`}
                           trackId={episode.enclosures[0].id}
                           trackName={episode.enclosures[0].media.title}
+                          trackImage={episode.images[0].image_thumbnail.url}
                           type="white"
                         />
                       </StyledEpisodeCard>

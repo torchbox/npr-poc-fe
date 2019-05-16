@@ -18,7 +18,8 @@ import {
   StyledVolumeButton,
   StyledSliderContainer,
   StyledPlayerEq,
-  StyledPlayerTrackTime
+  StyledPlayerTrackTime,
+  StyledPlayerBrandName
 } from "./styled";
 
 import Audio from "../audio";
@@ -32,23 +33,23 @@ const Player = ({ stickToFooter }) => {
     audioSrc,
     isPlaying,
     playingTrackId,
-    playingTrackImage = "/images/torchbox_logo.png",
+    playingTrackImage,
     playingTrackName,
     playingVolume,
     setPlayingVolume,
     currentTime,
-    audioDuration,
+    audioDuration
   } = useContext(PlayerContext);
 
   useEffect(() => {
-    const equalizer = document.getElementById('lds-equalizer');
+    const equalizer = document.getElementById("lds-equalizer");
 
     if (isPlaying) {
-      equalizer.unpauseAnimations()
+      equalizer.unpauseAnimations();
     } else {
-      equalizer.pauseAnimations()
+      equalizer.pauseAnimations();
     }
-  }, [isPlaying])
+  }, [isPlaying]);
 
   return (
     <StyledPlayer
@@ -88,18 +89,23 @@ const Player = ({ stickToFooter }) => {
             </StyledSliderContainer>
           )}
           <StyledPlayerEq>
-              <IconEq />
-            </StyledPlayerEq>
+            <IconEq />
+          </StyledPlayerEq>
         </StyledPlayerControls>
-        <StyledPlayerBrand>Torchbox FM</StyledPlayerBrand>
+        <StyledPlayerBrand>
+          <StyledPlayerTrackImage imageUrl="/images/torchbox_logo.png" />
+          <StyledPlayerBrandName>Torchbox Radio</StyledPlayerBrandName>
+        </StyledPlayerBrand>
         <StyledPlayerTrack>
-          <StyledPlayerTrackImage src={playingTrackImage} />
+          <StyledPlayerTrackImage imageUrl={playingTrackImage} />
           <StyledPlayerTrackText>
             <StyledPlayerTrackCurrent>
               Currently Playing
             </StyledPlayerTrackCurrent>
             <StyledPlayerTrackName>{playingTrackName} </StyledPlayerTrackName>
-            <StyledPlayerTrackTime>{currentTime} / {audioDuration}</StyledPlayerTrackTime>
+            <StyledPlayerTrackTime>
+              {currentTime} / {audioDuration}
+            </StyledPlayerTrackTime>
           </StyledPlayerTrackText>
         </StyledPlayerTrack>
       </StyledPlayerInner>
