@@ -55,9 +55,6 @@ const PageRequestWrapper = ({
 
         switch (type) {
           case PAGE_TYPE_EPISODE:
-
-            console.log('fetchEpisodeWithSlug')
-
             // Make request for episode
             page = await fetchEpisodeWithSlug(pageSlug);
 
@@ -75,9 +72,6 @@ const PageRequestWrapper = ({
             break;
 
           case PAGE_TYPE_SHOW:
-
-            console.log('fetchShowWithSlug')
-
             // Make request for show
             page = await fetchShowWithSlug(pageSlug);
             break;
