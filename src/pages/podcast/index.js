@@ -90,7 +90,11 @@ const Podcast = ({ page }) => {
                     }`}
                     trackId={episodes[0].enclosures[0].id}
                     trackName={episodes[0].enclosures[0].media.title}
-                    trackImage={episodes[0].images[0].image_thumbnail.url}
+                    trackImage={
+                      episodes[0].images.length
+                        ? episodes[0].images[0].image_thumbnail.url
+                        : null
+                    }
                   />
                 </StyledPodcastHeroIntro>
               </StyledPodcastHero>
@@ -110,7 +114,11 @@ const Podcast = ({ page }) => {
                     return (
                       <StyledEpisodeCard
                         key={episode.id}
-                        imageSrc={episode.images[0].image_thumbnail.url}
+                        imageSrc={
+                          episode.images.length
+                            ? episode.images[0].image_thumbnail.url
+                            : null
+                        }
                         title={episode.title}
                         date={moment(episode.date_created).format("LL")}
                         excerpt={episode.subtitle}
@@ -122,7 +130,11 @@ const Podcast = ({ page }) => {
                           name={`Episode ${episode.season_number}`}
                           trackId={episode.enclosures[0].id}
                           trackName={episode.enclosures[0].media.title}
-                          trackImage={episode.images[0].image_thumbnail.url}
+                          trackImage={
+                            episode.images.length
+                              ? episode.images[0].image_thumbnail.url
+                              : null
+                          }
                           type="white"
                         />
                       </StyledEpisodeCard>

@@ -10,7 +10,6 @@ import EpisodeCard from "../../components/episode-card";
 import PlayCtaButton from "../../components/play-cta-button";
 
 export const RelatedEpisdoes = ({ page }) => {
-
   const episodeId = page.id;
 
   const parentShowId = page.meta.parent.id;
@@ -39,7 +38,6 @@ export const RelatedEpisdoes = ({ page }) => {
 
     fetchData();
 
-
     return () => {
       ignore = true;
     };
@@ -54,11 +52,17 @@ export const RelatedEpisdoes = ({ page }) => {
             {relatedEpisodes.map(podcast => (
               <EpisodeCard
                 key={podcast.id}
-                imageSrc={podcast.images[0].image_thumbnail.url}
+                imageSrc={
+                  podcast.images.length
+                    ? podcast.images[0].image_thumbnail.url
+                    : null
+                }
                 title={podcast.title}
                 date={moment(podcast.date_created).format("LL")}
                 excerpt={podcast.subtitle}
-                url={`/shows/${page.meta.parent.meta.slug}/${podcast.meta.slug}`}
+                url={`/shows/${page.meta.parent.meta.slug}/${
+                  podcast.meta.slug
+                }`}
               >
                 <PlayCtaButton
                   audioSrc={podcast.enclosures[0].media.meta.file}

@@ -50,7 +50,7 @@ const Episode = ({ page }) => {
           <StyledEpisodeIntro>
             <StyledEpisodeIntroText>
               <StyledEpisodeIntroTitle>
-                {page.season_number} {page.season_number && '.'} {page.title}
+                {page.season_number} {page.season_number && "."} {page.title}
               </StyledEpisodeIntroTitle>
               <StyledEpisodeIntroStandfirst>
                 {page.subtitle}
@@ -74,7 +74,11 @@ const Episode = ({ page }) => {
                     name="Listen Now"
                     trackId={mediaId}
                     trackName={mediaTitle}
-                    trackImage={page.images[0].image_thumbnail.url}
+                    trackImage={
+                      page.images.length
+                        ? page.images[0].image_thumbnail.url
+                        : null
+                    }
                   />
                 )
               )}
@@ -106,7 +110,11 @@ const Episode = ({ page }) => {
                   name={`Episode ${page.season_number}`}
                   trackId={mediaId}
                   trackName={mediaTitle}
-                  trackImage={page.images[0].image_thumbnail.url}
+                  trackImage={
+                    page.images.length
+                      ? page.images[0].image_thumbnail.url
+                      : null
+                  }
                   isEpisode
                 />
               )

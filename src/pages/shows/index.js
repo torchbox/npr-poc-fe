@@ -94,7 +94,11 @@ const Shows = () => {
                   {shows.map(show => (
                     <StyledEpisodeCard
                       key={show.id}
-                      imageSrc={show.images[0].image_thumbnail.url}
+                      imageSrc={
+                        show.images.length
+                          ? show.images[0].image_thumbnail.url
+                          : null
+                      }
                       title={show.title}
                       excerpt={show.subtitle}
                       url={`/shows/${show.meta.slug}`}
