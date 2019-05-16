@@ -83,7 +83,7 @@ const Podcast = ({ page }) => {
       <StyledPodcast>
         <Hero
           type="podcast"
-          bgImage="/images/hero_sharks.jpg"
+          bgImage={`/images/hero_${page.meta.slug}.png`}
           bgColor="#1e2827"
           hasGradient={true}
         >
