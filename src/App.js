@@ -49,7 +49,7 @@ const App = () => {
     let newSplitString = joinedString.split(" ");
 
     // Not sorry ;-p
-    document.title = `${newSplitString[0].toUpperCase} ${newSplitString[1]}`;
+    document.title = `${newSplitString[0].toUpperCase()} ${newSplitString[1]}`;
   };
 
   siteTitle();
