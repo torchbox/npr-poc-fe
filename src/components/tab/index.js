@@ -5,7 +5,7 @@ import { StyledTabLink, StyledTab } from "./styled";
 const Tab = ({ label, count, to, ...rest }) => {
   if (to) {
     return (
-      <StyledTabLink {...rest}>
+      <StyledTabLink {...rest} to={to}>
         {label}
         {count && <span>({count})</span>}
       </StyledTabLink>
