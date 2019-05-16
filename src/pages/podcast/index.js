@@ -126,7 +126,6 @@ const Podcast = ({ page }) => {
             </Tabs>
             <Filter>
               <FilterButton isActive label="Most Recent" />
-              <FilterButton label="Date Added" />
               <FilterButton label="Most Listens" />
             </Filter>
             <StyledEpisodeCards>

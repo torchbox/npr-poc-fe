@@ -85,12 +85,10 @@ const Shows = () => {
                 label="All Shows"
                 count={shows.length}
                 addBorder={true}
-                to="/shows"
               />
               <Tab
                 label="Latest Shows"
                 count={6}
-                to="/shows"
               />
             </Tabs>
             <Filter>
