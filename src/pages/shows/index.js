@@ -85,7 +85,12 @@ const Shows = () => {
                 label="All Shows"
                 count={shows.length}
                 addBorder={true}
-                to="/"
+                to="/shows"
+              />
+              <Tab
+                label="Latest Shows"
+                count={6}
+                to="/shows"
               />
             </Tabs>
             <Filter>
@@ -104,12 +109,39 @@ const Shows = () => {
                       url={`/shows/${show.meta.slug}`}
                     />
                   ))}
+                  <StyledEpisodeCard
+                    imageSrc="/images/show_dopequeens.png"
+                    studio="WNYC STUDIOS"
+                    title="2 Dope Queens"
+                    excerpt="Phoebe Robinson and Jessica Williams host a live comedy show in Brooklyn."
+                    url={``}
+                  />
+                  <StyledEpisodeCard
+                    imageSrc="/images/show_american-fiasco.png"
+                    studio="WNYC STUDIOS"
+                    title="American Fiasco"
+                    excerpt="The true story of how not to win the World Cup."
+                    url={``}
+                  />
+                  <StyledEpisodeCard
+                    imageSrc="/images/show_dear-hank-john.png"
+                    title="Dear Hank & John"
+                    excerpt="Hosts John and Hank Green answer listener questions and offer dubious advice."
+                    url={``}
+                  />
+                  <StyledEpisodeCard
+                    imageSrc="/images/show_tangents.png"
+                    studio="Complexly and WNYC Studios"
+                    title="SciShow Tangents"
+                    excerpt="The lightly competitive knowledge showcase from the geniuses behind the YouTube series SciShow."
+                    url={``}
+                  />
                 </StyledEpisodeCardGrid>
               </StyledEpisodeCardsInner>
             </StyledEpisodeCards>
             <StyledStoryCards>
               <StyledStoryCardsInner>
-                <h2>Latest from Torchbox Radio</h2>
+                <h2>Latest News</h2>
                 <CardGrid>
                   <StoryCard
                     imageSrc="/images/news_layman.png"

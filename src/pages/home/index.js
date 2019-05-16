@@ -41,7 +41,7 @@ const Home = () => (
     <DonationStrip />
     <StyledHomeCards>
       <StyledHomeCardsInner>
-        <h2>Latest from Torchbox Radio</h2>
+        <h2>Latest News</h2>
         <CardGrid>
           <StoryCard
             imageSrc="/images/news_layman.png"
