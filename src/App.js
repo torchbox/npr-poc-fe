@@ -38,7 +38,14 @@ const App = () => {
       str[i] = str[i][0].toUpperCase() + str[i].substr(1);
     }
 
-    document.title = str.join(" ");
+    if (str.includes('torchbox')) {
+      document.title = str.join(" ");
+      return;
+    }
+
+    str = str.split.split(" ");
+
+    document.title = `${str[0].toUpperCase} ${str[1]}`;
   };
 
   siteTitle();
