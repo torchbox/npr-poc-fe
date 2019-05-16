@@ -11,7 +11,7 @@ const StyledHeader = styled.nav`
 
   ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
     css`
-      background: rgba(255, 255, 255, 0.9);
+      background: white;
       border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     `}
 `;
