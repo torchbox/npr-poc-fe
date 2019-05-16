@@ -88,7 +88,7 @@ const StyledHeaderStaticLink = styled.span`
 
     ${process.env.REACT_APP_SITE_SLUG === "wbgo-radio" &&
       css`
-        display: none;
+        color: #d8d8d8;
       `}
   }
 
