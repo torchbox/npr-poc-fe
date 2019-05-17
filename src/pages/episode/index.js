@@ -24,27 +24,29 @@ import RelatedEpisodes from "../../components/related-episodes";
 const Episode = ({ page }) => {
   return (
     <StyledEpisode>
-      <Hero
-        type="episode"
-        bgImage={`/images/hero_${page.meta.parent && page.meta.parent.meta ? page.meta.parent.meta.slug : null}.png`}
-        bgColor="#1e2827"
-        hasGradient={true}
-      >
-        <StyledEpisodeHero>
-          <StyledEpisodeHeroIntro>
-            <StyledEpisodeHeroIntroTitle>
-              <h1>{page.meta.parent.title}</h1>
-            </StyledEpisodeHeroIntroTitle>
-          </StyledEpisodeHeroIntro>
-          <StyledEpisodeHeroLinks>
-            <Tab
-              label="All Episodes"
-              to={`/shows/${page.meta.parent && page.meta.parent.meta ? page.meta.parent.meta.slug : null}`}
-            />
-            <Tab label="Team" />
-          </StyledEpisodeHeroLinks>
-        </StyledEpisodeHero>
-      </Hero>
+      {page.meta.parent && (
+        <Hero
+          type="episode"
+          bgImage={`/images/hero_${page.meta.parent.meta.slug}.png`}
+          bgColor="#1e2827"
+          hasGradient={true}
+        >
+          <StyledEpisodeHero>
+            <StyledEpisodeHeroIntro>
+              <StyledEpisodeHeroIntroTitle>
+                <h1>{page.meta.parent.title}</h1>
+              </StyledEpisodeHeroIntroTitle>
+            </StyledEpisodeHeroIntro>
+            <StyledEpisodeHeroLinks>
+              <Tab
+                label="All Episodes"
+                to={`/shows/${page.meta.parent.meta.slug}`}
+              />
+              <Tab label="Team" />
+            </StyledEpisodeHeroLinks>
+          </StyledEpisodeHero>
+        </Hero>
+      )}
       <StyledEpisodeWrapper>
         <StyledEpisodeWrapperInner>
           <StyledEpisodeIntro>
