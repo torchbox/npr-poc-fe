@@ -26,7 +26,7 @@ const Episode = ({ page }) => {
     <StyledEpisode>
       <Hero
         type="episode"
-        bgImage={`/images/hero_${page.meta.parent.meta.slug}.png`}
+        bgImage={`/images/hero_${page.meta.parent.meta ? page.meta.parent.meta.slug : null}.png`}
         bgColor="#1e2827"
         hasGradient={true}
       >
@@ -39,7 +39,7 @@ const Episode = ({ page }) => {
           <StyledEpisodeHeroLinks>
             <Tab
               label="All Episodes"
-              to={`/shows/${page.meta.parent.meta.slug}`}
+              to={`/shows/${page.meta.parent.meta ? page.meta.parent.meta.slug : null}`}
             />
             <Tab label="Team" />
           </StyledEpisodeHeroLinks>
