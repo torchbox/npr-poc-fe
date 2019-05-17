@@ -62,8 +62,6 @@ const Episode = ({ page }) => {
               page.enclosures.length > 0 &&
               page.enclosures.map(
                 ({
-                  id,
-                  meta: { type: mediaType },
                   media: {
                     id: mediaId,
                     title: mediaTitle,
@@ -99,7 +97,6 @@ const Episode = ({ page }) => {
             page.enclosures.length > 0 &&
             page.enclosures.map(
               ({
-                meta: { type: mediaType },
                 media: {
                   id: mediaId,
                   title: mediaTitle,
