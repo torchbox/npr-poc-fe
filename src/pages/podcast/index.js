@@ -168,26 +168,32 @@ const Podcast = ({ page }) => {
             <h2>Similar Shows</h2>
             <CardGrid>
               <StoryCard
-                imageSrc="/images/news_layman.png"
-                title="Damon Young and Kiese Laymon: The Good Dude Closet"
-                category="Death, Sex & Money"
-                excerpt="The writers on why the label covers a multitude of sins."
+                imageSrc="/images/similar_field-work.jpg"
+                title="Field Work"
+                category="MPR News"
+                episodes="5"
+                excerpt="Hosted by two commercial row-crop farmers, Field Work provides space for frank, realistic discussions about the benefits and challenges of sustainable agriculture."
               />
               <StoryCard
-                imageSrc="/images/news_asylum-ny.jpg"
-                title="Why It's Harder to Win Asylum, Even in New York"
+                imageSrc="/images/similar_tell-them.jpg"
+                title="Tell Them, I Am"
+                category="KPPC"
+                episodes="10"
                 excerpt="In immigrant-friendly New York, migrants have historically had a much easier time winning asylum than one would have expected"
               />
               <StoryCard
-                imageSrc="/images/news_asylum-ny.jpg"
-                title="Why It's Harder to Win Asylum, Even in New York"
-                excerpt="In immigrant-friendly New York, migrants have historically had a much easier time winning asylum than one would have expected"
+                imageSrc="/images/similar_code-switch.jpg"
+                title="Code Switch"
+                category="NPR"
+                episodes="56"
+                excerpt="Ever find yourself in a conversation about race and identity where you just get...stuck?"
               />
               <StoryCard
-                imageSrc="/images/news_layman.png"
-                title="Damon Young and Kiese Laymon: The Good Dude Closet"
-                category="Death, Sex & Money"
-                excerpt="The writers on why the label covers a multitude of sins."
+                imageSrc="/images/similar_story-slam.jpg"
+                title="Next To Story Slam"
+                category="WGLT"
+                episodes="22"
+                excerpt="Next to Normal Story Slam is a monthly storytelling event held at the McLean County Arts Center."
               />
             </CardGrid>
           </StyledStoryCardsInner>

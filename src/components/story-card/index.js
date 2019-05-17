@@ -5,16 +5,18 @@ import {
   StyledStoryCardImage,
   StyledStoryCardText,
   StyledStoryCardHeader,
-  StyledStoryCardLink
+  StyledStoryCardLink,
+  StyledStoryCardEpisodes,
 } from "./styled";
 
-const StoryCard = ({ imageSrc, title, category, excerpt }) => (
+const StoryCard = ({ imageSrc, title, category, excerpt, episodes }) => (
   <StyledStoryCard>
     <StyledStoryCardLink to="/">
       <StyledStoryCardImage bgImage={imageSrc}>
       </StyledStoryCardImage>
       <StyledStoryCardText>
-        {title && < StyledStoryCardHeader>{title}</ StyledStoryCardHeader>} {category && <span>{category}</span>}{" "}
+        {title && <StyledStoryCardHeader>{title}</ StyledStoryCardHeader>} {category && <span>{category}</span>}{" "}
+        {episodes && <StyledStoryCardEpisodes>{episodes} Episodes</StyledStoryCardEpisodes>}
         {excerpt && excerpt.length > 90 ? (
           <p>{excerpt.substring(0, 90)}…</p>
         ) : (

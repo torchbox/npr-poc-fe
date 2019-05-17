@@ -55,6 +55,13 @@ const StyledStoryCardText = styled.div`
   }
 `;
 
+const StyledStoryCardEpisodes = styled.div`
+  display: block;
+  margin: 0 0 15px 0;
+  color: ${props => props.theme.colors.grey};
+  font-size: 14px;
+`;
+
 const StyledStoryCardHeader = styled.h3`
   margin: 0 0 15px 0;
   font-size: 21px;
@@ -68,5 +75,6 @@ export {
   StyledStoryCardImage,
   StyledStoryCardText,
   StyledStoryCardHeader,
+  StyledStoryCardEpisodes,
   StyledStoryCardLink
 };
