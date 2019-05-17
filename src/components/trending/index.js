@@ -2,6 +2,8 @@ import React from "react";
 
 import { StyledTrending, StyledTrendingStream } from "./styled";
 
+// https://www.podtrac.com/pts/redirect.mp3/audio.wnyc.org/standards/standards20190401_melissa_errico.mp3
+
 const Trending = () => {
   return (
     <StyledTrending>
@@ -10,28 +12,28 @@ const Trending = () => {
         station="WNYC"
         name="Morning edition"
         iconSrc="/images/show_wnyc.png"
-        audioSrc="/audio/track-two.mp3"
+        audioSrc="/audio/wnyc-morning-edition.mp3"
         trackId="wnyc-morning-edition"
         type="ghost"
         trackName="WNYC - Morning edition"
       />
       <StyledTrendingStream
         station="NJPR"
-        name="Morning edition"
+        name="BBC Newshour"
         iconSrc="/images/show_njpr.png"
-        audioSrc="/audio/track-one.mp3"
-        trackId="njpr-morning-edition"
+        audioSrc="/audio/njpr-morning-edition.mp3"
+        trackId="njpr-news-hour"
         type="ghost"
-        trackName="NJPR - Morning edition"
+        trackName="NJPR - BBC Newshour"
       />
       <StyledTrendingStream
         station="WXQR"
-        name="New York At Night"
+        name="Performance Today"
         iconSrc="/images/show_wqxr.png"
-        audioSrc="/audio/track-two.mp3"
+        audioSrc="/audio/performance-today.mp3"
         trackId="wxqr-new-york"
         type="ghost"
-        trackName="WXQR - New York At Night"
+        trackName="WXQR - Performance Today"
       />
     </StyledTrending>
   );

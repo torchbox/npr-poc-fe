@@ -28,9 +28,9 @@ const Home = () => (
           </StyledHomeHeroIntroTitle>
           <p>Hand-picked music, genre free. 24/7 radio from New York City.</p>
           <PlayCtaButton
-            audioSrc="/audio/track-one.mp3"
+            audioSrc="/audio/newsounds.mp3"
             name="New Sounds"
-            trackId="track-one"
+            trackId="newsounds"
             trackName="New Sounds"
             trackImage="/images/show_new-sounds.jpg"
             isLive

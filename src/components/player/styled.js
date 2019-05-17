@@ -118,6 +118,7 @@ const StyledPlayerBrandName = styled.div`
 
 const StyledPlayerTrack = styled.div`
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   padding: 0 25px;
 `;
