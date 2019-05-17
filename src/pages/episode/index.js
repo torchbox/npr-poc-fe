@@ -120,7 +120,7 @@ const Episode = ({ page }) => {
             )}
         </StyledEpisodeWrapperInner>
       </StyledEpisodeWrapper>
-      <RelatedEpisodes page={page} />
+      {page.meta.parent && <RelatedEpisodes page={page} />}
     </StyledEpisode>
   );
 };
