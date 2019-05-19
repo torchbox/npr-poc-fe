@@ -16,7 +16,7 @@ const fetchEpisodeWithSlug = slug =>
 
 const fetchEpisodesByParentId = (id, limit = false) =>
   fetch(
-    `${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&child_of=${id}&fields=images,season_number,date_created,subtitle,enclosures${
+    `${PAGES_API_URL}/?type=${PAGE_TYPE_EPISODE}&child_of=${id}&order=-id&fields=images,season_number,date_created,subtitle,enclosures${
       limit ? "&limit=10" : ""
     }`
   )
