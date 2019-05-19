@@ -26,7 +26,7 @@ const Home = () => (
             <StyledHomeHeroIcon src="/images/show_new-sounds.jpg" />
             <h1>New Sounds</h1>
           </StyledHomeHeroIntroTitle>
-          <p>Hand-picked music, genre free. 24/7 radio from New York City.</p>
+          <p>Hand-picked music, genre free. 24/7 radio from the Cotswolds.</p>
           <PlayCtaButton
             audioSrc="/audio/newsounds.mp3"
             name="New Sounds"
