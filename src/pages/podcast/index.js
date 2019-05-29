@@ -125,18 +125,20 @@ const Podcast = ({ page }) => {
                         url={`${page.meta.slug}/${episode.meta.slug}`}
                         hidden={!(index < displayCount)}
                       >
-                        <PlayCtaButton
-                          audioSrc={episode.enclosures[0].media.meta.file}
-                          name={`Episode ${episode.season_number}`}
-                          trackId={episode.enclosures[0].id}
-                          trackName={episode.enclosures[0].media.title}
-                          trackImage={
-                            episode.images.length
-                              ? episode.images[0].image_thumbnail.url
-                              : null
-                          }
-                          type="white"
-                        />
+                        {episode.enclosures && episode.enclosures[0] && (
+                          <PlayCtaButton
+                            audioSrc={episode.enclosures[0].media.meta.file}
+                            name={`Episode ${episode.season_number}`}
+                            trackId={episode.enclosures[0].id}
+                            trackName={episode.enclosures[0].media.title}
+                            trackImage={
+                              episode.images.length
+                                ? episode.images[0].image_thumbnail.url
+                                : null
+                            }
+                            type="white"
+                          />
+                        )}
                       </StyledEpisodeCard>
                     );
                   })}
